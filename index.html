@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kalamu est une association culturelle à but non lucratif, engagée dans la promotion de la lecture, de l'écriture et de la transmission culturelle en Afrique. Rejoignez notre mission pour démocratiser l'accès à la lecture.">
+    <meta name="keywords" content="association, culture, lecture, écriture, Afrique, Kalamu, éducation, littérature, Sénégal, Kaolack">
+    <meta name="author" content="Association Kalamu">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kalamu.org/">
+    <meta property="og:title" content="Kalamu - Association Culturelle">
+    <meta property="og:description" content="Promouvoir la lecture et l'écriture en Afrique. Grandir par la lecture, s'élever par l'écriture.">
+    <meta property="og:image" content="logo.PNG">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://kalamu.org/">
+    <meta property="twitter:title" content="Kalamu - Association Culturelle">
+    <meta property="twitter:description" content="Promouvoir la lecture et l'écriture en Afrique. Grandir par la lecture, s'élever par l'écriture.">
+    <meta property="twitter:image" content="logo.PNG">
+    
+    <title>Kalamu - Association Culturelle</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="logo.PNG">
+    <link rel="icon" type="image/png" sizes="16x16" href="logo.PNG">
+    <link rel="apple-touch-icon" sizes="180x180" href="logo.PNG">
+    <link rel="shortcut icon" href="logo.PNG">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Association Kalamu",
+        "alternateName": "Kalamu",
+        "url": "https://kalamu.org",
+        "logo": "logo.PNG",
+        "description": "Association culturelle à but non lucratif, engagée dans la promotion de la lecture, de l'écriture et de la transmission culturelle en Afrique",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Kaolack",
+            "addressCountry": "SN"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+221-784-681-771",
+            "contactType": "customer service",
+            "email": "associationkalamu@gmail.com"
+        },
+        "founder": {
+            "@type": "Person",
+            "name": "Samba Cor FAYE",
+            "jobTitle": "Auteur, orateur et étudiant"
+        },
+        "sameAs": [
+            "https://facebook.com/kalamu",
+            "https://instagram.com/kalamu",
+            "https://youtube.com/kalamu"
+        ]
+    }
+    </script>
+</head>
+<body>
+    <header id="accueil" role="banner">
+        <div class="container">
+            <div class="header-content">
+                <!-- Logo Section (Left) -->
+                <div class="logo">
+                    <div class="logo-icon" aria-hidden="true">
+                        <img src="logo.PNG" alt="Logo Kalamu Association Culturelle">
+                    </div>
+                    <div class="logo-text">
+                        <h1>Kalamu</h1>
+                        <p>Association Culturelle</p>
+                    </div>
+                </div>
+                
+                <!-- Navigation Section (Center) -->
+                <nav class="main-nav" role="navigation" aria-label="Menu principal">
+                        <ul>
+                            <li><a href="#accueil" class="active">Accueil</a></li>
+                            <li><a href="#a-propos">À Propos</a></li>
+                            <li><a href="#objectifs">Objectifs</a></li>
+                            <li><a href="#activites">Activités</a></li>
+                            <li><a href="#evenements">Événements</a></li>
+                            <li><a href="#membres">Membres</a></li>
+                            <li><a href="#partenaires">Partenaires</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    
+                    <!-- Mobile Menu Content -->
+                    <div class="mobile-menu-content">
+                        <div class="mobile-menu-header">
+                            <div class="mobile-logo">
+                                <img src="logo.PNG" alt="Kalamu" class="mobile-logo-icon">
+                                <div class="mobile-logo-text">
+                                    <h3>Kalamu</h3>
+                                    <p>Association Culturelle</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mobile-menu-separator"></div>
+                        
+                        <ul class="mobile-nav-links">
+                            <li><a href="#accueil" class="active">Accueil</a></li>
+                            <li><a href="#a-propos">À Propos</a></li>
+                            <li><a href="#objectifs">Objectifs</a></li>
+                            <li><a href="#activites">Activités</a></li>
+                            <li><a href="#evenements">Événements</a></li>
+                            <li><a href="#membres">Membres</a></li>
+                            <li><a href="#partenaires">Partenaires</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                        
+                        <div class="mobile-menu-cta">
+                            <a href="#contact" class="mobile-cta-button">Nous rejoindre</a>
+                        </div>
+                    </div>
+                </nav>
+                
+                
+                <!-- Mobile menu button -->
+                <button class="mobile-menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main" role="main">
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            
+            <!-- Main Background Image -->
+            <div class="hero-main-bg"></div>
+            
+            <!-- Colorful Overlay -->
+            <div class="hero-overlay"></div>
+            
+            <!-- Geometric Shapes -->
+            <div class="geometric-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+                <div class="shape shape-4"></div>
+            </div>
+            
+            <div class="container">
+                <div class="hero-content">
+                    <!-- Logo with Glow Effect -->
+                    <div class="hero-logo-container">
+                        <div class="logo-glow"></div>
+                        <div class="hero-icon">
+                            <img src="logo.PNG" alt="Logo Kalamu">
+                        </div>
+                    </div>
+                    
+                    <!-- Main Title with Gradient -->
+                    <h1 class="hero-title">
+                        <span class="title-line-1">Kalamu</span>
+                        <span class="title-line-2">Association Culturelle</span>
+                    </h1>
+                    
+                    <!-- Animated Slogan -->
+                    <div class="hero-slogan-container">
+                        <p class="hero-slogan">
+                            <span class="slogan-word">« Grandir</span>
+                            <span class="slogan-word">par la</span>
+                            <span class="slogan-word highlight">lecture</span>
+                            <span class="slogan-word">, s'élever</span>
+                            <span class="slogan-word">par l'</span>
+                            <span class="slogan-word highlight">écriture</span>
+                            <span class="slogan-word">»</span>
+                        </p>
+                    </div>
+                    
+                    <!-- Description with Fade-in Effect -->
+                    <p class="hero-description">
+                        Kalamu est une association culturelle à but non lucratif, engagée dans la promotion de la lecture, de l'écriture et de la transmission culturelle en Afrique.
+                    </p>
+                    
+                    <!-- Enhanced Buttons -->
+                    <div class="hero-buttons">
+                        <a href="#mission" class="btn btn-primary btn-glow">
+                            <span>Découvrir notre mission</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="#contact" class="btn btn-outline btn-pulse">
+                            <span>Nous rejoindre</span>
+                            <i class="fas fa-heart"></i>
+                        </a>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator">
+                <div class="scroll-arrow">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <span>Découvrir</span>
+            </div>
+        </section>
+
+        
+
+        <section id="a-propos" class="about-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>À propos de Kalamu</h2>
+                    <p>Découvrez l'histoire et la mission de notre association culturelle dédiée à la promotion de la lecture et de l'écriture en Afrique.</p>
+                </div>
+                
+                <div class="about-content">
+                    <div class="about-text">
+                        <div class="why-kalamu">
+                            <h3>Pourquoi « Kalamu » ?</h3>
+                            <p>Kalamu signifie plume en swahili et en arabe. Elle symbolise le savoir, la mémoire et la transmission spirituelle.</p>
+                            <p>Comme une plume qui s'élève dans le vent, nos actions portent les voix et les histoires de l'Afrique vers de nouveaux horizons, créant des ponts entre les générations et les cultures.</p>
+                        </div>
+                    </div>
+                    <div class="about-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-feather-alt fa-4x"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="vision-mission">
+                    <div class="vision-card">
+                        <div class="card-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3>Notre Vision</h3>
+                        <p>Une société où chaque enfant et adulte a accès au livre et où l'écrit perpétue les trésors de l'oralité africaine.</p>
+                    </div>
+                    <div class="mission-card">
+                        <div class="card-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h3>Notre Mission</h3>
+                        <ul class="mission-list">
+                            <li><i class="fas fa-heart"></i> Promouvoir la lecture pour tous</li>
+                            <li><i class="fas fa-heart"></i> Encourager l'écriture créative</li>
+                            <li><i class="fas fa-heart"></i> Valoriser le patrimoine oral africain</li>
+                            <li><i class="fas fa-heart"></i> Organiser des événements culturels</li>
+                            <li><i class="fas fa-heart"></i> Soutenir les auteurs africains émergents</li>
+                    </ul>
+                    </div>
+                </div>
+
+                <div class="quote-section">
+                    <blockquote>
+                        « Chaque page lue est une porte ouverte vers la liberté ; chaque mot écrit est un acte d'espérance. »
+                    </blockquote>
+                    <cite>— Association Kalamu</cite>
+                </div>
+            </div>
+        </section>
+
+        <section id="objectifs" class="objectives-section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h2>Nos Objectifs</h2>
+                    <p>Des ambitions concrètes pour transformer l'accès à la lecture et à l'écriture en Afrique.</p>
+                </div>
+                
+                <div class="objectives-grid">
+                    <div class="objective-card card-hover fade-in">
+                        <div class="card-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Clubs de lecture</h3>
+                        <p>Créer des clubs de lecture dans écoles, lycées et universités pour encourager la passion de la lecture chez les jeunes.</p>
+                    </div>
+                    <div class="objective-card card-hover fade-in delay-1">
+                        <div class="card-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3>Festival Kalamu</h3>
+                        <p>Organiser le Festival Kalamu annuel du livre et de la lecture, un événement majeur de la culture littéraire africaine.</p>
+                    </div>
+                    <div class="objective-card card-hover fade-in delay-2">
+                        <div class="card-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <h3>Kalamu Mobile</h3>
+                        <p>Déployer une bibliothèque mobile « Kalamu Mobile » pour apporter les livres dans les zones les plus reculées.</p>
+                    </div>
+                    <div class="objective-card card-hover fade-in delay-3">
+                        <div class="card-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <h3>Contes africains</h3>
+                        <p>Lancer une collection de contes africains écrits par des enfants et jeunes, valorisant leur créativité.</p>
+                    </div>
+                    <div class="objective-card card-hover fade-in delay-4">
+                        <div class="card-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Ambassadeurs</h3>
+                        <p>Former des ambassadeurs de la lecture qui porteront notre mission dans tout le Sénégal.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission Section -->
+        <section id="mission" class="mission-section">
+            <div class="container">
+                <div class="mission-content">
+                    <h2>Rejoignez notre mission</h2>
+                    <p>Ensemble, nous pouvons créer une Afrique où chaque enfant a accès aux merveilles de la lecture et où chaque voix trouve sa plume pour s'exprimer.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="activites" class="activities-section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-pen-fancy"></i>
+                    </div>
+                    <h2>Nos Activités</h2>
+                    <p>Un éventail d'activités culturelles et éducatives pour tous les âges et tous les niveaux.</p>
+                </div>
+                
+                <div class="activities-grid">
+                    <div class="activity-card">
+                        <div class="card-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Clubs de lecture</h3>
+                        <p>Débats, partages de livres et discussions littéraires dans un cadre convivial et enrichissant.</p>
+                        <div class="activity-tags">
+                            <span class="tag">Débats</span>
+                            <span class="tag">Partage</span>
+                            <span class="tag">Community</span>
+                        </div>
+                    </div>
+                    <div class="activity-card">
+                        <div class="card-icon">
+                            <i class="fas fa-microphone"></i>
+                        </div>
+                        <h3>Masterclass</h3>
+                        <p>Prise de parole, développement personnel et coaching pour développer vos compétences.</p>
+                        <div class="activity-tags">
+                            <span class="tag">Formation</span>
+                            <span class="tag">Coaching</span>
+                            <span class="tag">Leadership</span>
+                        </div>
+                    </div>
+                    <div class="activity-card">
+                        <div class="card-icon">
+                            <i class="fas fa-pen-fancy"></i>
+                        </div>
+                        <h3>Ateliers d'écriture</h3>
+                        <p>Contes, poésie, récits de vie pour libérer votre créativité et votre imagination.</p>
+                        <div class="activity-tags">
+                            <span class="tag">Créativité</span>
+                            <span class="tag">Poésie</span>
+                            <span class="tag">Contes</span>
+                        </div>
+                    </div>
+                    <div class="activity-card">
+                        <div class="card-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3>Rencontres d'auteurs</h3>
+                        <p>Masterclass et conférences avec des auteurs africains reconnus et émergents.</p>
+                        <div class="activity-tags">
+                            <span class="tag">Inspiration</span>
+                            <span class="tag">Networking</span>
+                            <span class="tag">Culture</span>
+                        </div>
+                    </div>
+                    <div class="activity-card">
+                        <div class="card-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3>Concours Kalamu</h3>
+                        <p>« Raconte ton histoire en 1000 mots » - Un concours d'écriture pour révéler les talents.</p>
+                        <div class="activity-tags">
+                            <span class="tag">Concours</span>
+                            <span class="tag">Écriture</span>
+                            <span class="tag">Récompenses</span>
+                        </div>
+                    </div>
+                    <div class="activity-card">
+                        <div class="card-icon">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <h3>1 livre, 1 lecteur</h3>
+                        <p>Projet de dons de livres pour démocratiser l'accès à la lecture pour tous.</p>
+                        <div class="activity-tags">
+                            <span class="tag">Solidarité</span>
+                            <span class="tag">Accès</span>
+                            <span class="tag">Don</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events Section -->
+        <section id="evenements" class="events-section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h2>Événements à venir</h2>
+                    <p>Découvrez nos prochains événements et rejoignez-nous pour des moments culturels enrichissants.</p>
+                </div>
+
+                <div class="events-grid">
+                    <!-- Les événements seront ajoutés ici par le propriétaire du site -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Members Section -->
+        <section id="membres" class="team-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Nos Membres</h2>
+                    <p>Découvrez les personnes qui portent la vision et les actions de Kalamu.</p>
+                </div>
+
+                <div class="team-carousel">
+                    <div class="team-track">
+                    <article class="team-card active">
+                        <div class="team-avatar">
+                            <img src="samba_cor_faye.jpg" loading="lazy" alt="Samba Cor FAYE">
+                        </div>
+                        <h3>Samba Cor FAYE</h3>
+                        <p class="team-role">Président</p>
+                        <p class="team-bio">Président de l'association, pilier de l'organisation et leader visionnaire. Responsable de la direction générale et de la représentation.</p>
+                    </article>
+                    <article class="team-card">
+                        <div class="team-avatar">
+                            <img src="coumba_gaye_ly.jpg" loading="lazy" alt="Coumba Gaye LY">
+                        </div>
+                        <h3>Coumba Gaye LY</h3>
+                        <p class="team-role">Secrétaire générale</p>
+                        <p class="team-bio">Gère l'administration et la coordination. Assure le bon fonctionnement interne et la communication avec les membres.</p>
+                    </article>
+                    <article class="team-card">
+                        <div class="team-avatar">
+                            <img src="tacko_thiam.jpg" loading="lazy" alt="Tacko THIAM">
+                        </div>
+                        <h3>Tacko THIAM</h3>
+                        <p class="team-role">1ère Responsable partenariats</p>
+                        <p class="team-bio">Établit et renforce les collaborations avec d'autres entités. Rôle clé pour le développement des projets.</p>
+                    </article>
+                    <article class="team-card">
+                        <div class="team-avatar">
+                            <img src="el_hadj_malick_ndiaye.jpg" loading="lazy" alt="El Hadji Malick NDIAYE">
+                        </div>
+                        <h3>El Hadji Malick NDIAYE</h3>
+                        <p class="team-role">2ème Responsable partenariats</p>
+                        <p class="team-bio">Travaille aux côtés de Tacko THIAM pour développer le réseau et identifier de nouvelles opportunités.</p>
+                    </article>
+                    <article class="team-card">
+                        <div class="team-avatar">
+                            <img src="gnima_dianko.jpg" loading="lazy" alt="Gnima DIANKO">
+                        </div>
+                        <h3>Gnima DIANKO</h3>
+                        <p class="team-role">Relations membres & adhésions</p>
+                        <p class="team-bio">Contact privilégié des adhérents. Veille à leur engagement et à leur intégration au sein de l'association.</p>
+                    </article>
+                    <article class="team-card">
+                        <div class="team-avatar">
+                            <img src="khadijatou_diallo.jpg" loading="lazy" alt="Khadijatou DIALLO">
+                        </div>
+                        <h3>Khadijatou DIALLO</h3>
+                        <p class="team-role">Responsable financière</p>
+                        <p class="team-bio">Gère les finances, la trésorerie et le budget. Garantit la bonne santé économique de l'organisation.</p>
+                    </article>
+                    <article class="team-card">
+                        <div class="team-avatar">
+                            <img src="pa_alioune_ndiaye.jpg" loading="lazy" alt="Pa Alioune NDIAYE">
+                        </div>
+                        <h3>Pa Alioune NDIAYE</h3>
+                        <p class="team-role">Responsable logistique</p>
+                        <p class="team-bio">Organise la logistique des événements et projets. Assure la fluidité des opérations sur le terrain.</p>
+                    </article>
+                    <article class="team-card">
+                        <div class="team-avatar">
+                            <img src="ousmane_niass.jpg" loading="lazy" alt="Ousmane NIASSE">
+                        </div>
+                        <h3>Ousmane NIASSE</h3>
+                        <p class="team-role">Responsable pédagogique</p>
+                        <p class="team-bio">Conçoit et suit les programmes d'éducation. Veille à la qualité du contenu et à l'impact des initiatives.</p>
+                    </article>
+                    <article class="team-card">
+                        <div class="team-avatar">
+                            <img src="fatou_kiné_thiam.jpg" loading="lazy" alt="Fatou Kiné THIAM">
+                        </div>
+                        <h3>Fatou Kiné THIAM</h3>
+                        <p class="team-role">Responsable communication</p>
+                        <p class="team-bio">Gère l'image et la visibilité de l'association. Diffuse l'information et promeut les activités.</p>
+                    </article>
+                    <article class="team-card">
+                        <div class="team-avatar">
+                            <img src="aicha_gamou_gueye.jpg" loading="lazy" alt="Aicha Gamou GUEYE">
+                        </div>
+                        <h3>Aicha Gamou GUEYE</h3>
+                        <p class="team-role">Responsable artistique</p>
+                        <p class="team-bio">Supervise la dimension créative des projets, la conception visuelle et les expressions artistiques.</p>
+                    </article>
+                    <article class="team-card">
+                        <div class="team-avatar">
+                            <img src="oumouratou_bangoura.jpg" loading="lazy" alt="Oumouratou BANGOURA">
+                        </div>
+                        <h3>Oumouratou BANGOURA</h3>
+                        <p class="team-role">Documentation & bibliothèque</p>
+                        <p class="team-bio">Gère la bibliothèque et l'archivage. Assure l'organisation et l'accessibilité des ressources écrites.</p>
+                    </article>
+                    </div>
+                    <div class="carousel-controls">
+                        <button class="team-prev" aria-label="Membre précédent"><i class="fas fa-chevron-left"></i></button>
+                        <div class="team-dots"></div>
+                        <button class="team-next" aria-label="Membre suivant"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="partenaires" class="partners-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Nos Partenaires</h2>
+                    <p>Des collaborations essentielles pour notre mission</p>
+                </div>
+                
+                <div class="partners-grid">
+                    <div class="partner-category">
+                        <div class="partner-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Éducation</h3>
+                        <p>Écoles, lycées, universités</p>
+                    </div>
+                    
+                    <div class="partner-category">
+                        <div class="partner-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <h3>Culture</h3>
+                        <p>Maisons d'édition et bibliothèques</p>
+                    </div>
+                    
+                    <div class="partner-category">
+                        <div class="partner-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h3>ONG</h3>
+                        <p>ONG éducatives</p>
+                    </div>
+                    
+                    <div class="partner-category">
+                        <div class="partner-icon">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <h3>Institutions</h3>
+                        <p>Institutions culturelles</p>
+                    </div>
+                    
+                    <div class="partner-category">
+                        <div class="partner-icon">
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                        <h3>Médias</h3>
+                        <p>Médias locaux</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="public-cible" class="target-audience-section">
+            <div class="container">
+                <div class="audience-content">
+                    <div class="audience-left">
+                        <h2>Public Cible</h2>
+                        
+                        <div class="audience-grid">
+                            <div class="audience-card children">
+                                <h3>Enfants</h3>
+                                <p>dès 6 ans</p>
+                            </div>
+                            <div class="audience-card youth">
+                                <h3>Jeunes</h3>
+                                <p>collégiens, lycéens, étudiants</p>
+                            </div>
+                            <div class="audience-card teachers">
+                                <h3>Enseignants</h3>
+                                <p>& éducateurs</p>
+                            </div>
+                            <div class="audience-card enthusiasts">
+                                <h3>Passionnés</h3>
+                                <p>de lecture et d'écriture</p>
+                            </div>
+                        </div>
+                        
+                        <div class="cta-section">
+                            <a href="#activites" class="btn btn-primary">Rejoindre nos activités →</a>
+                        </div>
+                    </div>
+                    
+                    <div class="audience-right">
+                        <div class="audience-image">
+                            <img src="IMG_7216.JPG" loading="lazy" alt="Enfants lisant ensemble">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="initiateur" class="founder-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>L'Initiateur</h2>
+                </div>
+                <div class="founder-card">
+                    <div class="founder-avatar">
+                        <img src="samba_cor_faye.jpg" loading="lazy" alt="Samba Cor FAYE">
+                    </div>
+                    <h3>Samba Cor FAYE</h3>
+                    <div class="founder-details">
+                        <div class="detail-item">
+                            <i class="fas fa-heart"></i>
+                            <span>Auteur & Orateur</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>Licence en Droit Privé</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Originaire de Kaolack</span>
+                        </div>
+                    </div>
+                    <p class="founder-bio">Étudiant titulaire d'une licence en droit privé à l'Université Numérique Cheikh Hamidou Kane (UNCHK), passionné de littérature et de transmission culturelle.</p>
+                    <blockquote class="founder-quote">
+                        « Chaque page lue est une porte ouverte vers la liberté ; chaque mot écrit est un acte d'espérance. »
+                    </blockquote>
+                    <a href="#contact" class="btn btn-primary">Rejoindre Kalamu</a>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-icon">
+                            <i class="fas fa-envelope"></i>
+                    </div>
+                    <h2>Contact</h2>
+                    <p>Rejoignez notre communauté et participez à la promotion de la culture littéraire africaine.</p>
+                </div>
+                
+                <div class="contact-cards">
+                    <div class="contact-card">
+                        <div class="card-icon" aria-hidden="true">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>Adresse</h3>
+                        <p>Kaolack, Sénégal</p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="card-icon" aria-hidden="true">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h3>Téléphone</h3>
+                        <p><a href="tel:+221784681771">78 468 17 71</a><br><a href="tel:+221784716518">78 471 65 18</a></p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="card-icon" aria-hidden="true">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>Email</h3>
+                        <p><a href="mailto:associationkalamu@gmail.com">associationkalamu@gmail.com</a></p>
+                    </div>
+                </div>
+                
+                
+                <div class="social-section">
+                    <h3>Suivez-nous</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/share/16idtbQot2/?mibextid=wwXIfr" class="social-link facebook" aria-label="Suivez-nous sur Facebook" target="_blank" rel="noopener">
+                            <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://www.instagram.com/association_kalamu?igsh=MWpmbnhmNm5wem5jdQ%3D%3D&utm_source=qr" class="social-link instagram" aria-label="Suivez-nous sur Instagram" target="_blank" rel="noopener">
+                            <i class="fab fa-instagram" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@kalamu2.0?_t=ZM-8wZMjrXKnwc&_r=1" class="social-link youtube" aria-label="Suivez-nous sur YouTube" target="_blank" rel="noopener">
+                            <i class="fab fa-youtube" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="logo-icon">
+                            <img src="logo.PNG" alt="Logo Kalamu Association Culturelle">
+                        </div>
+                        <div class="logo-text">
+                            <h3>Kalamu Association Culturelle</h3>
+                        </div>
+                    </div>
+                    <p>Kalamu est une association culturelle à but non lucratif, engagée dans la promotion de la lecture, de l'écriture et de la transmission culturelle en Afrique.</p>
+                    <p class="slogan">« Grandir par la lecture, s'élever par l'écriture »</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#a-propos">À propos</a></li>
+                        <li><a href="#objectifs">Objectifs</a></li>
+                        <li><a href="#activites">Activités</a></li>
+                        <li><a href="#membres">Membres</a></li>
+                        <li><a href="#partenaires">Partenaires</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Kaolack, Sénégal</p>
+                    <p>784681771 - 784716518</p>
+                    <p>associationkalamu@gmail.com</p>
+                    <p>@kalamu</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Association Kalamu. Tous droits réservés.</p>
+                <p>Créé avec ❤️ pour la culture africaine</p>
+            </div>
+        </div>
+    </footer>
+</body>
+<script src="script.js"></script>
+</html>
