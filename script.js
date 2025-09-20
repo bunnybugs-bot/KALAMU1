@@ -725,31 +725,110 @@ document.addEventListener('DOMContentLoaded', function() {
         moveClassicsCarousel(1);
     };
 
-    // Initialize hero carousel
-    initHeroCarousel();
+    // Initialize modern hero carousel
+    initModernHeroCarousel();
 });
 
-// Hero Carousel Functions
-function initHeroCarousel() {
-    const heroCarousel = document.querySelector('.hero-carousel');
-    const heroTrack = document.querySelector('.hero-carousel-track');
-    
-    if (!heroCarousel || !heroTrack) {
-        console.log('Hero carousel elements not found');
+// Modern Hero Carousel Functions
+let currentSlide = 0;
+const totalSlides = 6;
+let autoPlayInterval;
+
+function initModernHeroCarousel() {
+    const carousel = document.querySelector('.modern-hero-carousel');
+    if (!carousel) {
+        console.log('Modern hero carousel not found');
         return;
     }
     
-    console.log('Hero carousel initialized');
+    console.log('Modern hero carousel initialized');
     
-    // Pause animation on hover
-    heroCarousel.addEventListener('mouseenter', function() {
-        heroTrack.style.animationPlayState = 'paused';
+    // Initialize first slide
+    currentSlide = 0;
+    updateSlide();
+    
+    // Start auto-play
+    startAutoPlay();
+    
+    // Pause on hover
+    carousel.addEventListener('mouseenter', stopAutoPlay);
+    carousel.addEventListener('mouseleave', startAutoPlay);
+    
+    // Touch/swipe support
+    let startX = 0;
+    let endX = 0;
+    
+    carousel.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
     });
     
-    // Resume animation on mouse leave
-    heroCarousel.addEventListener('mouseleave', function() {
-        heroTrack.style.animationPlayState = 'running';
+    carousel.addEventListener('touchend', (e) => {
+        endX = e.changedTouches[0].clientX;
+        handleSwipe();
     });
+    
+    function handleSwipe() {
+        const threshold = 50;
+        const diff = startX - endX;
+        
+        if (Math.abs(diff) > threshold) {
+            if (diff > 0) {
+                changeSlide(1); // Swipe left - next slide
+            } else {
+                changeSlide(-1); // Swipe right - previous slide
+            }
+        }
+    }
+}
+
+function changeSlide(direction) {
+    currentSlide += direction;
+    
+    if (currentSlide >= totalSlides) {
+        currentSlide = 0;
+    } else if (currentSlide < 0) {
+        currentSlide = totalSlides - 1;
+    }
+    
+    updateSlide();
+}
+
+function goToSlide(slideIndex) {
+    currentSlide = slideIndex;
+    updateSlide();
+}
+
+function updateSlide() {
+    const slides = document.querySelectorAll('.carousel-slide');
+    const indicators = document.querySelectorAll('.indicator');
+    
+    console.log(`Updating slide to ${currentSlide}, found ${slides.length} slides`);
+    
+    // Update slides
+    slides.forEach((slide, index) => {
+        const isActive = index === currentSlide;
+        slide.classList.toggle('active', isActive);
+        console.log(`Slide ${index}: ${isActive ? 'active' : 'inactive'}`);
+    });
+    
+    // Update indicators
+    indicators.forEach((indicator, index) => {
+        indicator.classList.toggle('active', index === currentSlide);
+    });
+}
+
+function startAutoPlay() {
+    stopAutoPlay(); // Clear any existing interval
+    autoPlayInterval = setInterval(() => {
+        changeSlide(1);
+    }, 5000); // Change slide every 5 seconds
+}
+
+function stopAutoPlay() {
+    if (autoPlayInterval) {
+        clearInterval(autoPlayInterval);
+        autoPlayInterval = null;
+    }
 }
 
 // Books Carousel Functions - Classics
@@ -924,3 +1003,194 @@ function goToYouthSlide(slideIndex) {
         console.log(`Youth carousel jumped to slide ${slideIndex}, index ${currentYouthIndex}, translateX: ${translateX}px`);
     }
 }
+
+// Toggle description between short and full versions
+function toggleDescription(button) {
+    const bookInfo = button.closest('.book-info');
+    const descriptionShort = bookInfo.querySelector('.description-short');
+    const descriptionFull = bookInfo.querySelector('.description-full');
+    
+    if (descriptionShort && descriptionFull) {
+        const isExpanded = descriptionFull.style.display !== 'none';
+        
+        if (isExpanded) {
+            // Collapse: show short, hide full
+            descriptionShort.style.display = 'block';
+            descriptionFull.style.display = 'none';
+            button.textContent = 'Lire plus';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            // Expand: hide short, show full
+            descriptionShort.style.display = 'none';
+            descriptionFull.style.display = 'block';
+            descriptionFull.classList.add('show');
+            button.textContent = 'Lire moins';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+}
+
+// Horizontal scroll functionality for books
+let scrollPositions = {
+    classics: 0,
+    contemporary: 0,
+    youth: 0
+};
+
+const scrollStep = 340; // Card width + gap
+
+function scrollBooks(category, direction) {
+    const scrollContainer = document.querySelector(`.books-category:nth-of-type(${getCategoryIndex(category)}) .books-scroll-track`);
+    if (!scrollContainer) return;
+    
+    const containerWidth = scrollContainer.parentElement.offsetWidth;
+    const trackWidth = scrollContainer.scrollWidth;
+    const maxScroll = trackWidth - containerWidth;
+    
+    if (direction === 'left') {
+        scrollPositions[category] = Math.max(0, scrollPositions[category] - scrollStep);
+    } else {
+        scrollPositions[category] = Math.min(maxScroll, scrollPositions[category] + scrollStep);
+    }
+    
+    scrollContainer.style.transform = `translateX(-${scrollPositions[category]}px)`;
+    
+    // Update button states
+    updateScrollButtons(category, scrollPositions[category], maxScroll);
+}
+
+function getCategoryIndex(category) {
+    const categoryMap = {
+        'classics': 1,
+        'contemporary': 2,
+        'youth': 3
+    };
+    return categoryMap[category] || 1;
+}
+
+function updateScrollButtons(category, currentPosition, maxScroll) {
+    const categoryIndex = getCategoryIndex(category);
+    const scrollControls = document.querySelector(`.books-category:nth-of-type(${categoryIndex}) .scroll-controls`);
+    if (!scrollControls) return;
+    
+    const leftBtn = scrollControls.querySelector('.scroll-left');
+    const rightBtn = scrollControls.querySelector('.scroll-right');
+    
+    if (leftBtn) {
+        leftBtn.disabled = currentPosition <= 0;
+    }
+    
+    if (rightBtn) {
+        rightBtn.disabled = currentPosition >= maxScroll;
+    }
+}
+
+// Initialize scroll buttons on page load
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize scroll button states for all categories
+    setTimeout(() => {
+        ['classics', 'contemporary', 'youth'].forEach(category => {
+            const categoryIndex = getCategoryIndex(category);
+            const scrollContainer = document.querySelector(`.books-category:nth-of-type(${categoryIndex}) .books-scroll-track`);
+            if (scrollContainer) {
+                const containerWidth = scrollContainer.parentElement.offsetWidth;
+                const trackWidth = scrollContainer.scrollWidth;
+                const maxScroll = trackWidth - containerWidth;
+                updateScrollButtons(category, 0, maxScroll);
+            }
+        });
+    }, 100);
+});
+
+// Toggle more books functionality
+function toggleMoreBooks(category) {
+    // Find the category section by looking for sections with specific book types
+    let categorySection;
+    
+    // Find all book categories and check which one contains the right book type
+    const allCategories = document.querySelectorAll('.books-category');
+    
+    for (let section of allCategories) {
+        const books = section.querySelectorAll('.book-card');
+        if (books.length > 0) {
+            const firstBook = books[0];
+            if (category === 'classics' && firstBook.classList.contains('classic')) {
+                categorySection = section;
+                break;
+            } else if (category === 'contemporary' && firstBook.classList.contains('contemporary')) {
+                categorySection = section;
+                break;
+            } else if (category === 'youth' && firstBook.classList.contains('youth')) {
+                categorySection = section;
+                break;
+            }
+        }
+    }
+    
+    if (!categorySection) {
+        console.error(`Category section not found for: ${category}`);
+        return;
+    }
+    
+    const seeMoreBtn = categorySection.querySelector('.see-more-btn');
+    if (!seeMoreBtn) {
+        console.error(`See more button not found for category: ${category}`);
+        return;
+    }
+    
+    const seeMoreText = seeMoreBtn.querySelector('.see-more-text');
+    if (!seeMoreText) {
+        console.error(`See more text not found for category: ${category}`);
+        return;
+    }
+    
+    if (seeMoreBtn.classList.contains('expanded')) {
+        // Collapse: hide additional books
+        seeMoreBtn.classList.remove('expanded');
+        seeMoreText.textContent = `Voir plus de ${getCategoryName(category)}`;
+        
+        // Hide books beyond the first 2
+        const books = categorySection.querySelectorAll('.book-card');
+        books.forEach((book, index) => {
+            if (index >= 2) { // Show only first 2 books by default
+                book.style.display = 'none';
+            }
+        });
+    } else {
+        // Expand: show all books
+        seeMoreBtn.classList.add('expanded');
+        seeMoreText.textContent = `Voir moins de ${getCategoryName(category)}`;
+        
+        // Show all books
+        const books = categorySection.querySelectorAll('.book-card');
+        books.forEach(book => {
+            book.style.display = 'block';
+        });
+    }
+}
+
+function getCategoryName(category) {
+    const names = {
+        'classics': 'classiques',
+        'contemporary': 'contemporains', 
+        'youth': 'jeunesse'
+    };
+    return names[category] || category;
+}
+
+// Initialize books display on page load
+document.addEventListener('DOMContentLoaded', function() {
+    // Hide books beyond the first 2 in each category by default
+    const allCategories = document.querySelectorAll('.books-category');
+    
+    allCategories.forEach(section => {
+        const books = section.querySelectorAll('.book-card');
+        if (books.length > 0) {
+            books.forEach((book, index) => {
+                if (index >= 2) { // Show only first 2 books by default
+                    book.style.display = 'none';
+                }
+            });
+        }
+    });
+});
