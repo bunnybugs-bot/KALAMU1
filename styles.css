@@ -411,6 +411,14 @@ header {
     max-width: 4xl;
     padding: 0 2rem;
     animation: fadeInUp 1s ease-out;
+    overflow-x: hidden;
+}
+
+/* Mobile specific hero content adjustments */
+@media (max-width: 480px) {
+    .hero-content {
+        padding: 0 1rem;
+    }
 }
 
 /* Hero Logo Section */
@@ -492,11 +500,35 @@ header {
     color: white;
     margin-bottom: 1.5rem;
     line-height: 1.1;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 @media (min-width: 768px) {
     .hero-title {
         font-size: 7rem;
+    }
+}
+
+/* iPhone 13 specific fixes */
+@media (max-width: 390px) {
+    .hero-title {
+        font-size: 4rem;
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 375px) {
+    .hero-title {
+        font-size: 3.5rem;
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 360px) {
+    .hero-title {
+        font-size: 3rem;
+        white-space: nowrap;
     }
 }
 
