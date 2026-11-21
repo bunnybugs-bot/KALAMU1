@@ -31,7 +31,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="logo.PNG">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -39,50 +39,50 @@
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="content.css">
+    <link rel="stylesheet" href="design.css">
 </head>
-<body>
+<body class="kl-page-library">
     <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <!-- Logo -->
-                <div class="logo" onclick="goToPage('/')">
-                    <div class="logo-icon">
-                        <img src="logo.PNG" alt="Kalamu Association">
-                    </div>
-                    <div class="logo-text">
-                        <h1>Kalamu</h1>
-                        <p class="logo-subtitle">Association Culturelle</p>
-                    </div>
-                </div>
-                
-                <!-- Desktop Navigation -->
-                <nav class="main-nav" role="navigation" aria-label="Navigation principale">
-                    <button onclick="goToPage('index.html')" class="nav-link">Accueil</button>
-                    <button onclick="goToPage('index.html#a-propos')" class="nav-link">À propos</button>
-                    <button onclick="goToPage('index.html#objectifs')" class="nav-link">Objectifs</button>
-                    <button onclick="goToPage('index.html#activites')" class="nav-link">Activités</button>
-                    <button onclick="goToPage('bibliotheque.html')" class="nav-link active">Bibliothèque</button>
-                    <button onclick="goToPage('index.html#contact')" class="nav-link">Contact</button>
-                </nav>
-                
-                <!-- Mobile Menu Button -->
-                <button class="mobile-menu-toggle" aria-label="Ouvrir le menu mobile" aria-expanded="false">
-                    <i class="fas fa-bars mobile-menu-icon"></i>
-                    <i class="fas fa-times mobile-close-icon"></i>
-                </button>
-            </div>
-            
-            <!-- Mobile Menu -->
-            <div class="mobile-menu">
-                <nav class="mobile-nav">
-                    <button onclick="goToPage('index.html')" class="mobile-nav-link">Accueil</button>
-                    <button onclick="goToPage('index.html#a-propos')" class="mobile-nav-link">À propos</button>
-                    <button onclick="goToPage('index.html#objectifs')" class="mobile-nav-link">Objectifs</button>
-                    <button onclick="goToPage('index.html#activites')" class="mobile-nav-link">Activités</button>
-                    <button onclick="goToPage('bibliotheque.html')" class="mobile-nav-link active">Bibliothèque</button>
-                    <button onclick="goToPage('index.html#contact')" class="mobile-nav-link">Contact</button>
-                </nav>
+    <!-- Barre de navigation (styles : design.css) -->
+    <header class="kl-header">
+        <div class="kl-header-inner">
+            <a href="index.html" class="kl-pill kl-brand" aria-label="Kalamu, retour à l'accueil">
+                <img src="logo-kalamu.png" alt="Kalamu" width="435" height="119">
+            </a>
+
+            <nav class="kl-pill kl-nav main-nav" aria-label="Navigation principale">
+                <a href="index.html" class="kl-nav-link"><i class="fas fa-house" aria-hidden="true"></i><span>Accueil</span></a>
+                <a href="index.html#a-propos" class="kl-nav-link"><i class="fas fa-circle-info" aria-hidden="true"></i><span>À propos</span></a>
+                <a href="index.html#objectifs" class="kl-nav-link"><i class="fas fa-bullseye" aria-hidden="true"></i><span>Objectifs</span></a>
+                <a href="index.html#activites" class="kl-nav-link"><i class="fas fa-feather-alt" aria-hidden="true"></i><span>Activités</span></a>
+                <a href="bibliotheque.html" class="kl-nav-link" aria-current="page"><i class="fas fa-book-open" aria-hidden="true"></i><span>Bibliothèque</span></a>
+                <a href="index.html#contact" class="kl-nav-link"><i class="fas fa-envelope" aria-hidden="true"></i><span>Contact</span></a>
+            </nav>
+
+            <a href="index.html#contact" class="kl-pill kl-cta">
+                Nous rejoindre
+                <span class="kl-arrow"><i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+            </a>
+
+            <button class="kl-pill kl-menu-btn mobile-menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu-mobile">
+                <i class="fas fa-bars mobile-menu-icon" aria-hidden="true"></i>
+                <i class="fas fa-times mobile-close-icon" aria-hidden="true"></i>
+            </button>
+        </div>
+
+        <div class="mobile-menu kl-mobile-menu" id="menu-mobile">
+            <nav class="mobile-nav" aria-label="Navigation mobile">
+                <a href="index.html" class="mobile-nav-link"><i class="fas fa-house" aria-hidden="true"></i><span>Accueil</span></a>
+                <a href="index.html#a-propos" class="mobile-nav-link"><i class="fas fa-circle-info" aria-hidden="true"></i><span>À propos</span></a>
+                <a href="index.html#objectifs" class="mobile-nav-link"><i class="fas fa-bullseye" aria-hidden="true"></i><span>Objectifs</span></a>
+                <a href="index.html#activites" class="mobile-nav-link"><i class="fas fa-feather-alt" aria-hidden="true"></i><span>Activités</span></a>
+                <a href="bibliotheque.html" class="mobile-nav-link" aria-current="page"><i class="fas fa-book-open" aria-hidden="true"></i><span>Bibliothèque</span></a>
+                <a href="index.html#contact" class="mobile-nav-link"><i class="fas fa-envelope" aria-hidden="true"></i><span>Contact</span></a>
+            </nav>
+            <div class="kl-mobile-social">
+                <a href="https://www.facebook.com/share/16idtbQot2/?mibextid=wwXIfr" class="kl-round-btn" data-info-lien="facebook" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                <a href="https://www.instagram.com/association_kalamu" class="kl-round-btn" data-info-lien="instagram" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                <a href="https://www.tiktok.com/@kalamu2.0" class="kl-round-btn" data-info-lien="tiktok" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok" aria-hidden="true"></i></a>
             </div>
         </div>
     </header>
@@ -248,5 +248,6 @@
     <!-- Scripts -->
     <script src="script.js"></script>
     <script src="content.js"></script>
+    <script src="design.js"></script>
 </body>
 </html>

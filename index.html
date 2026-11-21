@@ -34,10 +34,11 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@400;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="content.css">
+    <link rel="stylesheet" href="design.css">
     
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -74,100 +75,112 @@
     </script>
 </head>
 <body>
-    <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <!-- Logo -->
-                <div class="logo" onclick="goToPage('/')">
-                    <div class="logo-icon">
-                        <img src="logo.PNG" alt="Kalamu Association">
-                    </div>
-                    <div class="logo-text">
-                <h1>Kalamu</h1>
-                        <p class="logo-subtitle">Association Culturelle</p>
-            </div>
+    <!-- Barre de navigation (styles : design.css) -->
+    <header class="kl-header">
+        <div class="kl-header-inner">
+            <a href="index.html" class="kl-pill kl-brand" aria-label="Kalamu, retour à l'accueil">
+                <img src="logo-kalamu.png" alt="Kalamu" width="435" height="119">
+            </a>
+
+            <nav class="kl-pill kl-nav main-nav" aria-label="Navigation principale">
+                <a href="#accueil" class="kl-nav-link"><i class="fas fa-house" aria-hidden="true"></i><span>Accueil</span></a>
+                <a href="#a-propos" class="kl-nav-link"><i class="fas fa-circle-info" aria-hidden="true"></i><span>À propos</span></a>
+                <a href="#objectifs" class="kl-nav-link"><i class="fas fa-bullseye" aria-hidden="true"></i><span>Objectifs</span></a>
+                <a href="#activites" class="kl-nav-link"><i class="fas fa-feather-alt" aria-hidden="true"></i><span>Activités</span></a>
+                <a href="bibliotheque.html" class="kl-nav-link"><i class="fas fa-book-open" aria-hidden="true"></i><span>Bibliothèque</span></a>
+                <a href="#contact" class="kl-nav-link"><i class="fas fa-envelope" aria-hidden="true"></i><span>Contact</span></a>
+            </nav>
+
+            <a href="#contact" class="kl-pill kl-cta">
+                Nous rejoindre
+                <span class="kl-arrow"><i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+            </a>
+
+            <button class="kl-pill kl-menu-btn mobile-menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu-mobile">
+                <i class="fas fa-bars mobile-menu-icon" aria-hidden="true"></i>
+                <i class="fas fa-times mobile-close-icon" aria-hidden="true"></i>
+            </button>
         </div>
-                
-                <!-- Desktop Navigation -->
-                <nav class="main-nav" role="navigation" aria-label="Navigation principale">
-                    <button onclick="scrollToSection('accueil')" class="nav-link">Accueil</button>
-                    <button onclick="scrollToSection('a-propos')" class="nav-link">À propos</button>
-                    <button onclick="scrollToSection('objectifs')" class="nav-link">Objectifs</button>
-                    <button onclick="scrollToSection('activites')" class="nav-link">Activités</button>
-                    <button onclick="goToPage('bibliotheque.html')" class="nav-link">Bibliothèque</button>
-                    <button onclick="scrollToSection('contact')" class="nav-link">Contact</button>
-                </nav>
-                
-                <!-- Mobile Menu Button -->
-                <button class="mobile-menu-toggle" aria-label="Ouvrir le menu mobile" aria-expanded="false">
-                    <i class="fas fa-bars mobile-menu-icon"></i>
-                    <i class="fas fa-times mobile-close-icon"></i>
-                </button>
-            </div>
-            
-            <!-- Mobile Menu -->
-            <div class="mobile-menu">
-                <nav class="mobile-nav" role="navigation" aria-label="Navigation mobile">
-                    <button onclick="scrollToSection('accueil')" class="mobile-nav-link">Accueil</button>
-                    <button onclick="scrollToSection('a-propos')" class="mobile-nav-link">À propos</button>
-                    <button onclick="scrollToSection('objectifs')" class="mobile-nav-link">Objectifs</button>
-                    <button onclick="scrollToSection('activites')" class="mobile-nav-link">Activités</button>
-                    <button onclick="goToPage('bibliotheque.html')" class="mobile-nav-link">Bibliothèque</button>
-                    <button onclick="scrollToSection('contact')" class="mobile-nav-link">Contact</button>
-    </nav>
+
+        <div class="mobile-menu kl-mobile-menu" id="menu-mobile">
+            <nav class="mobile-nav" aria-label="Navigation mobile">
+                <a href="#accueil" class="mobile-nav-link"><i class="fas fa-house" aria-hidden="true"></i><span>Accueil</span></a>
+                <a href="#a-propos" class="mobile-nav-link"><i class="fas fa-circle-info" aria-hidden="true"></i><span>À propos</span></a>
+                <a href="#objectifs" class="mobile-nav-link"><i class="fas fa-bullseye" aria-hidden="true"></i><span>Objectifs</span></a>
+                <a href="#activites" class="mobile-nav-link"><i class="fas fa-feather-alt" aria-hidden="true"></i><span>Activités</span></a>
+                <a href="bibliotheque.html" class="mobile-nav-link"><i class="fas fa-book-open" aria-hidden="true"></i><span>Bibliothèque</span></a>
+                <a href="#contact" class="mobile-nav-link"><i class="fas fa-envelope" aria-hidden="true"></i><span>Contact</span></a>
+            </nav>
+            <div class="kl-mobile-social">
+                <a href="https://www.facebook.com/share/16idtbQot2/?mibextid=wwXIfr" class="kl-round-btn" data-info-lien="facebook" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                <a href="https://www.instagram.com/association_kalamu" class="kl-round-btn" data-info-lien="instagram" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                <a href="https://www.tiktok.com/@kalamu2.0" class="kl-round-btn" data-info-lien="tiktok" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok" aria-hidden="true"></i></a>
             </div>
         </div>
     </header>
 
     <main id="main" role="main">
-        <!-- Hero Section -->
-        <section id="accueil" class="hero-section">
-            <div class="container">
-                <div class="hero-content">
-                    <!-- Logo Section -->
-                    <div class="hero-logo-section">
-                        <div class="hero-logo-container">
-                            <img src="logo.PNG" alt="Kalamu Association" class="hero-logo">
-                        </div>
-                    </div>
+        <!-- Hero (styles : design.css). La carte « À la une » et les chiffres sont mis à jour par content.js -->
+        <section id="accueil" class="kl-hero">
+            <div class="kl-hero-frame">
+                <div class="kl-hero-bg" aria-hidden="true"></div>
 
-                    <!-- Main Heading -->
-                    <h1 class="hero-title cursive blinking-text">
-                        <span class="letter" style="--delay: 0s">K</span>
-                        <span class="letter" style="--delay: 0.2s">a</span>
-                        <span class="letter" style="--delay: 0.4s">l</span>
-                        <span class="letter" style="--delay: 0.6s">a</span>
-                        <span class="letter" style="--delay: 0.8s">m</span>
-                        <span class="letter" style="--delay: 1s">u</span>
-                    </h1>
-                    
-                    <!-- Slogan -->
-                    <p class="hero-slogan">« Grandir par la lecture, s'élever par l'écriture »</p>
+                <!-- Réseaux sociaux -->
+                <aside class="kl-rail" aria-label="Kalamu sur les réseaux sociaux">
+                    <a href="https://www.facebook.com/share/16idtbQot2/?mibextid=wwXIfr" data-info-lien="facebook" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                    <a href="https://www.instagram.com/association_kalamu" data-info-lien="instagram" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                    <a href="https://www.tiktok.com/@kalamu2.0" data-info-lien="tiktok" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok" aria-hidden="true"></i></a>
+                    <span class="kl-rail-sep" aria-hidden="true"></span>
+                    <a href="#initiateur" class="kl-rail-avatar" aria-label="Le fondateur de Kalamu"><img src="samba_cor_faye.jpg" alt=""></a>
+                    <a href="mailto:associationkalamu@gmail.com" data-info="email-lien" aria-label="Écrire à Kalamu"><i class="fas fa-envelope" aria-hidden="true"></i></a>
+                </aside>
 
-                    <!-- Description -->
-                    <p class="hero-description">
-                        Kalamu est une association culturelle à but non lucratif, engagée dans la promotion 
+                <div class="kl-hero-text">
+                    <h1 class="kl-hero-title">Grandir par la lecture, <span>s'élever par l'écriture</span></h1>
+                    <p class="kl-hero-desc">
+                        Kalamu est une association culturelle à but non lucratif, engagée dans la promotion
                         de la lecture, de l'écriture et de la transmission culturelle en Afrique.
                     </p>
+                </div>
 
-                    <!-- Action Buttons -->
-                    <div class="hero-buttons">
-                        <a href="#a-propos" class="btn btn-primary">
-                            Découvrir notre mission
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                        <a href="#activites" class="btn btn-outline">
-                            Nos activités
-                            <i class="fas fa-edit"></i>
-                        </a>
+                <a href="#a-propos" class="kl-scroll-btn" aria-label="Découvrir la suite">
+                    <i class="fas fa-arrow-down" aria-hidden="true"></i>
+                </a>
+
+                <!-- Carte de présentation -->
+                <div class="kl-card kl-card-intro">
+                    <h2>Lire, écrire, transmettre</h2>
+                    <p>Concours d'écriture, foires du livre, dons et bibliothèque numérique : Kalamu rapproche les jeunes des livres.</p>
+                    <div class="kl-card-intro-foot">
+                        <div class="kl-stat">
+                            <strong id="hero-nb-livres">15</strong>
+                            <span>livres à découvrir</span>
                         </div>
+                        <div class="kl-avatars" id="hero-avatars" aria-hidden="true"></div>
+                        <a href="#a-propos" class="kl-round-btn" aria-label="Découvrir notre mission"><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                     </div>
                 </div>
-            
-            <!-- Scroll indicator -->
-            <div class="scroll-indicator">
-                <div class="scroll-arrow">
-                    <div class="scroll-dot"></div>
+
+                <!-- À la une : prochain événement, sinon un livre mis en avant -->
+                <div class="kl-feature-wrap">
+                    <article class="kl-card kl-card-feature" id="hero-a-la-une">
+                        <span class="kl-feature-label"><i class="fas fa-book-open" aria-hidden="true"></i> À la une</span>
+                        <div class="kl-feature-head">
+                            <div>
+                                <h3>Les Paroles du Cœur</h3>
+                                <p class="kl-feature-sub"><i class="fas fa-feather-alt" aria-hidden="true"></i> Samba Cor FAYE</p>
+                            </div>
+                            <a href="bibliotheque.html" class="kl-round-btn" aria-label="Voir la bibliothèque"><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                        </div>
+                        <div class="kl-feature-body">
+                            <p class="kl-feature-text">Une collection de poèmes qui touchent l'âme.</p>
+                        </div>
+                    </article>
+                    <div class="kl-pill kl-feature-actions">
+                        <a href="https://www.facebook.com/share/16idtbQot2/?mibextid=wwXIfr" class="kl-round-btn" data-info-lien="facebook" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/association_kalamu" class="kl-round-btn" data-info-lien="instagram" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <button type="button" class="kl-round-btn" data-partager aria-label="Partager le site"><i class="fas fa-share-alt" aria-hidden="true"></i></button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1018,6 +1031,7 @@
 
     <script src="script.js"></script>
     <script src="content.js"></script>
+    <script src="design.js"></script>
 
     <!-- Connexion admin : nécessaire pour accepter l'invitation reçue par e-mail, puis redirige vers /admin -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>

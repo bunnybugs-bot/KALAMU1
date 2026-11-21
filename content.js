@@ -318,6 +318,9 @@
         document.querySelectorAll('[data-info="telephones"]').forEach(n => {
             n.replaceChildren(...phones.map(p => el('p', {}, [el('a', { href: telHref(p), text: p })])));
         });
+        document.querySelectorAll('[data-info="email-lien"]').forEach(n => {
+            if (data.email) n.href = 'mailto:' + data.email;
+        });
         document.querySelectorAll('[data-info="email"]').forEach(n => {
             n.textContent = data.email || '';
             if (n.tagName === 'A') n.href = 'mailto:' + (data.email || '');
@@ -332,6 +335,72 @@
                 }
             });
         });
+    }
+
+    // ------------------------------------------------------------------ Hero : « À la une » et chiffres
+
+    const CATEGORY_LABELS = { kalamu: 'Publications Kalamu', classiques: 'Classiques', contemporains: 'Contemporains', jeunesse: 'Jeunesse' };
+
+    function featureCard(label, labelIcon, title, sub, subIcon, link, linkLabel, text, cover, meta) {
+        return [
+            el('span', { class: 'kl-feature-label' }, [icon(labelIcon), ' ' + label]),
+            el('div', { class: 'kl-feature-head' }, [
+                el('div', {}, [
+                    el('h3', { text: title }),
+                    sub ? el('p', { class: 'kl-feature-sub' }, [icon(subIcon), ' ' + sub]) : null
+                ]),
+                el('a', { href: link, class: 'kl-round-btn', 'aria-label': linkLabel }, [icon('fa-arrow-right')])
+            ]),
+            (text || cover) ? el('div', { class: 'kl-feature-body' }, [
+                cover ? el('img', { src: cover, alt: '', class: 'kl-feature-cover', loading: 'lazy' }) : null,
+                text ? el('p', { class: 'kl-feature-text', text: text }) : null
+            ]) : null,
+            meta.length ? el('div', { class: 'kl-feature-meta' },
+                meta.map(([metaIcon, value]) => el('span', {}, [icon(metaIcon), value]))) : null
+        ];
+    }
+
+    function renderHero(eventsData, booksData, membersData) {
+        const card = document.getElementById('hero-a-la-une');
+        const books = list(booksData && booksData.livres).filter(b => b.titre);
+
+        // Chiffre : nombre de livres de la bibliothèque (hors livres à paraître)
+        const count = document.getElementById('hero-nb-livres');
+        if (count && books.length) count.textContent = String(books.filter(b => !b.a_paraitre).length);
+
+        // Petites photos des membres
+        const avatars = document.getElementById('hero-avatars');
+        if (avatars) {
+            const photos = list(membersData && membersData.membres).filter(m => m.photo).slice(0, 4);
+            avatars.replaceChildren(...photos.map(m => el('img', { src: m.photo, alt: '', loading: 'lazy' })));
+        }
+
+        if (!card) return;
+        const now = today();
+        const next = list(eventsData && eventsData.evenements)
+            .filter(e => e.titre && e.date_debut && String(e.date_fin || e.date_debut).slice(0, 10) >= now)
+            .sort((a, b) => String(a.date_debut).localeCompare(String(b.date_debut)))[0];
+
+        if (next) {
+            card.replaceChildren(...featureCard(
+                'Prochain événement', 'fa-calendar-alt', next.titre,
+                next.lieu, 'fa-map-marker-alt', '#evenements', 'Voir les événements',
+                next.description, null,
+                [['fa-calendar', formatPeriod(next.date_debut, next.date_fin)]].concat(
+                    list(next.tags).slice(0, 1).map(tag => ['fa-tag', tag]))
+            ));
+            return;
+        }
+
+        const book = books.find(b => b.accueil && !b.a_paraitre) || books.find(b => !b.a_paraitre);
+        if (!book) return;
+        card.replaceChildren(...featureCard(
+            'À la une', 'fa-book-open', book.titre,
+            book.auteur, 'fa-feather-alt', 'bibliotheque.html', 'Voir la bibliothèque',
+            book.resume_court, book.cover,
+            [book.genre ? ['fa-bookmark', book.genre] : null,
+                CATEGORY_LABELS[book.categorie] ? ['fa-layer-group', CATEGORY_LABELS[book.categorie]] : null].filter(Boolean)
+        ));
     }
 
     // ------------------------------------------------------------------ Carrousel de la bibliothèque
@@ -370,6 +439,11 @@
         }
         if (needs('#photo-bureau, #membres-fiches')) run('/data/membres.json', renderMembers);
         if (needs('[data-info], [data-info-lien]')) run('/data/infos.json', renderInfos);
+        if (needs('#hero-a-la-une')) {
+            Promise.all(['/data/evenements.json', '/data/livres.json', '/data/membres.json'].map(path => loadJSON(path).catch(() => null)))
+                .then(([events, books, members]) => renderHero(events, books, members))
+                .catch(error => console.error('Hero non mise à jour :', error));
+        }
     }
 
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
