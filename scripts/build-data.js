@@ -52,10 +52,12 @@ const livres = readFolder('livres').sort(byOrder);
 const membres = readFolder('membres').sort(byOrder);
 const bureau = readFile('bureau.json', {});
 const infos = readFile('infos.json', {});
+const chiffres = readFile('chiffres.json', { chiffres: [] });
 
 write('evenements.json', { evenements });
 write('livres.json', { livres });
 write('membres.json', { ...bureau, membres });
 write('infos.json', infos);
+write('chiffres.json', chiffres);
 
 console.log(`${evenements.length} événements, ${livres.length} livres, ${membres.length} membres.`);

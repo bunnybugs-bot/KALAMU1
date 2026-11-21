@@ -1,0 +1,2293 @@
+From 4757030c76e9754d320b970fa4c05c308379ce5c Mon Sep 17 00:00:00 2001
+From: bunnybugs-bot <202152757+bunnybugs-bot@users.noreply.github.com>
+Date: Sat, 21 Nov 2026 19:44:52 +0000
+Subject: [PATCH] =?UTF-8?q?Nouveau=20design=20:=20barre=20de=20navigation?=
+ =?UTF-8?q?=20et=20hero=20en=20verre=20d=C3=A9poli=20;=20correction=20des?=
+ =?UTF-8?q?=20images=20aux=20noms=20accentu=C3=A9s?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01QJr8NMqcsHuwoGdnARDwgC
+---
+ bibliotheque.html                             |  87 +-
+ content.js                                    |  74 ++
+ content/livres/l-aventure-ambigue.json        |   2 +-
+ content/livres/la-parole-aux-negresses.json   |   2 +-
+ content/membres/fatou-kine-thiam.json         |   2 +-
+ data/evenements.json                          |  13 -
+ data/livres.json                              |   4 +-
+ data/membres.json                             |   2 +-
+ design.css                                    | 847 ++++++++++++++++++
+ design.js                                     |  77 ++
+ .../uploads/aventure_ambigue.jpg              | Bin
+ .../uploads/fatou_kine_thiam.jpg              | Bin
+ .../uploads/parole_aux_negresses.jpg          | Bin
+ index.html                                    | 176 ++--
+ logo-kalamu.png                               | Bin 0 -> 40042 bytes
+ 15 files changed, 1143 insertions(+), 143 deletions(-)
+ create mode 100644 design.css
+ create mode 100644 design.js
+ rename "images/uploads/aventure_ambigu\342\224\234\302\275.jpg" => images/uploads/aventure_ambigue.jpg (100%)
+ rename "images/uploads/fatou_kin\342\224\234\302\256_thiam.jpg" => images/uploads/fatou_kine_thiam.jpg (100%)
+ rename "images/uploads/parole_aux_n\342\224\234\302\256gresses.jpg" => images/uploads/parole_aux_negresses.jpg (100%)
+ create mode 100644 logo-kalamu.png
+
+diff --git a/bibliotheque.html b/bibliotheque.html
+index 3c0cc33..0811fe5 100644
+--- a/bibliotheque.html
++++ b/bibliotheque.html
+@@ -31,7 +31,7 @@
+     <link rel="apple-touch-icon" sizes="180x180" href="logo.PNG">
+ 
+     <!-- Google Fonts -->
+-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
++    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+     
+     <!-- Font Awesome -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+@@ -39,50 +39,50 @@
+     <!-- Styles -->
+     <link rel="stylesheet" href="styles.css">
+     <link rel="stylesheet" href="content.css">
++    <link rel="stylesheet" href="design.css">
+ </head>
+-<body>
++<body class="kl-page-library">
+     <!-- Header -->
+-    <header class="header">
+-        <div class="container">
+-            <div class="header-content">
+-                <!-- Logo -->
+-                <div class="logo" onclick="goToPage('/')">
+-                    <div class="logo-icon">
+-                        <img src="logo.PNG" alt="Kalamu Association">
+-                    </div>
+-                    <div class="logo-text">
+-                        <h1>Kalamu</h1>
+-                        <p class="logo-subtitle">Association Culturelle</p>
+-                    </div>
+-                </div>
+-                
+-                <!-- Desktop Navigation -->
+-                <nav class="main-nav" role="navigation" aria-label="Navigation principale">
+-                    <button onclick="goToPage('index.html')" class="nav-link">Accueil</button>
+-                    <button onclick="goToPage('index.html#a-propos')" class="nav-link">À propos</button>
+-                    <button onclick="goToPage('index.html#objectifs')" class="nav-link">Objectifs</button>
+-                    <button onclick="goToPage('index.html#activites')" class="nav-link">Activités</button>
+-                    <button onclick="goToPage('bibliotheque.html')" class="nav-link active">Bibliothèque</button>
+-                    <button onclick="goToPage('index.html#contact')" class="nav-link">Contact</button>
+-                </nav>
+-                
+-                <!-- Mobile Menu Button -->
+-                <button class="mobile-menu-toggle" aria-label="Ouvrir le menu mobile" aria-expanded="false">
+-                    <i class="fas fa-bars mobile-menu-icon"></i>
+-                    <i class="fas fa-times mobile-close-icon"></i>
+-                </button>
+-            </div>
+-            
+-            <!-- Mobile Menu -->
+-            <div class="mobile-menu">
+-                <nav class="mobile-nav">
+-                    <button onclick="goToPage('index.html')" class="mobile-nav-link">Accueil</button>
+-                    <button onclick="goToPage('index.html#a-propos')" class="mobile-nav-link">À propos</button>
+-                    <button onclick="goToPage('index.html#objectifs')" class="mobile-nav-link">Objectifs</button>
+-                    <button onclick="goToPage('index.html#activites')" class="mobile-nav-link">Activités</button>
+-                    <button onclick="goToPage('bibliotheque.html')" class="mobile-nav-link active">Bibliothèque</button>
+-                    <button onclick="goToPage('index.html#contact')" class="mobile-nav-link">Contact</button>
+-                </nav>
++    <!-- Barre de navigation (styles : design.css) -->
++    <header class="kl-header">
++        <div class="kl-header-inner">
++            <a href="index.html" class="kl-pill kl-brand" aria-label="Kalamu, retour à l'accueil">
++                <img src="logo-kalamu.png" alt="Kalamu" width="435" height="119">
++            </a>
++
++            <nav class="kl-pill kl-nav main-nav" aria-label="Navigation principale">
++                <a href="index.html" class="kl-nav-link"><i class="fas fa-house" aria-hidden="true"></i><span>Accueil</span></a>
++                <a href="index.html#a-propos" class="kl-nav-link"><i class="fas fa-circle-info" aria-hidden="true"></i><span>À propos</span></a>
++                <a href="index.html#objectifs" class="kl-nav-link"><i class="fas fa-bullseye" aria-hidden="true"></i><span>Objectifs</span></a>
++                <a href="index.html#activites" class="kl-nav-link"><i class="fas fa-feather-alt" aria-hidden="true"></i><span>Activités</span></a>
++                <a href="bibliotheque.html" class="kl-nav-link" aria-current="page"><i class="fas fa-book-open" aria-hidden="true"></i><span>Bibliothèque</span></a>
++                <a href="index.html#contact" class="kl-nav-link"><i class="fas fa-envelope" aria-hidden="true"></i><span>Contact</span></a>
++            </nav>
++
++            <a href="index.html#contact" class="kl-pill kl-cta">
++                Nous rejoindre
++                <span class="kl-arrow"><i class="fas fa-arrow-right" aria-hidden="true"></i></span>
++            </a>
++
++            <button class="kl-pill kl-menu-btn mobile-menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu-mobile">
++                <i class="fas fa-bars mobile-menu-icon" aria-hidden="true"></i>
++                <i class="fas fa-times mobile-close-icon" aria-hidden="true"></i>
++            </button>
++        </div>
++
++        <div class="mobile-menu kl-mobile-menu" id="menu-mobile">
++            <nav class="mobile-nav" aria-label="Navigation mobile">
++                <a href="index.html" class="mobile-nav-link"><i class="fas fa-house" aria-hidden="true"></i><span>Accueil</span></a>
++                <a href="index.html#a-propos" class="mobile-nav-link"><i class="fas fa-circle-info" aria-hidden="true"></i><span>À propos</span></a>
++                <a href="index.html#objectifs" class="mobile-nav-link"><i class="fas fa-bullseye" aria-hidden="true"></i><span>Objectifs</span></a>
++                <a href="index.html#activites" class="mobile-nav-link"><i class="fas fa-feather-alt" aria-hidden="true"></i><span>Activités</span></a>
++                <a href="bibliotheque.html" class="mobile-nav-link" aria-current="page"><i class="fas fa-book-open" aria-hidden="true"></i><span>Bibliothèque</span></a>
++                <a href="index.html#contact" class="mobile-nav-link"><i class="fas fa-envelope" aria-hidden="true"></i><span>Contact</span></a>
++            </nav>
++            <div class="kl-mobile-social">
++                <a href="https://www.facebook.com/share/16idtbQot2/?mibextid=wwXIfr" class="kl-round-btn" data-info-lien="facebook" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
++                <a href="https://www.instagram.com/association_kalamu" class="kl-round-btn" data-info-lien="instagram" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
++                <a href="https://www.tiktok.com/@kalamu2.0" class="kl-round-btn" data-info-lien="tiktok" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok" aria-hidden="true"></i></a>
+             </div>
+         </div>
+     </header>
+@@ -248,5 +248,6 @@
+     <!-- Scripts -->
+     <script src="script.js"></script>
+     <script src="content.js"></script>
++    <script src="design.js"></script>
+ </body>
+ </html>
+\ No newline at end of file
+diff --git a/content.js b/content.js
+index 6740e8e..b042fef 100644
+--- a/content.js
++++ b/content.js
+@@ -318,6 +318,9 @@
+         document.querySelectorAll('[data-info="telephones"]').forEach(n => {
+             n.replaceChildren(...phones.map(p => el('p', {}, [el('a', { href: telHref(p), text: p })])));
+         });
++        document.querySelectorAll('[data-info="email-lien"]').forEach(n => {
++            if (data.email) n.href = 'mailto:' + data.email;
++        });
+         document.querySelectorAll('[data-info="email"]').forEach(n => {
+             n.textContent = data.email || '';
+             if (n.tagName === 'A') n.href = 'mailto:' + (data.email || '');
+@@ -334,6 +337,72 @@
+         });
+     }
+ 
++    // ------------------------------------------------------------------ Hero : « À la une » et chiffres
++
++    const CATEGORY_LABELS = { kalamu: 'Publications Kalamu', classiques: 'Classiques', contemporains: 'Contemporains', jeunesse: 'Jeunesse' };
++
++    function featureCard(label, labelIcon, title, sub, subIcon, link, linkLabel, text, cover, meta) {
++        return [
++            el('span', { class: 'kl-feature-label' }, [icon(labelIcon), ' ' + label]),
++            el('div', { class: 'kl-feature-head' }, [
++                el('div', {}, [
++                    el('h3', { text: title }),
++                    sub ? el('p', { class: 'kl-feature-sub' }, [icon(subIcon), ' ' + sub]) : null
++                ]),
++                el('a', { href: link, class: 'kl-round-btn', 'aria-label': linkLabel }, [icon('fa-arrow-right')])
++            ]),
++            (text || cover) ? el('div', { class: 'kl-feature-body' }, [
++                cover ? el('img', { src: cover, alt: '', class: 'kl-feature-cover', loading: 'lazy' }) : null,
++                text ? el('p', { class: 'kl-feature-text', text: text }) : null
++            ]) : null,
++            meta.length ? el('div', { class: 'kl-feature-meta' },
++                meta.map(([metaIcon, value]) => el('span', {}, [icon(metaIcon), value]))) : null
++        ];
++    }
++
++    function renderHero(eventsData, booksData, membersData) {
++        const card = document.getElementById('hero-a-la-une');
++        const books = list(booksData && booksData.livres).filter(b => b.titre);
++
++        // Chiffre : nombre de livres de la bibliothèque (hors livres à paraître)
++        const count = document.getElementById('hero-nb-livres');
++        if (count && books.length) count.textContent = String(books.filter(b => !b.a_paraitre).length);
++
++        // Petites photos des membres
++        const avatars = document.getElementById('hero-avatars');
++        if (avatars) {
++            const photos = list(membersData && membersData.membres).filter(m => m.photo).slice(0, 4);
++            avatars.replaceChildren(...photos.map(m => el('img', { src: m.photo, alt: '', loading: 'lazy' })));
++        }
++
++        if (!card) return;
++        const now = today();
++        const next = list(eventsData && eventsData.evenements)
++            .filter(e => e.titre && e.date_debut && String(e.date_fin || e.date_debut).slice(0, 10) >= now)
++            .sort((a, b) => String(a.date_debut).localeCompare(String(b.date_debut)))[0];
++
++        if (next) {
++            card.replaceChildren(...featureCard(
++                'Prochain événement', 'fa-calendar-alt', next.titre,
++                next.lieu, 'fa-map-marker-alt', '#evenements', 'Voir les événements',
++                next.description, null,
++                [['fa-calendar', formatPeriod(next.date_debut, next.date_fin)]].concat(
++                    list(next.tags).slice(0, 1).map(tag => ['fa-tag', tag]))
++            ));
++            return;
++        }
++
++        const book = books.find(b => b.accueil && !b.a_paraitre) || books.find(b => !b.a_paraitre);
++        if (!book) return;
++        card.replaceChildren(...featureCard(
++            'À la une', 'fa-book-open', book.titre,
++            book.auteur, 'fa-feather-alt', 'bibliotheque.html', 'Voir la bibliothèque',
++            book.resume_court, book.cover,
++            [book.genre ? ['fa-bookmark', book.genre] : null,
++                CATEGORY_LABELS[book.categorie] ? ['fa-layer-group', CATEGORY_LABELS[book.categorie]] : null].filter(Boolean)
++        ));
++    }
++
+     // ------------------------------------------------------------------ Carrousel de la bibliothèque
+     // script.js suppose 6 diapositives fixes ; le nombre de livres du carrousel varie désormais.
+     // On remplace donc la navigation par une version qui compte les diapositives réellement affichées.
+@@ -370,6 +439,11 @@
+         }
+         if (needs('#photo-bureau, #membres-fiches')) run('/data/membres.json', renderMembers);
+         if (needs('[data-info], [data-info-lien]')) run('/data/infos.json', renderInfos);
++        if (needs('#hero-a-la-une')) {
++            Promise.all(['/data/evenements.json', '/data/livres.json', '/data/membres.json'].map(path => loadJSON(path).catch(() => null)))
++                .then(([events, books, members]) => renderHero(events, books, members))
++                .catch(error => console.error('Hero non mise à jour :', error));
++        }
+     }
+ 
+     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+diff --git a/content/livres/l-aventure-ambigue.json b/content/livres/l-aventure-ambigue.json
+index c045791..fe5f84f 100644
+--- a/content/livres/l-aventure-ambigue.json
++++ b/content/livres/l-aventure-ambigue.json
+@@ -9,6 +9,6 @@
+   "accueil": false,
+   "carrousel": false,
+   "accroche": "",
+-  "cover": "/images/uploads/aventure_ambiguë.jpg",
++  "cover": "/images/uploads/aventure_ambigue.jpg",
+   "ordre": 80
+ }
+\ No newline at end of file
+diff --git a/content/livres/la-parole-aux-negresses.json b/content/livres/la-parole-aux-negresses.json
+index 16ebb17..d4f13ce 100644
+--- a/content/livres/la-parole-aux-negresses.json
++++ b/content/livres/la-parole-aux-negresses.json
+@@ -9,6 +9,6 @@
+   "accueil": false,
+   "carrousel": false,
+   "accroche": "",
+-  "cover": "/images/uploads/parole_aux_négresses.jpg",
++  "cover": "/images/uploads/parole_aux_negresses.jpg",
+   "ordre": 120
+ }
+\ No newline at end of file
+diff --git a/content/membres/fatou-kine-thiam.json b/content/membres/fatou-kine-thiam.json
+index 0599644..c26c9eb 100644
+--- a/content/membres/fatou-kine-thiam.json
++++ b/content/membres/fatou-kine-thiam.json
+@@ -2,6 +2,6 @@
+   "nom": "Fatou Kiné THIAM",
+   "role": "Responsable communication",
+   "bio": "Gère l'image et la visibilité de l'association. Diffuse l'information et promeut les activités.",
+-  "photo": "/images/uploads/fatou_kiné_thiam.jpg",
++  "photo": "/images/uploads/fatou_kine_thiam.jpg",
+   "ordre": 60
+ }
+\ No newline at end of file
+diff --git a/data/evenements.json b/data/evenements.json
+index 416952a..16fb99c 100644
+--- a/data/evenements.json
++++ b/data/evenements.json
+@@ -1,18 +1,5 @@
+ {
+   "evenements": [
+-    {
+-      "titre": "Concours d'Écriture 72H Kalamu",
+-      "date_debut": "2026-05-21",
+-      "date_fin": "2026-05-23",
+-      "lieu": "Pouponnière Lamine Coulibaly & Centre Culturel Régional de Kaolack",
+-      "description": "2ème édition du Concours d'Écriture 72H Kalamu : Journée de Dons, Mini Foire du Livre et Journée d'Excellence.",
+-      "tags": [
+-        "Événement",
+-        "Concours",
+-        "Kalamu"
+-      ],
+-      "image": "/images/uploads/concours_72h.png"
+-    },
+     {
+       "titre": "Journée de Dons",
+       "date_debut": "2026-05-21",
+diff --git a/data/livres.json b/data/livres.json
+index aa437bb..864a098 100644
+--- a/data/livres.json
++++ b/data/livres.json
+@@ -109,7 +109,7 @@
+       "accueil": false,
+       "carrousel": false,
+       "accroche": "",
+-      "cover": "/images/uploads/aventure_ambiguë.jpg",
++      "cover": "/images/uploads/aventure_ambigue.jpg",
+       "ordre": 80
+     },
+     {
+@@ -165,7 +165,7 @@
+       "accueil": false,
+       "carrousel": false,
+       "accroche": "",
+-      "cover": "/images/uploads/parole_aux_négresses.jpg",
++      "cover": "/images/uploads/parole_aux_negresses.jpg",
+       "ordre": 120
+     },
+     {
+diff --git a/data/membres.json b/data/membres.json
+index 7594bba..f2a1aee 100644
+--- a/data/membres.json
++++ b/data/membres.json
+@@ -41,7 +41,7 @@
+       "nom": "Fatou Kiné THIAM",
+       "role": "Responsable communication",
+       "bio": "Gère l'image et la visibilité de l'association. Diffuse l'information et promeut les activités.",
+-      "photo": "/images/uploads/fatou_kiné_thiam.jpg",
++      "photo": "/images/uploads/fatou_kine_thiam.jpg",
+       "ordre": 60
+     },
+     {
+diff --git a/design.css b/design.css
+new file mode 100644
+index 0000000..fdde75e
+--- /dev/null
++++ b/design.css
+@@ -0,0 +1,847 @@
++/* ==========================================================================
++   Kalamu — barre de navigation et hero section (style « verre dépoli »)
++   Chargé après styles.css : ces règles remplacent l'ancien en-tête et l'ancienne hero.
++   ========================================================================== */
++:root {
++    --kl-orange: #ff6b35;
++    --kl-orange-2: #f7931e;
++    --kl-ink: #1f2a37;
++    --kl-ink-soft: #5b6573;
++    --kl-glass: rgba(255, 255, 255, 0.72);
++    --kl-glass-strong: rgba(255, 255, 255, 0.9);
++    --kl-glass-border: rgba(255, 255, 255, 0.65);
++    --kl-shadow: 0 8px 32px rgba(31, 42, 55, 0.12);
++    --kl-frame-gap: 12px;
++    --kl-frame-radius: 36px;
++    --kl-font: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
++}
++
++/* ------------------------------------------------------------------ Verre */
++.kl-pill,
++.kl-card,
++.kl-rail,
++.kl-round-btn,
++.kl-mobile-menu {
++    background: var(--kl-glass);
++    -webkit-backdrop-filter: blur(18px) saturate(1.4);
++    backdrop-filter: blur(18px) saturate(1.4);
++    border: 1px solid var(--kl-glass-border);
++    box-shadow: var(--kl-shadow);
++}
++
++/* ------------------------------------------------------------------ Barre de navigation */
++header.kl-header {
++    position: fixed;
++    top: 0;
++    left: 0;
++    right: 0;
++    z-index: 100;
++    padding: calc(var(--kl-frame-gap) + 12px) calc(var(--kl-frame-gap) + 16px) 0;
++    background: transparent;
++    border: 0;
++    -webkit-backdrop-filter: none;
++    backdrop-filter: none;
++    pointer-events: none; /* seuls les éléments cliquables captent la souris */
++    font-family: var(--kl-font);
++    transition: padding 0.3s ease;
++}
++
++.kl-header-inner {
++    display: flex;
++    align-items: center;
++    justify-content: space-between;
++    gap: 1rem;
++    max-width: 1400px;
++    margin: 0 auto;
++}
++
++.kl-header-inner > * {
++    pointer-events: auto;
++}
++
++.kl-pill {
++    display: inline-flex;
++    align-items: center;
++    height: 56px;
++    border-radius: 999px;
++    color: var(--kl-ink);
++    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
++}
++
++/* Logo */
++.kl-brand {
++    padding: 0 1.5rem;
++}
++
++.kl-brand img {
++    display: block;
++    height: 36px;
++    width: auto;
++}
++
++/* Liens */
++.kl-nav {
++    padding: 0 0.5rem;
++    gap: 0.25rem;
++}
++
++.kl-nav a {
++    display: inline-flex;
++    align-items: center;
++    gap: 0.5rem;
++    height: 42px;
++    padding: 0 1rem;
++    border-radius: 999px;
++    color: var(--kl-ink);
++    font-size: 0.95rem;
++    font-weight: 500;
++    white-space: nowrap;
++    transition: background 0.2s ease, color 0.2s ease;
++}
++
++.kl-nav a i {
++    font-size: 0.85rem;
++    color: var(--kl-ink-soft);
++    transition: color 0.2s ease;
++}
++
++.kl-nav a:hover {
++    background: rgba(255, 255, 255, 0.85);
++    color: var(--kl-ink);
++}
++
++.kl-nav a.active,
++.kl-nav a[aria-current="page"] {
++    background: var(--kl-ink);
++    color: #fff;
++}
++
++.kl-nav a.active i,
++.kl-nav a[aria-current="page"] i {
++    color: var(--kl-orange-2);
++}
++
++/* Les anciennes règles de styles.css (.main-nav a) ne doivent plus s'appliquer */
++.kl-nav a::after,
++.kl-nav a::before {
++    display: none !important;
++}
++
++/* Bouton d'action */
++.kl-cta {
++    gap: 0.75rem;
++    padding: 0 0.5rem 0 1.5rem;
++    font-weight: 600;
++    font-size: 0.95rem;
++    color: var(--kl-ink);
++}
++
++.kl-cta:hover {
++    color: var(--kl-ink);
++    transform: translateY(-1px);
++}
++
++.kl-arrow {
++    display: inline-flex;
++    align-items: center;
++    justify-content: center;
++    width: 40px;
++    height: 40px;
++    border-radius: 50%;
++    background: linear-gradient(135deg, var(--kl-orange), var(--kl-orange-2));
++    color: #fff;
++    font-size: 0.85rem;
++}
++
++.kl-arrow i,
++.kl-round-btn .fa-arrow-right {
++    transform: rotate(-45deg);
++    transition: transform 0.25s ease;
++}
++
++.kl-cta:hover .kl-arrow i,
++.kl-round-btn:hover .fa-arrow-right {
++    transform: rotate(0deg);
++}
++
++/* Après la hero : la barre devient plus opaque pour rester lisible sur fond clair */
++.kl-header.is-scrolled {
++    padding-top: 12px;
++}
++
++.kl-header.is-scrolled .kl-pill {
++    background: var(--kl-glass-strong);
++    box-shadow: 0 6px 24px rgba(31, 42, 55, 0.14);
++}
++
++/* Bouton menu (mobile) */
++.kl-menu-btn {
++    display: none;
++    justify-content: center;
++    width: 56px;
++    padding: 0;
++    cursor: pointer;
++    font-size: 1.15rem;
++}
++
++.kl-menu-btn .mobile-close-icon {
++    display: none;
++}
++
++.kl-menu-btn[aria-expanded="true"] .mobile-menu-icon {
++    display: none;
++}
++
++.kl-menu-btn[aria-expanded="true"] .mobile-close-icon {
++    display: inline;
++}
++
++/* Menu mobile */
++.kl-header .kl-mobile-menu {
++    position: static;
++    display: none;
++    max-width: 1400px;
++    margin: 0.75rem auto 0;
++    padding: 0.75rem;
++    border-radius: 28px;
++    background: var(--kl-glass-strong);
++    pointer-events: auto;
++    transform: none;
++    opacity: 1;
++    visibility: visible;
++    height: auto;
++    max-height: none;
++    overflow: visible;
++}
++
++.kl-header .kl-mobile-menu.active {
++    display: block;
++    animation: klMenuIn 0.2s ease;
++}
++
++@keyframes klMenuIn {
++    from { opacity: 0; transform: translateY(-8px); }
++    to { opacity: 1; transform: none; }
++}
++
++.kl-mobile-menu .mobile-nav {
++    display: flex;
++    flex-direction: column;
++    gap: 0.25rem;
++    padding: 0;
++}
++
++.kl-mobile-menu .mobile-nav-link {
++    display: flex;
++    align-items: center;
++    gap: 0.85rem;
++    padding: 0.9rem 1.1rem;
++    border-radius: 18px;
++    color: var(--kl-ink);
++    font-size: 1.05rem;
++    font-weight: 500;
++    text-align: left;
++    background: transparent;
++    border: 0;
++}
++
++.kl-mobile-menu .mobile-nav-link i {
++    width: 1.25rem;
++    color: var(--kl-orange);
++    text-align: center;
++}
++
++.kl-mobile-menu .mobile-nav-link:hover,
++.kl-mobile-menu .mobile-nav-link[aria-current="page"] {
++    background: rgba(255, 107, 53, 0.1);
++    color: var(--kl-ink);
++}
++
++.kl-mobile-social {
++    display: flex;
++    gap: 0.5rem;
++    padding: 0.75rem 1.1rem 0.25rem;
++    margin-top: 0.5rem;
++    border-top: 1px solid rgba(31, 42, 55, 0.08);
++}
++
++/* ------------------------------------------------------------------ Hero */
++.kl-hero {
++    padding: var(--kl-frame-gap);
++    background: transparent;
++    font-family: var(--kl-font);
++}
++
++.kl-hero-frame {
++    position: relative;
++    min-height: calc(100vh - 2 * var(--kl-frame-gap));
++    min-height: calc(100svh - 2 * var(--kl-frame-gap));
++    max-height: 980px;
++    border-radius: var(--kl-frame-radius);
++    overflow: hidden;
++    isolation: isolate;
++    color: #fff;
++}
++
++.kl-hero-bg {
++    position: absolute;
++    inset: 0;
++    z-index: -1;
++    background:
++        linear-gradient(180deg, rgba(20, 24, 40, 0.15) 0%, rgba(20, 24, 40, 0) 35%, rgba(20, 24, 40, 0.45) 100%),
++        url('hero-image.jpg') center 60% / cover no-repeat;
++    transform: scale(1.04);
++    animation: klZoom 18s ease-out forwards;
++}
++
++@keyframes klZoom {
++    to { transform: scale(1); }
++}
++
++/* Titre */
++.kl-hero-text {
++    position: relative;
++    padding: 9.5rem 2rem 0;
++    text-align: center;
++}
++
++.kl-hero-title {
++    margin: 0 auto;
++    max-width: 14ch;
++    font-family: var(--kl-font);
++    font-size: clamp(2.6rem, 7.2vw, 6.75rem);
++    font-weight: 300;
++    line-height: 0.98;
++    letter-spacing: -0.03em;
++    color: rgba(255, 255, 255, 0.9);
++    text-shadow: 0 2px 30px rgba(0, 0, 0, 0.18);
++}
++
++.kl-hero-title span {
++    display: block;
++    color: rgba(255, 255, 255, 0.72);
++}
++
++.kl-hero-desc {
++    max-width: 340px;
++    margin: 2.25rem 0 0 6.5rem;
++    text-align: left;
++    font-size: 1rem;
++    line-height: 1.6;
++    color: rgba(255, 255, 255, 0.92);
++    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.35);
++}
++
++/* Barre verticale (réseaux sociaux) */
++.kl-rail {
++    position: absolute;
++    top: 50%;
++    left: 1.5rem;
++    transform: translateY(-50%);
++    display: flex;
++    flex-direction: column;
++    align-items: center;
++    gap: 0.5rem;
++    padding: 0.6rem;
++    border-radius: 999px;
++}
++
++.kl-rail a {
++    display: flex;
++    align-items: center;
++    justify-content: center;
++    width: 42px;
++    height: 42px;
++    border-radius: 50%;
++    color: var(--kl-ink-soft);
++    background: rgba(255, 255, 255, 0.6);
++    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
++}
++
++.kl-rail a:hover {
++    background: #fff;
++    color: var(--kl-orange);
++    transform: scale(1.06);
++}
++
++.kl-rail-sep {
++    width: 22px;
++    height: 1px;
++    margin: 0.25rem 0;
++    background: rgba(31, 42, 55, 0.15);
++}
++
++.kl-rail-avatar {
++    width: 50px !important;
++    height: 50px !important;
++    padding: 3px;
++    background: #fff !important;
++}
++
++.kl-rail-avatar img {
++    width: 100%;
++    height: 100%;
++    border-radius: 50%;
++    object-fit: cover;
++}
++
++/* Cartes */
++.kl-card {
++    position: absolute;
++    border-radius: 30px;
++    color: var(--kl-ink);
++    background: var(--kl-glass-strong);
++}
++
++.kl-card h2,
++.kl-card h3 {
++    margin: 0;
++    font-family: var(--kl-font);
++    color: var(--kl-ink);
++    letter-spacing: -0.01em;
++}
++
++.kl-card p {
++    color: var(--kl-ink-soft);
++}
++
++.kl-card-intro {
++    left: var(--kl-frame-gap);
++    bottom: var(--kl-frame-gap);
++    width: min(380px, 34%);
++    padding: 1.6rem 1.6rem 1.4rem;
++}
++
++.kl-card-intro h2 {
++    font-size: 1.35rem;
++    font-weight: 600;
++}
++
++.kl-card-intro p {
++    margin: 0.6rem 0 1.25rem;
++    font-size: 0.9rem;
++    line-height: 1.55;
++}
++
++.kl-card-intro-foot {
++    display: flex;
++    align-items: center;
++    gap: 0.9rem;
++}
++
++.kl-stat strong {
++    display: block;
++    font-size: 2.6rem;
++    font-weight: 600;
++    line-height: 1;
++    letter-spacing: -0.03em;
++}
++
++.kl-stat span {
++    font-size: 0.8rem;
++    color: var(--kl-ink-soft);
++}
++
++.kl-avatars {
++    display: flex;
++    margin-left: 0.25rem;
++}
++
++.kl-avatars img {
++    width: 40px;
++    height: 40px;
++    border-radius: 50%;
++    border: 2px solid #fff;
++    object-fit: cover;
++    margin-left: -12px;
++    background: #eee;
++}
++
++.kl-avatars img:first-child {
++    margin-left: 0;
++}
++
++.kl-round-btn {
++    display: inline-flex;
++    align-items: center;
++    justify-content: center;
++    flex: 0 0 auto;
++    width: 46px;
++    height: 46px;
++    margin-left: auto;
++    border-radius: 50%;
++    color: var(--kl-ink);
++    background: rgba(255, 255, 255, 0.85);
++    cursor: pointer;
++    font-size: 0.95rem;
++    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
++}
++
++.kl-round-btn:hover {
++    background: var(--kl-ink);
++    color: #fff;
++}
++
++/* Bouton rond central : descendre */
++.kl-scroll-btn {
++    position: absolute;
++    left: 50%;
++    bottom: 2rem;
++    display: flex;
++    align-items: center;
++    justify-content: center;
++    width: 76px;
++    height: 76px;
++    border-radius: 50%;
++    transform: translateX(-50%);
++    background: linear-gradient(135deg, var(--kl-orange), var(--kl-orange-2));
++    color: #fff;
++    font-size: 1.2rem;
++    box-shadow: 0 12px 30px rgba(255, 107, 53, 0.45);
++    transition: transform 0.25s ease, box-shadow 0.25s ease;
++}
++
++.kl-scroll-btn:hover {
++    color: #fff;
++    transform: translateX(-50%) translateY(3px);
++    box-shadow: 0 16px 36px rgba(255, 107, 53, 0.55);
++}
++
++.kl-scroll-btn i {
++    animation: klNudge 2.2s ease-in-out infinite;
++}
++
++@keyframes klNudge {
++    0%, 100% { transform: translateY(-2px); }
++    50% { transform: translateY(4px); }
++}
++
++/* Carte « À la une » */
++.kl-feature-wrap {
++    position: absolute;
++    right: var(--kl-frame-gap);
++    bottom: var(--kl-frame-gap);
++    width: min(400px, 34%);
++    display: flex;
++    flex-direction: column;
++    align-items: flex-end;
++    gap: 0.75rem;
++}
++
++.kl-feature-wrap .kl-card {
++    position: relative;
++    width: 100%;
++    padding: 1.5rem;
++}
++
++.kl-feature-label {
++    display: inline-flex;
++    align-items: center;
++    gap: 0.4rem;
++    margin-bottom: 0.65rem;
++    padding: 0.3rem 0.75rem;
++    border-radius: 999px;
++    background: rgba(255, 107, 53, 0.12);
++    color: #d4521f;
++    font-size: 0.72rem;
++    font-weight: 600;
++    letter-spacing: 0.04em;
++    text-transform: uppercase;
++}
++
++.kl-feature-head {
++    display: flex;
++    align-items: flex-start;
++    gap: 1rem;
++}
++
++.kl-feature-head h3 {
++    font-size: 1.3rem;
++    font-weight: 600;
++    line-height: 1.2;
++}
++
++.kl-feature-sub {
++    display: flex;
++    align-items: center;
++    gap: 0.4rem;
++    margin: 0.35rem 0 0;
++    font-size: 0.85rem;
++}
++
++.kl-feature-sub i {
++    color: var(--kl-orange);
++}
++
++.kl-feature-body {
++    display: flex;
++    gap: 1rem;
++    margin-top: 0.9rem;
++}
++
++.kl-feature-cover {
++    flex: 0 0 64px;
++    width: 64px;
++    height: 92px;
++    border-radius: 10px;
++    object-fit: cover;
++    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
++}
++
++.kl-feature-text {
++    margin: 0;
++    font-size: 0.85rem;
++    line-height: 1.55;
++    display: -webkit-box;
++    -webkit-line-clamp: 4;
++    -webkit-box-orient: vertical;
++    overflow: hidden;
++}
++
++.kl-feature-meta {
++    display: flex;
++    flex-wrap: wrap;
++    gap: 0.5rem 1.25rem;
++    margin-top: 1rem;
++    padding-top: 0.9rem;
++    border-top: 1px solid rgba(31, 42, 55, 0.08);
++    font-size: 0.82rem;
++    color: var(--kl-ink-soft);
++}
++
++.kl-feature-meta span {
++    display: inline-flex;
++    align-items: center;
++    gap: 0.4rem;
++}
++
++.kl-feature-meta i {
++    color: var(--kl-ink-soft);
++}
++
++.kl-feature-actions {
++    display: flex;
++    gap: 0.5rem;
++    padding: 0.5rem;
++    border-radius: 999px;
++}
++
++.kl-feature-actions .kl-round-btn {
++    margin: 0;
++    width: 44px;
++    height: 44px;
++    border: 0;
++    box-shadow: none;
++}
++
++/* Petit message « Lien copié » */
++.kl-toast {
++    position: fixed;
++    left: 50%;
++    bottom: 2rem;
++    z-index: 200;
++    padding: 0.75rem 1.25rem;
++    border-radius: 999px;
++    background: var(--kl-ink);
++    color: #fff;
++    font-family: var(--kl-font);
++    font-size: 0.9rem;
++    transform: translate(-50%, 20px);
++    opacity: 0;
++    transition: opacity 0.25s ease, transform 0.25s ease;
++    pointer-events: none;
++}
++
++.kl-toast.is-visible {
++    opacity: 1;
++    transform: translate(-50%, 0);
++}
++
++/* ------------------------------------------------------------------ Page Bibliothèque */
++.kl-page-library .library-hero-section {
++    padding-top: calc(56px + 2 * (var(--kl-frame-gap) + 12px));
++}
++
++/* ------------------------------------------------------------------ Tablettes */
++@media (max-width: 1180px) {
++    .kl-nav a i {
++        display: none;
++    }
++
++    .kl-nav a {
++        padding: 0 0.8rem;
++    }
++
++    .kl-hero-desc {
++        margin-left: 5.5rem;
++    }
++}
++
++/* ------------------------------------------------------------------ Mobiles et petites tablettes */
++@media (max-width: 960px) {
++    :root {
++        --kl-frame-gap: 8px;
++        --kl-frame-radius: 26px;
++    }
++
++    header.kl-header {
++        padding: calc(var(--kl-frame-gap) + 10px) calc(var(--kl-frame-gap) + 10px) 0;
++    }
++
++    .kl-nav,
++    .kl-cta {
++        display: none;
++    }
++
++    .kl-menu-btn {
++        display: inline-flex;
++    }
++
++    .kl-pill {
++        height: 52px;
++    }
++
++    .kl-menu-btn {
++        width: 52px;
++    }
++
++    .kl-brand {
++        padding: 0 1.2rem;
++    }
++
++    .kl-brand img {
++        height: 30px;
++    }
++
++    .kl-rail {
++        display: none;
++    }
++
++    .kl-hero-frame {
++        display: flex;
++        flex-direction: column;
++        max-height: none;
++        padding-bottom: var(--kl-frame-gap);
++    }
++
++    .kl-hero-text {
++        padding: 7.5rem 1.25rem 0;
++    }
++
++    .kl-hero-desc {
++        max-width: 34rem;
++        margin: 1.5rem auto 0;
++        text-align: center;
++        font-size: 0.98rem;
++    }
++
++    .kl-scroll-btn {
++        position: relative;
++        left: auto;
++        bottom: auto;
++        margin: 1.75rem auto;
++        width: 60px;
++        height: 60px;
++        transform: none;
++    }
++
++    .kl-scroll-btn:hover {
++        transform: translateY(3px);
++    }
++
++    .kl-card-intro,
++    .kl-feature-wrap {
++        position: relative;
++        left: auto;
++        right: auto;
++        bottom: auto;
++        width: auto;
++        margin: 0 var(--kl-frame-gap);
++    }
++
++    .kl-feature-wrap {
++        order: 2;
++        margin-bottom: 0.5rem;
++        align-items: stretch;
++    }
++
++    .kl-feature-actions {
++        align-self: center;
++    }
++
++    .kl-card-intro {
++        order: 3;
++    }
++
++    .kl-hero-text {
++        order: 0;
++    }
++
++    .kl-scroll-btn {
++        order: 1;
++    }
++}
++
++@media (max-width: 480px) {
++    .kl-hero-text {
++        padding-top: 6.75rem;
++    }
++
++    .kl-card-intro,
++    .kl-feature-wrap .kl-card {
++        padding: 1.25rem;
++        border-radius: 24px;
++    }
++
++    .kl-stat strong {
++        font-size: 2.1rem;
++    }
++}
++
++/* Mouvements réduits */
++@media (prefers-reduced-motion: reduce) {
++    .kl-hero-bg,
++    .kl-scroll-btn i {
++        animation: none;
++    }
++}
++
++/* Corrections : neutraliser les anciens styles du bouton menu (styles.css) */
++.kl-header .kl-menu-btn,
++.kl-header .kl-menu-btn:hover,
++.kl-header .kl-menu-btn[aria-expanded="true"] {
++    background: var(--kl-glass);
++    color: var(--kl-ink);
++    border-radius: 999px;
++    border: 1px solid var(--kl-glass-border);
++}
++
++.kl-header.is-scrolled .kl-menu-btn,
++.kl-header .kl-menu-btn[aria-expanded="true"] {
++    background: var(--kl-glass-strong);
++}
++
++.kl-mobile-social .kl-round-btn {
++    margin: 0;
++}
++
++@media (max-width: 960px) {
++    .kl-hero-title {
++        max-width: 11ch;
++    }
++}
++
++.kl-stat span {
++    white-space: nowrap;
++}
++
++/* Écrans étroits ou peu hauts : la barre verticale chevaucherait les cartes */
++@media (max-width: 1180px), (max-height: 820px) {
++    .kl-rail {
++        display: none;
++    }
++
++    .kl-hero-desc {
++        margin-left: 3rem;
++    }
++}
+diff --git a/design.js b/design.js
+new file mode 100644
+index 0000000..bd42a6a
+--- /dev/null
++++ b/design.js
+@@ -0,0 +1,77 @@
++/*
++ * Comportements de la barre de navigation et de la hero section (voir design.css).
++ */
++(function () {
++    'use strict';
++
++    // Utilisée par script.js après un clic sur un lien interne
++    window.closeMobileMenu = function () {
++        const menu = document.querySelector('.mobile-menu');
++        const toggle = document.querySelector('.mobile-menu-toggle');
++        if (!menu || !toggle) return;
++        menu.classList.remove('active');
++        toggle.setAttribute('aria-expanded', 'false');
++        document.body.style.overflow = '';
++    };
++
++    // La barre devient plus opaque une fois la hero dépassée
++    function initHeaderState() {
++        const header = document.querySelector('.kl-header');
++        if (!header) return;
++        const hero = document.querySelector('.kl-hero, .library-hero-section');
++
++        const update = () => {
++            const limit = hero ? hero.offsetTop + hero.offsetHeight - header.offsetHeight - 40 : 40;
++            header.classList.toggle('is-scrolled', window.scrollY > limit);
++        };
++        update();
++        window.addEventListener('scroll', update, { passive: true });
++        window.addEventListener('resize', update);
++    }
++
++    // Petit message temporaire
++    function toast(message) {
++        let node = document.querySelector('.kl-toast');
++        if (!node) {
++            node = document.createElement('div');
++            node.className = 'kl-toast';
++            node.setAttribute('role', 'status');
++            document.body.appendChild(node);
++        }
++        node.textContent = message;
++        node.classList.add('is-visible');
++        clearTimeout(node._timer);
++        node._timer = setTimeout(() => node.classList.remove('is-visible'), 2500);
++    }
++
++    // Bouton « Partager » : menu de partage du téléphone, sinon copie du lien
++    function initShare() {
++        document.querySelectorAll('[data-partager]').forEach(button => {
++            button.addEventListener('click', async () => {
++                const data = {
++                    title: 'Kalamu - Association Culturelle',
++                    text: "Grandir par la lecture, s'élever par l'écriture",
++                    url: window.location.origin + window.location.pathname
++                };
++                try {
++                    if (navigator.share) {
++                        await navigator.share(data);
++                    } else {
++                        await navigator.clipboard.writeText(data.url);
++                        toast('Lien du site copié');
++                    }
++                } catch (error) {
++                    if (error && error.name !== 'AbortError') toast('Partage impossible sur cet appareil');
++                }
++            });
++        });
++    }
++
++    function init() {
++        initHeaderState();
++        initShare();
++    }
++
++    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
++    else init();
++})();
+diff --git "a/images/uploads/aventure_ambigu\342\224\234\302\275.jpg" b/images/uploads/aventure_ambigue.jpg
+similarity index 100%
+rename from "images/uploads/aventure_ambigu\342\224\234\302\275.jpg"
+rename to images/uploads/aventure_ambigue.jpg
+diff --git "a/images/uploads/fatou_kin\342\224\234\302\256_thiam.jpg" b/images/uploads/fatou_kine_thiam.jpg
+similarity index 100%
+rename from "images/uploads/fatou_kin\342\224\234\302\256_thiam.jpg"
+rename to images/uploads/fatou_kine_thiam.jpg
+diff --git "a/images/uploads/parole_aux_n\342\224\234\302\256gresses.jpg" b/images/uploads/parole_aux_negresses.jpg
+similarity index 100%
+rename from "images/uploads/parole_aux_n\342\224\234\302\256gresses.jpg"
+rename to images/uploads/parole_aux_negresses.jpg
+diff --git a/index.html b/index.html
+index 081fec2..99c4e30 100644
+--- a/index.html
++++ b/index.html
+@@ -34,10 +34,11 @@
+     
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@400;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
++    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+     <link rel="stylesheet" href="styles.css">
+     <link rel="stylesheet" href="content.css">
++    <link rel="stylesheet" href="design.css">
+     
+     <!-- Structured Data -->
+     <script type="application/ld+json">
+@@ -74,100 +75,112 @@
+     </script>
+ </head>
+ <body>
+-    <header class="header">
+-        <div class="container">
+-            <div class="header-content">
+-                <!-- Logo -->
+-                <div class="logo" onclick="goToPage('/')">
+-                    <div class="logo-icon">
+-                        <img src="logo.PNG" alt="Kalamu Association">
+-                    </div>
+-                    <div class="logo-text">
+-                <h1>Kalamu</h1>
+-                        <p class="logo-subtitle">Association Culturelle</p>
+-            </div>
++    <!-- Barre de navigation (styles : design.css) -->
++    <header class="kl-header">
++        <div class="kl-header-inner">
++            <a href="index.html" class="kl-pill kl-brand" aria-label="Kalamu, retour à l'accueil">
++                <img src="logo-kalamu.png" alt="Kalamu" width="435" height="119">
++            </a>
++
++            <nav class="kl-pill kl-nav main-nav" aria-label="Navigation principale">
++                <a href="#accueil" class="kl-nav-link"><i class="fas fa-house" aria-hidden="true"></i><span>Accueil</span></a>
++                <a href="#a-propos" class="kl-nav-link"><i class="fas fa-circle-info" aria-hidden="true"></i><span>À propos</span></a>
++                <a href="#objectifs" class="kl-nav-link"><i class="fas fa-bullseye" aria-hidden="true"></i><span>Objectifs</span></a>
++                <a href="#activites" class="kl-nav-link"><i class="fas fa-feather-alt" aria-hidden="true"></i><span>Activités</span></a>
++                <a href="bibliotheque.html" class="kl-nav-link"><i class="fas fa-book-open" aria-hidden="true"></i><span>Bibliothèque</span></a>
++                <a href="#contact" class="kl-nav-link"><i class="fas fa-envelope" aria-hidden="true"></i><span>Contact</span></a>
++            </nav>
++
++            <a href="#contact" class="kl-pill kl-cta">
++                Nous rejoindre
++                <span class="kl-arrow"><i class="fas fa-arrow-right" aria-hidden="true"></i></span>
++            </a>
++
++            <button class="kl-pill kl-menu-btn mobile-menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu-mobile">
++                <i class="fas fa-bars mobile-menu-icon" aria-hidden="true"></i>
++                <i class="fas fa-times mobile-close-icon" aria-hidden="true"></i>
++            </button>
+         </div>
+-                
+-                <!-- Desktop Navigation -->
+-                <nav class="main-nav" role="navigation" aria-label="Navigation principale">
+-                    <button onclick="scrollToSection('accueil')" class="nav-link">Accueil</button>
+-                    <button onclick="scrollToSection('a-propos')" class="nav-link">À propos</button>
+-                    <button onclick="scrollToSection('objectifs')" class="nav-link">Objectifs</button>
+-                    <button onclick="scrollToSection('activites')" class="nav-link">Activités</button>
+-                    <button onclick="goToPage('bibliotheque.html')" class="nav-link">Bibliothèque</button>
+-                    <button onclick="scrollToSection('contact')" class="nav-link">Contact</button>
+-                </nav>
+-                
+-                <!-- Mobile Menu Button -->
+-                <button class="mobile-menu-toggle" aria-label="Ouvrir le menu mobile" aria-expanded="false">
+-                    <i class="fas fa-bars mobile-menu-icon"></i>
+-                    <i class="fas fa-times mobile-close-icon"></i>
+-                </button>
+-            </div>
+-            
+-            <!-- Mobile Menu -->
+-            <div class="mobile-menu">
+-                <nav class="mobile-nav" role="navigation" aria-label="Navigation mobile">
+-                    <button onclick="scrollToSection('accueil')" class="mobile-nav-link">Accueil</button>
+-                    <button onclick="scrollToSection('a-propos')" class="mobile-nav-link">À propos</button>
+-                    <button onclick="scrollToSection('objectifs')" class="mobile-nav-link">Objectifs</button>
+-                    <button onclick="scrollToSection('activites')" class="mobile-nav-link">Activités</button>
+-                    <button onclick="goToPage('bibliotheque.html')" class="mobile-nav-link">Bibliothèque</button>
+-                    <button onclick="scrollToSection('contact')" class="mobile-nav-link">Contact</button>
+-    </nav>
++
++        <div class="mobile-menu kl-mobile-menu" id="menu-mobile">
++            <nav class="mobile-nav" aria-label="Navigation mobile">
++                <a href="#accueil" class="mobile-nav-link"><i class="fas fa-house" aria-hidden="true"></i><span>Accueil</span></a>
++                <a href="#a-propos" class="mobile-nav-link"><i class="fas fa-circle-info" aria-hidden="true"></i><span>À propos</span></a>
++                <a href="#objectifs" class="mobile-nav-link"><i class="fas fa-bullseye" aria-hidden="true"></i><span>Objectifs</span></a>
++                <a href="#activites" class="mobile-nav-link"><i class="fas fa-feather-alt" aria-hidden="true"></i><span>Activités</span></a>
++                <a href="bibliotheque.html" class="mobile-nav-link"><i class="fas fa-book-open" aria-hidden="true"></i><span>Bibliothèque</span></a>
++                <a href="#contact" class="mobile-nav-link"><i class="fas fa-envelope" aria-hidden="true"></i><span>Contact</span></a>
++            </nav>
++            <div class="kl-mobile-social">
++                <a href="https://www.facebook.com/share/16idtbQot2/?mibextid=wwXIfr" class="kl-round-btn" data-info-lien="facebook" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
++                <a href="https://www.instagram.com/association_kalamu" class="kl-round-btn" data-info-lien="instagram" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
++                <a href="https://www.tiktok.com/@kalamu2.0" class="kl-round-btn" data-info-lien="tiktok" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok" aria-hidden="true"></i></a>
+             </div>
+         </div>
+     </header>
+ 
+     <main id="main" role="main">
+-        <!-- Hero Section -->
+-        <section id="accueil" class="hero-section">
+-            <div class="container">
+-                <div class="hero-content">
+-                    <!-- Logo Section -->
+-                    <div class="hero-logo-section">
+-                        <div class="hero-logo-container">
+-                            <img src="logo.PNG" alt="Kalamu Association" class="hero-logo">
+-                        </div>
+-                    </div>
++        <!-- Hero (styles : design.css). La carte « À la une » et les chiffres sont mis à jour par content.js -->
++        <section id="accueil" class="kl-hero">
++            <div class="kl-hero-frame">
++                <div class="kl-hero-bg" aria-hidden="true"></div>
+ 
+-                    <!-- Main Heading -->
+-                    <h1 class="hero-title cursive blinking-text">
+-                        <span class="letter" style="--delay: 0s">K</span>
+-                        <span class="letter" style="--delay: 0.2s">a</span>
+-                        <span class="letter" style="--delay: 0.4s">l</span>
+-                        <span class="letter" style="--delay: 0.6s">a</span>
+-                        <span class="letter" style="--delay: 0.8s">m</span>
+-                        <span class="letter" style="--delay: 1s">u</span>
+-                    </h1>
+-                    
+-                    <!-- Slogan -->
+-                    <p class="hero-slogan">« Grandir par la lecture, s'élever par l'écriture »</p>
++                <!-- Réseaux sociaux -->
++                <aside class="kl-rail" aria-label="Kalamu sur les réseaux sociaux">
++                    <a href="https://www.facebook.com/share/16idtbQot2/?mibextid=wwXIfr" data-info-lien="facebook" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
++                    <a href="https://www.instagram.com/association_kalamu" data-info-lien="instagram" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
++                    <a href="https://www.tiktok.com/@kalamu2.0" data-info-lien="tiktok" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok" aria-hidden="true"></i></a>
++                    <span class="kl-rail-sep" aria-hidden="true"></span>
++                    <a href="#initiateur" class="kl-rail-avatar" aria-label="Le fondateur de Kalamu"><img src="samba_cor_faye.jpg" alt=""></a>
++                    <a href="mailto:associationkalamu@gmail.com" data-info="email-lien" aria-label="Écrire à Kalamu"><i class="fas fa-envelope" aria-hidden="true"></i></a>
++                </aside>
+ 
+-                    <!-- Description -->
+-                    <p class="hero-description">
+-                        Kalamu est une association culturelle à but non lucratif, engagée dans la promotion 
++                <div class="kl-hero-text">
++                    <h1 class="kl-hero-title">Grandir par la lecture, <span>s'élever par l'écriture</span></h1>
++                    <p class="kl-hero-desc">
++                        Kalamu est une association culturelle à but non lucratif, engagée dans la promotion
+                         de la lecture, de l'écriture et de la transmission culturelle en Afrique.
+                     </p>
++                </div>
+ 
+-                    <!-- Action Buttons -->
+-                    <div class="hero-buttons">
+-                        <a href="#a-propos" class="btn btn-primary">
+-                            Découvrir notre mission
+-                            <i class="fas fa-arrow-right"></i>
+-                        </a>
+-                        <a href="#activites" class="btn btn-outline">
+-                            Nos activités
+-                            <i class="fas fa-edit"></i>
+-                        </a>
++                <a href="#a-propos" class="kl-scroll-btn" aria-label="Découvrir la suite">
++                    <i class="fas fa-arrow-down" aria-hidden="true"></i>
++                </a>
++
++                <!-- Carte de présentation -->
++                <div class="kl-card kl-card-intro">
++                    <h2>Lire, écrire, transmettre</h2>
++                    <p>Concours d'écriture, foires du livre, dons et bibliothèque numérique : Kalamu rapproche les jeunes des livres.</p>
++                    <div class="kl-card-intro-foot">
++                        <div class="kl-stat">
++                            <strong id="hero-nb-livres">15</strong>
++                            <span>livres à découvrir</span>
+                         </div>
++                        <div class="kl-avatars" id="hero-avatars" aria-hidden="true"></div>
++                        <a href="#a-propos" class="kl-round-btn" aria-label="Découvrir notre mission"><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                     </div>
+                 </div>
+-            
+-            <!-- Scroll indicator -->
+-            <div class="scroll-indicator">
+-                <div class="scroll-arrow">
+-                    <div class="scroll-dot"></div>
++
++                <!-- À la une : prochain événement, sinon un livre mis en avant -->
++                <div class="kl-feature-wrap">
++                    <article class="kl-card kl-card-feature" id="hero-a-la-une">
++                        <span class="kl-feature-label"><i class="fas fa-book-open" aria-hidden="true"></i> À la une</span>
++                        <div class="kl-feature-head">
++                            <div>
++                                <h3>Les Paroles du Cœur</h3>
++                                <p class="kl-feature-sub"><i class="fas fa-feather-alt" aria-hidden="true"></i> Samba Cor FAYE</p>
++                            </div>
++                            <a href="bibliotheque.html" class="kl-round-btn" aria-label="Voir la bibliothèque"><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
++                        </div>
++                        <div class="kl-feature-body">
++                            <p class="kl-feature-text">Une collection de poèmes qui touchent l'âme.</p>
++                        </div>
++                    </article>
++                    <div class="kl-pill kl-feature-actions">
++                        <a href="https://www.facebook.com/share/16idtbQot2/?mibextid=wwXIfr" class="kl-round-btn" data-info-lien="facebook" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
++                        <a href="https://www.instagram.com/association_kalamu" class="kl-round-btn" data-info-lien="instagram" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
++                        <button type="button" class="kl-round-btn" data-partager aria-label="Partager le site"><i class="fas fa-share-alt" aria-hidden="true"></i></button>
++                    </div>
+                 </div>
+             </div>
+         </section>
+@@ -1018,6 +1031,7 @@
+ 
+     <script src="script.js"></script>
+     <script src="content.js"></script>
++    <script src="design.js"></script>
+ 
+     <!-- Connexion admin : nécessaire pour accepter l'invitation reçue par e-mail, puis redirige vers /admin -->
+     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+diff --git a/logo-kalamu.png b/logo-kalamu.png
+new file mode 100644
+index 0000000000000000000000000000000000000000..c60a6782a1cdb53eac986a60d93119275deb3cd3
+GIT binary patch
+literal 40042
+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
+a{Qn1t>GiX<Tofw+0000<MNUMnLSTZfa*$a7
+
+literal 0
+HcmV?d00001
+
+-- 
+2.43.0
+

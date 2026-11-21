@@ -1,0 +1,14 @@
+{
+  "titre": "Plus de 18 mois d'émancipation littéraire et citoyenne",
+  "periode": "Mai 2025 – septembre 2026",
+  "chiffres": [
+    { "valeur": "200+", "libelle": "livres dans notre Bibliothèque Nomade" },
+    { "valeur": "236+", "libelle": "bénéficiaires directs de nos activités" },
+    { "valeur": "18+", "libelle": "éditions de Café Livres" },
+    { "valeur": "46+", "libelle": "candidats au Concours annuel d'écriture" },
+    { "valeur": "4", "libelle": "livres en édition" },
+    { "valeur": "4", "libelle": "masterclass Prise de parole & leadership" },
+    { "valeur": "2", "libelle": "éditions du festival 72H Kalamu" },
+    { "valeur": "3", "libelle": "grandes actions de solidarité" }
+  ]
+}

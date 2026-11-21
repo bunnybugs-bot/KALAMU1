@@ -360,13 +360,18 @@
         ];
     }
 
-    function renderHero(eventsData, booksData, membersData) {
+    function renderHero(eventsData, booksData, membersData, figuresData) {
         const card = document.getElementById('hero-a-la-une');
         const books = list(booksData && booksData.livres).filter(b => b.titre);
 
-        // Chiffre : nombre de livres de la bibliothèque (hors livres à paraître)
+        // Chiffre de la carte : le premier chiffre clé (admin › Paramètres › Chiffres clés)
         const count = document.getElementById('hero-nb-livres');
-        if (count && books.length) count.textContent = String(books.filter(b => !b.a_paraitre).length);
+        const label = document.getElementById('hero-nb-livres-texte');
+        const first = list(figuresData && figuresData.chiffres).find(c => c.valeur && c.libelle);
+        if (count && first) {
+            count.textContent = first.valeur;
+            if (label) label.textContent = first.libelle;
+        }
 
         // Petites photos des membres
         const avatars = document.getElementById('hero-avatars');
@@ -401,6 +406,25 @@
             [book.genre ? ['fa-bookmark', book.genre] : null,
                 CATEGORY_LABELS[book.categorie] ? ['fa-layer-group', CATEGORY_LABELS[book.categorie]] : null].filter(Boolean)
         ));
+    }
+
+    // ------------------------------------------------------------------ Chiffres clés (À propos)
+
+    function renderFigures(data) {
+        const grid = document.getElementById('chiffres-cles');
+        const items = list(data && data.chiffres).filter(c => c.valeur && c.libelle);
+        if (!grid || !items.length) return;
+        const title = document.getElementById('chiffres-titre');
+        const period = document.getElementById('chiffres-periode');
+        if (title && data.titre) title.textContent = data.titre;
+        if (period) {
+            period.textContent = data.periode || '';
+            period.hidden = !data.periode;
+        }
+        grid.replaceChildren(...items.map(c => el('div', { class: 'kl-stat-item' }, [
+            el('strong', { text: c.valeur }),
+            el('span', { text: c.libelle })
+        ])));
     }
 
     // ------------------------------------------------------------------ Carrousel de la bibliothèque
@@ -439,9 +463,10 @@
         }
         if (needs('#photo-bureau, #membres-fiches')) run('/data/membres.json', renderMembers);
         if (needs('[data-info], [data-info-lien]')) run('/data/infos.json', renderInfos);
+        if (needs('#chiffres-cles')) run('/data/chiffres.json', renderFigures);
         if (needs('#hero-a-la-une')) {
-            Promise.all(['/data/evenements.json', '/data/livres.json', '/data/membres.json'].map(path => loadJSON(path).catch(() => null)))
-                .then(([events, books, members]) => renderHero(events, books, members))
+            Promise.all(['/data/evenements.json', '/data/livres.json', '/data/membres.json', '/data/chiffres.json'].map(path => loadJSON(path).catch(() => null)))
+                .then(([events, books, members, figures]) => renderHero(events, books, members, figures))
                 .catch(error => console.error('Hero non mise à jour :', error));
         }
     }

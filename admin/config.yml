@@ -192,7 +192,7 @@ collections:
   # ---------------------------------------------------------------- Paramètres
   - name: parametres
     label: Paramètres
-    description: "Coordonnées de l'association et photo du bureau exécutif."
+    description: "Coordonnées, chiffres clés et photo du bureau exécutif."
     editor:
       preview: false
     files:
@@ -210,6 +210,21 @@ collections:
           - { name: facebook, label: Lien Facebook, widget: string, required: false }
           - { name: instagram, label: Lien Instagram, widget: string, required: false }
           - { name: tiktok, label: Lien TikTok, widget: string, required: false }
+      - name: chiffres
+        label: Chiffres clés
+        file: content/chiffres.json
+        fields:
+          - { name: titre, label: Titre du bloc, widget: string }
+          - { name: periode, label: Période, widget: string, hint: "Ex. : Mai 2025 – septembre 2026" }
+          - name: chiffres
+            label: Chiffres
+            label_singular: chiffre
+            hint: "Le premier chiffre est aussi affiché dans la carte en bas à gauche de la page d'accueil."
+            widget: list
+            summary: "{{fields.valeur}} {{fields.libelle}}"
+            fields:
+              - { name: valeur, label: Valeur, widget: string, hint: "Ex. : 200+" }
+              - { name: libelle, label: Texte, widget: string, hint: "Ex. : livres dans notre Bibliothèque Nomade" }
       - name: bureau
         label: Bureau exécutif
         file: content/bureau.json

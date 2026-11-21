@@ -137,10 +137,6 @@
 
                 <div class="kl-hero-text">
                     <h1 class="kl-hero-title">Grandir par la lecture, <span>s'élever par l'écriture</span></h1>
-                    <p class="kl-hero-desc">
-                        Kalamu est une association culturelle à but non lucratif, engagée dans la promotion
-                        de la lecture, de l'écriture et de la transmission culturelle en Afrique.
-                    </p>
                 </div>
 
                 <a href="#a-propos" class="kl-scroll-btn" aria-label="Découvrir la suite">
@@ -153,8 +149,8 @@
                     <p>Concours d'écriture, foires du livre, dons et bibliothèque numérique : Kalamu rapproche les jeunes des livres.</p>
                     <div class="kl-card-intro-foot">
                         <div class="kl-stat">
-                            <strong id="hero-nb-livres">15</strong>
-                            <span>livres à découvrir</span>
+                            <strong id="hero-nb-livres">200+</strong>
+                            <span id="hero-nb-livres-texte">livres dans notre Bibliothèque Nomade</span>
                         </div>
                         <div class="kl-avatars" id="hero-avatars" aria-hidden="true"></div>
                         <a href="#a-propos" class="kl-round-btn" aria-label="Découvrir notre mission"><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
@@ -187,187 +183,131 @@
 
         
 
-        <section id="a-propos" class="about-section">
-            <div class="container">
-                <!-- Section Header -->
-                <div class="about-header">
-                    <div class="about-icon">
-                        <i class="fas fa-feather-alt"></i>
-                    </div>
-                    <h2>À propos de Kalamu</h2>
-                    <p>Découvrez l'histoire et la mission de notre association culturelle dédiée à la promotion de la lecture et de l'écriture en Afrique.</p>
+        <!-- À propos (styles : design.css). Les chiffres clés sont modifiables dans l'admin (Paramètres › Chiffres clés) -->
+        <section id="a-propos" class="kl-section kl-about">
+            <div class="kl-container">
+                <div class="kl-section-head">
+                    <span class="kl-eyebrow"><i class="fas fa-feather-alt" aria-hidden="true"></i> À propos</span>
+                    <h2 class="kl-section-title">Faire des mots un levier <span>d'émancipation</span></h2>
+                    <p class="kl-section-lead">Née à Kaolack le 15 mai 2025, Kalamu est une association littéraire à but non lucratif portée par une ambition simple et profonde : redonner à la jeunesse le goût de lire, le courage d'écrire et la force de dire.</p>
                 </div>
-                
-                <!-- Why Kalamu -->
-                <div class="why-kalamu-section">
-                    <div class="why-kalamu-content">
-                            <h3>Pourquoi « Kalamu » ?</h3>
-                        <div class="why-kalamu-text">
-                            <p>Kalamu signifie <span class="highlight">plume</span> en swahili et en arabe. Elle symbolise le savoir, la mémoire et la transmission spirituelle.</p>
-                            <p>Comme une plume qui s'élève dans le vent, nos actions portent les voix et les histoires de l'Afrique vers de nouveaux horizons, créant des ponts entre les générations et les cultures.</p>
-                        </div>
-                    </div>
-                    <div class="writing-scene">
-                        <img src="writing-scene.png" alt="Scène d'écriture africaine traditionnelle">
-                        <div class="image-overlay"></div>
+
+                <div class="kl-bento">
+                    <article class="kl-tile kl-tile-identity">
+                        <span class="kl-tile-tag">Identité</span>
+                        <h3>« Kalamu », la parole</h3>
+                        <p>Le mot <strong>Kalamu</strong> nous vient de la langue arabe et signifie « parole ». Symbole de savoir, de transmission et de mémoire, la plume incarne l'essence de notre engagement : faire des mots un levier d'émancipation et de construction humaine.</p>
+                    </article>
+
+                    <figure class="kl-tile kl-tile-photo kl-tile-photo-main">
+                        <img src="images/apropos/cafe-livres.jpg" alt="Séance de Café Livres : des jeunes lisent et échangent assis sur des nattes" loading="lazy">
+                        <figcaption>Café Livres : lecture partagée sur les nattes</figcaption>
+                    </figure>
+
+                    <article class="kl-tile kl-tile-vision">
+                        <span class="kl-tile-tag">Vision</span>
+                        <h3>Bâtir une relève passionnée de littérature</h3>
+                        <p>Dans un espace libre, bienveillant et inclusif, nous offrons aux jeunes l'opportunité d'avoir une voix, d'écrire l'histoire autrement et de questionner le monde.</p>
+                    </article>
+
+                    <article class="kl-tile kl-tile-date">
+                        <span class="kl-tile-tag">Fondation</span>
+                        <p class="kl-date-big">15<span>.</span>05<span>.</span>2025</p>
+                        <p>Création de l'association, à Kaolack.</p>
+                    </article>
+
+                    <article class="kl-tile kl-tile-why">
+                        <span class="kl-tile-tag">Pourquoi Kalamu ?</span>
+                        <h3>Kaolack n'a pas à être le parent pauvre de la culture</h3>
+                        <p>Éloignement des structures, coût des transports, abonnements inaccessibles : à Kaolack, trouver un livre relevait trop souvent du parcours du combattant, pendant que les grands événements littéraires restaient concentrés dans la capitale.</p>
+                        <p>Kalamu est né du refus de cette fatalité : descendre dans les quartiers, aller à la rencontre des talents et offrir aux jeunes de l'intérieur du pays la même exposition et les mêmes chances que ceux de Dakar.</p>
+                    </article>
+
+                    <figure class="kl-tile kl-tile-photo kl-tile-photo-side">
+                        <img src="images/apropos/atelier-ecriture.jpg" alt="Atelier d'écriture en cercle dans une bibliothèque" loading="lazy">
+                        <figcaption>Atelier d'écriture</figcaption>
+                    </figure>
+                </div>
+
+                <!-- Mot du Président -->
+                <div class="kl-editorial">
+                    <img src="images/apropos/president-samba-cor-faye.jpg" alt="Samba Cor FAYE, président de Kalamu" class="kl-editorial-photo" loading="lazy">
+                    <div class="kl-editorial-body">
+                        <span class="kl-eyebrow"><i class="fas fa-quote-left" aria-hidden="true"></i> Le mot du Président</span>
+                        <blockquote>
+                            « À une époque où le numérique peut parfois déshumaniser, Kalamu se dresse comme un pont entre les cœurs et les esprits. Nous ne faisons pas que promouvoir des livres ; nous cultivons la pensée, la liberté et l'audace d'exister par les mots. »
+                        </blockquote>
+                        <p class="kl-editorial-author"><strong>Samba Cor FAYE</strong><span>Président — apprenti juriste, entrepreneur pédagogique et culturel, écrivain et orateur</span></p>
                     </div>
                 </div>
 
-                <!-- Vision and Mission -->
-                <div class="vision-mission-grid">
-                    <!-- Vision -->
-                    <div class="vision-card">
-                        <div class="card-header">
-                        <div class="card-icon">
-                            <i class="fas fa-eye"></i>
-                        </div>
-                        <h3>Notre Vision</h3>
-                        </div>
-                        <p>Une société où chaque enfant et adulte a accès au livre et où l'écrit perpétue les trésors de l'oralité africaine.</p>
+                <!-- Chiffres clés (data/chiffres.json) -->
+                <div class="kl-stats-block">
+                    <div class="kl-stats-head">
+                        <h3 id="chiffres-titre">Plus de 18 mois d'émancipation littéraire et citoyenne</h3>
+                        <p id="chiffres-periode">Mai 2025 – septembre 2026</p>
                     </div>
-
-                    <!-- Mission -->
-                    <div class="mission-card">
-                        <div class="card-header">
-                        <div class="card-icon">
-                            <i class="fas fa-bullseye"></i>
-                        </div>
-                        <h3>Notre Mission</h3>
-                        </div>
-                        <ul class="mission-list">
-                            <li><i class="fas fa-heart"></i> Promouvoir la lecture pour tous</li>
-                            <li><i class="fas fa-heart"></i> Encourager l'écriture créative</li>
-                            <li><i class="fas fa-heart"></i> Valoriser le patrimoine oral africain</li>
-                            <li><i class="fas fa-heart"></i> Organiser des événements culturels</li>
-                            <li><i class="fas fa-heart"></i> Soutenir les auteurs africains émergents</li>
-                    </ul>
+                    <div class="kl-stats-grid" id="chiffres-cles">
+                        <div class="kl-stat-item"><strong>200+</strong><span>livres dans notre Bibliothèque Nomade</span></div>
+                        <div class="kl-stat-item"><strong>236+</strong><span>bénéficiaires directs de nos activités</span></div>
+                        <div class="kl-stat-item"><strong>18+</strong><span>éditions de Café Livres</span></div>
+                        <div class="kl-stat-item"><strong>46+</strong><span>candidats au Concours annuel d'écriture</span></div>
+                        <div class="kl-stat-item"><strong>4</strong><span>livres en édition</span></div>
+                        <div class="kl-stat-item"><strong>4</strong><span>masterclass Prise de parole &amp; leadership</span></div>
+                        <div class="kl-stat-item"><strong>2</strong><span>éditions du festival 72H Kalamu</span></div>
+                        <div class="kl-stat-item"><strong>3</strong><span>grandes actions de solidarité</span></div>
                     </div>
-                </div>
-
-                <!-- Quote -->
-                <div class="about-quote">
-                    <blockquote>« Chaque page lue est une porte ouverte vers la liberté ; chaque mot écrit est un acte d'espérance. »</blockquote>
-                    <p class="quote-author">— Association Kalamu</p>
                 </div>
             </div>
         </section>
 
-        <section id="objectifs" class="objectives-section">
-            <div class="container">
-                <!-- Section Header -->
-                <div class="objectives-header">
-                    <div class="objectives-icon">
-                        <i class="fas fa-book-open"></i>
-                    </div>
-                    <h2>Nos Objectifs</h2>
-                    <p>Des ambitions concrètes pour transformer l'accès à la lecture et à l'écriture en Afrique.</p>
-                </div>
-                
-                <!-- Objectives Grid (Desktop) -->
-                <div class="objectives-grid">
-                    <div class="objective-card">
-                        <div class="objective-icon">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <h3>Clubs de lecture</h3>
-                        <p>Créer des clubs de lecture dans écoles, lycées et universités pour encourager la passion de la lecture chez les jeunes.</p>
-                    </div>
-                    
-                    <div class="objective-card">
-                        <div class="objective-icon">
-                            <i class="fas fa-calendar-alt"></i>
-                        </div>
-                        <h3>Festival Kalamu</h3>
-                        <p>Organiser le Festival Kalamu annuel du livre et de la lecture, un événement majeur de la culture littéraire africaine.</p>
-                    </div>
-                    
-                    <div class="objective-card">
-                        <div class="objective-icon">
-                            <i class="fas fa-truck"></i>
-                        </div>
-                        <h3>Kalamu Mobile</h3>
-                        <p>Déployer une bibliothèque mobile « Kalamu Mobile » pour apporter les livres dans les zones les plus reculées.</p>
-                    </div>
-                    
-                    <div class="objective-card">
-                        <div class="objective-icon">
-                            <i class="fas fa-book-open"></i>
-                        </div>
-                        <h3>Contes africains</h3>
-                        <p>Lancer une collection de contes africains écrits par des enfants et jeunes, valorisant leur créativité.</p>
-                    </div>
-                    
-                    <div class="objective-card">
-                        <div class="objective-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <h3>Ambassadeurs</h3>
-                        <p>Former des ambassadeurs de la lecture qui porteront notre mission dans toute l'Afrique de l'Ouest.</p>
-                    </div>
+        <!-- Objectifs (styles : design.css) -->
+        <section id="objectifs" class="kl-section kl-objectives">
+            <div class="kl-container">
+                <div class="kl-section-head">
+                    <span class="kl-eyebrow"><i class="fas fa-bullseye" aria-hidden="true"></i> Nos objectifs</span>
+                    <h2 class="kl-section-title">Lire, écrire, dire <span>et agir</span></h2>
+                    <p class="kl-section-lead">Six engagements guident chacune de nos activités, des Cafés Livres au Camp Kalamu.</p>
                 </div>
 
-                <!-- Objectives Carousel (Mobile) -->
-                <div class="objectives-carousel">
-                    <div class="objectives-track">
-                        <div class="objective-card">
-                            <div class="objective-icon">
-                                <i class="fas fa-graduation-cap"></i>
-                            </div>
-                            <h3>Clubs de lecture</h3>
-                            <p>Créer des clubs de lecture dans écoles, lycées et universités pour encourager la passion de la lecture chez les jeunes.</p>
-                        </div>
-                        
-                        <div class="objective-card">
-                            <div class="objective-icon">
-                                <i class="fas fa-calendar-alt"></i>
-                            </div>
-                            <h3>Festival Kalamu</h3>
-                            <p>Organiser le Festival Kalamu annuel du livre et de la lecture, un événement majeur de la culture littéraire africaine.</p>
-                        </div>
-                        
-                        <div class="objective-card">
-                            <div class="objective-icon">
-                                <i class="fas fa-truck"></i>
-                            </div>
-                            <h3>Kalamu Mobile</h3>
-                            <p>Déployer une bibliothèque mobile « Kalamu Mobile » pour apporter les livres dans les zones les plus reculées.</p>
-                        </div>
-                        
-                        <div class="objective-card">
-                            <div class="objective-icon">
-                                <i class="fas fa-book-open"></i>
-                            </div>
-                            <h3>Contes africains</h3>
-                            <p>Lancer une collection de contes africains écrits par des enfants et jeunes, valorisant leur créativité.</p>
-                        </div>
-                        
-                        <div class="objective-card">
-                            <div class="objective-icon">
-                                <i class="fas fa-users"></i>
-                            </div>
-                            <h3>Ambassadeurs</h3>
-                            <p>Former des ambassadeurs de la lecture qui porteront notre mission dans toute l'Afrique de l'Ouest.</p>
-                        </div>
-                    </div>
-
-                    <!-- Carousel Controls -->
-                    <div class="objectives-carousel-controls">
-                        <button class="objectives-carousel-btn prev-btn" onclick="moveObjectivesCarousel(-1)" title="Objectif précédent" aria-label="Objectif précédent">
-                            <i class="fas fa-chevron-left"></i>
-                        </button>
-                        <button class="objectives-carousel-btn next-btn" onclick="moveObjectivesCarousel(1)" title="Objectif suivant" aria-label="Objectif suivant">
-                            <i class="fas fa-chevron-right"></i>
-                        </button>
-                    </div>
-
-                    <!-- Carousel Dots -->
-                    <div class="objectives-carousel-dots">
-                        <span class="objectives-dot active" onclick="goToObjectivesSlide(1)"></span>
-                        <span class="objectives-dot" onclick="goToObjectivesSlide(2)"></span>
-                        <span class="objectives-dot" onclick="goToObjectivesSlide(3)"></span>
-                    </div>
+                <div class="kl-obj-grid">
+                    <article class="kl-obj">
+                        <div class="kl-obj-top"><span class="kl-obj-icon"><i class="fas fa-book-reader" aria-hidden="true"></i></span><span class="kl-obj-num">01</span></div>
+                        <h3>Redonner le goût de lire</h3>
+                        <p>Rendre le livre accessible à tous, gratuitement pour nos membres, et faire de la lecture un moment de partage dès le plus jeune âge.</p>
+                        <ul class="kl-chips" aria-label="Programmes liés"><li>Bibliothèque Nomade</li><li>Café Livres</li><li>Léboon Lipoon</li></ul>
+                    </article>
+                    <article class="kl-obj">
+                        <div class="kl-obj-top"><span class="kl-obj-icon"><i class="fas fa-pen-nib" aria-hidden="true"></i></span><span class="kl-obj-num">02</span></div>
+                        <h3>Libérer la plume des jeunes</h3>
+                        <p>Accompagner les écrivains en herbe, de la poésie au slam, du théâtre au roman, jusqu'à la publication de leurs textes.</p>
+                        <ul class="kl-chips" aria-label="Programmes liés"><li>Ateliers d'écriture</li><li>Concours annuel</li><li>Camp Kalamu</li></ul>
+                    </article>
+                    <article class="kl-obj">
+                        <div class="kl-obj-top"><span class="kl-obj-icon"><i class="fas fa-microphone-alt" aria-hidden="true"></i></span><span class="kl-obj-num">03</span></div>
+                        <h3>Donner la force de dire</h3>
+                        <p>Former à la prise de parole, au débat et au leadership, avec une attention particulière à la voix des jeunes filles.</p>
+                        <ul class="kl-chips" aria-label="Programmes liés"><li>Masterclass Prise de parole</li><li>Débat'ELLES</li><li>Ndadjé Ak'</li></ul>
+                    </article>
+                    <article class="kl-obj">
+                        <div class="kl-obj-top"><span class="kl-obj-icon"><i class="fas fa-language" aria-hidden="true"></i></span><span class="kl-obj-num">04</span></div>
+                        <h3>Valoriser nos langues et l'oralité</h3>
+                        <p>Faire vivre le wolof, les contes et notre patrimoine linguistique auprès de tous les publics.</p>
+                        <ul class="kl-chips" aria-label="Programmes liés"><li>Kalamy Kocc</li><li>KalamuDico</li><li>Chasses aux Mots</li></ul>
+                    </article>
+                    <article class="kl-obj">
+                        <div class="kl-obj-top"><span class="kl-obj-icon"><i class="fas fa-map-marker-alt" aria-hidden="true"></i></span><span class="kl-obj-num">05</span></div>
+                        <h3>Faire rayonner Kaolack</h3>
+                        <p>Offrir aux jeunes de l'intérieur du pays la même exposition et les mêmes opportunités culturelles que ceux de la capitale.</p>
+                        <ul class="kl-chips" aria-label="Programmes liés"><li>72H Kalamu</li><li>Foire du livre</li><li>Ciné N' Book</li></ul>
+                    </article>
+                    <article class="kl-obj">
+                        <div class="kl-obj-top"><span class="kl-obj-icon"><i class="fas fa-hands-helping" aria-hidden="true"></i></span><span class="kl-obj-num">06</span></div>
+                        <h3>Agir pour la communauté et la planète</h3>
+                        <p>Soutenir les élèves démunis, multiplier les dons et sensibiliser au développement durable dans les écoles.</p>
+                        <ul class="kl-chips" aria-label="Programmes liés"><li>1 Élève, 1 Sac</li><li>Kalamu Eco-Plume</li><li>Café Vert</li></ul>
+                    </article>
                 </div>
-
             </div>
         </section>
 
