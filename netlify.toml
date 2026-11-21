@@ -1,0 +1,17 @@
+# À chaque publication depuis l'espace admin, Netlify assemble le contenu
+# (dossier content/) en fichiers prêts à afficher (dossier data/).
+[build]
+  publish = "."
+  command = "node scripts/build-data.js"
+
+# Les fichiers de données sont revérifiés à chaque visite : une publication est visible tout de suite
+[[headers]]
+  for = "/data/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# L'espace admin n'a pas à apparaître dans Google
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Robots-Tag = "noindex"

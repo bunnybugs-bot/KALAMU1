@@ -1,0 +1,14 @@
+{
+  "titre": "Le Ventre de l'Atlantique",
+  "auteur": "Fatou Diome",
+  "categorie": "contemporains",
+  "resume_court": "Un roman sur l'immigration et les rêves d'Europe.",
+  "resume": "Fatou Diome raconte avec humour et tendresse l'histoire de Salie, une jeune Sénégalaise qui tente de concilier ses racines africaines avec sa vie en France, déconstruisant les clichés sur l'immigration.",
+  "genre": "Immigration",
+  "a_paraitre": false,
+  "accueil": false,
+  "carrousel": false,
+  "accroche": "",
+  "cover": "/images/uploads/ventre_de_atlantique.jpg",
+  "ordre": 100
+}

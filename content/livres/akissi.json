@@ -1,0 +1,14 @@
+{
+  "titre": "Akissi",
+  "auteur": "Marguerite Abouet",
+  "categorie": "jeunesse",
+  "resume_court": "Les aventures d'une petite fille ivoirienne espiègle.",
+  "resume": "Marguerite Abouet et Mathieu Sapin créent une héroïne attachante qui découvre le monde avec curiosité et malice, offrant aux jeunes lecteurs une vision joyeuse et authentique de l'enfance africaine.",
+  "genre": "BD",
+  "a_paraitre": false,
+  "accueil": false,
+  "carrousel": true,
+  "accroche": "Les aventures d'une petite fille ivoirienne espiègle",
+  "cover": "/images/uploads/akissi.png",
+  "ordre": 150
+}

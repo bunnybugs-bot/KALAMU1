@@ -85,15 +85,15 @@
         const title = event.titre || 'Événement';
 
         let imageBlock = null;
-        if (event.affiche) {
-            const open = () => window.openImageModal && window.openImageModal(event.affiche);
+        if (event.image) {
+            const open = () => window.openImageModal && window.openImageModal(event.image);
             imageBlock = el('div', { class: 'event-image-container' }, [
-                el('img', { src: event.affiche, alt: title, class: 'event-image', loading: 'lazy', onclick: open }),
+                el('img', { src: event.image, alt: title, class: 'event-image', loading: 'lazy', onclick: open }),
                 el('div', { class: 'event-image-overlay' }, [
                     el('button', { class: 'image-action-btn', type: 'button', title: 'Voir en grand', 'aria-label': 'Voir en grand', onclick: open }, [icon('fa-expand')]),
                     el('button', {
                         class: 'image-action-btn', type: 'button', title: 'Télécharger', 'aria-label': "Télécharger l'affiche",
-                        onclick: () => window.downloadImage && window.downloadImage(event.affiche)
+                        onclick: () => window.downloadImage && window.downloadImage(event.image)
                     }, [icon('fa-download')])
                 ])
             ]);
@@ -170,8 +170,8 @@
 
         return el('div', { class: 'book-card ' + cls }, [
             el('div', { class: 'book-cover' }, [
-                book.couverture
-                    ? el('img', { src: book.couverture, alt: title + (book.auteur ? ' - ' + book.auteur : ''), class: 'book-image', loading: 'lazy' })
+                book.cover
+                    ? el('img', { src: book.cover, alt: title + (book.auteur ? ' - ' + book.auteur : ''), class: 'book-image', loading: 'lazy' })
                     : el('div', { class: 'book-image book-image-empty' }, [icon('fa-book')])
             ]),
             el('div', { class: 'book-info' }, [
@@ -236,11 +236,11 @@
         const track = document.getElementById('carrousel-livres');
         const indicators = document.getElementById('carrousel-indicateurs');
         if (!track) return;
-        const books = list(data.livres).filter(b => b.carrousel && b.couverture);
+        const books = list(data.livres).filter(b => b.carrousel && b.cover);
 
         track.replaceChildren(...books.map((book, i) => el('div', {
             class: 'carousel-slide' + (i === 0 ? ' active' : ''),
-            style: 'background-image: url("' + encodeURI(book.couverture).replace(/"/g, '%22') + '")',
+            style: 'background-image: url("' + encodeURI(book.cover).replace(/"/g, '%22') + '")',
             role: 'img',
             'aria-label': book.titre
         }, [
@@ -265,7 +265,7 @@
         if (!container) return;
         const books = list(data.livres).filter(b => b.accueil && b.titre).slice(0, 4);
         container.replaceChildren(...books.map(book => el('div', { class: 'book-teaser' }, [
-            book.couverture ? el('img', { src: book.couverture, alt: book.titre, class: 'book-cover', loading: 'lazy' }) : null,
+            book.cover ? el('img', { src: book.cover, alt: book.titre, class: 'book-cover', loading: 'lazy' }) : null,
             el('div', { class: 'book-overlay' }, [
                 el('h4', { text: book.titre }),
                 el('p', { text: book.a_paraitre ? 'À paraître' : (book.auteur || '') })

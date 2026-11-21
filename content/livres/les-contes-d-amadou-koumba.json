@@ -1,0 +1,14 @@
+{
+  "titre": "Les Contes d'Amadou Koumba",
+  "auteur": "Birago Diop",
+  "categorie": "jeunesse",
+  "resume_court": "Des contes traditionnels sénégalais pour tous les âges.",
+  "resume": "Birago Diop nous transporte dans l'univers magique de la tradition orale africaine, où les animaux parlent et enseignent la sagesse ancestrale à travers des histoires intemporelles.",
+  "genre": "Contes",
+  "a_paraitre": false,
+  "accueil": false,
+  "carrousel": false,
+  "accroche": "",
+  "cover": "/images/uploads/contes_am_koumba.jpg",
+  "ordre": 140
+}

@@ -1,0 +1,14 @@
+{
+  "titre": "L'Enfant noir",
+  "auteur": "Camara Laye",
+  "categorie": "classiques",
+  "resume_court": "Un récit autobiographique poignant sur l'enfance en Guinée coloniale.",
+  "resume": "Camara Laye nous plonge dans son univers d'enfant, entre traditions africaines et modernité coloniale, créant un témoignage intemporel sur l'Afrique pré-indépendance.",
+  "genre": "Autobiographie",
+  "a_paraitre": false,
+  "accueil": false,
+  "carrousel": false,
+  "accroche": "",
+  "cover": "/images/uploads/enfant_noir.jpg",
+  "ordre": 50
+}

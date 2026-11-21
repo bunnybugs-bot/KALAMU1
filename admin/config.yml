@@ -1,14 +1,15 @@
 # Configuration de l'espace d'administration (Decap CMS)
 # L'administrateur se connecte sur /admin avec son e-mail et son mot de passe.
-# Chaque clic sur « Publier » enregistre la modification et le site se met à jour en ~1 minute.
+# Chaque élément (événement, livre, membre) est un fichier dans content/.
+# À chaque « Publier », Netlify reconstruit data/ (scripts/build-data.js) et le site se met à jour en 1 à 2 minutes.
 
 backend:
   name: git-gateway
   branch: main
   commit_messages:
-    create: "Admin : création de {{collection}} « {{slug}} »"
-    update: "Admin : mise à jour de {{collection}} « {{slug}} »"
-    delete: "Admin : suppression de {{collection}} « {{slug}} »"
+    create: "Admin : ajout de « {{slug}} » ({{collection}})"
+    update: "Admin : modification de « {{slug}} » ({{collection}})"
+    delete: "Admin : suppression de « {{slug}} » ({{collection}})"
     uploadMedia: "Admin : ajout de l'image {{path}}"
     deleteMedia: "Admin : suppression de l'image {{path}}"
 
@@ -21,160 +22,183 @@ logo_url: /logo.PNG
 media_folder: images/uploads
 public_folder: /images/uploads
 
+slug:
+  encoding: ascii
+  clean_accents: true
+
 collections:
   # ---------------------------------------------------------------- Événements
   - name: evenements
     label: Événements
-    description: "Ajoutez, modifiez ou supprimez les événements. Ils passent automatiquement de « À venir » à « Événements passés » selon leur date."
+    label_singular: Événement
+    description: "Chaque carte est un événement. Il passe tout seul de « À venir » à « Événements passés » quand sa date est dépassée."
+    folder: content/evenements
+    format: json
+    extension: json
+    create: true
+    delete: true
+    slug: "{{fields.date_debut}}-{{slug}}"
+    identifier_field: titre
+    summary: "{{titre}} — {{date_debut | date('DD/MM/YYYY')}}"
+    sortable_fields:
+      - field: date_debut
+        label: Date
+        default_sort: desc
+      - field: titre
+        label: Titre
+    view_groups:
+      - label: Année
+        field: date_debut
+        pattern: \d{4}
     editor:
       preview: false
-    files:
-      - name: liste
-        label: Liste des événements
-        file: data/evenements.json
-        fields:
-          - name: evenements
-            label: Événements
-            label_singular: événement
-            widget: list
-            add_to_top: true
-            summary: "{{fields.titre}} — {{fields.date_debut | date('DD/MM/YYYY')}}"
-            fields:
-              - { name: titre, label: Titre, widget: string }
-              - name: date_debut
-                label: Date (ou date de début)
-                widget: datetime
-                format: "YYYY-MM-DD"
-                date_format: "DD/MM/YYYY"
-                time_format: false
-                picker_utc: true
-              - name: date_fin
-                label: Date de fin
-                hint: "Seulement si l'événement dure plusieurs jours. Sinon, laissez vide."
-                widget: datetime
-                format: "YYYY-MM-DD"
-                date_format: "DD/MM/YYYY"
-                time_format: false
-                picker_utc: true
-                required: false
-              - { name: lieu, label: Lieu, widget: string, required: false }
-              - { name: description, label: Description, widget: text }
-              - name: affiche
-                label: Affiche ou photo
-                widget: image
-                required: false
-                choose_url: false
-              - name: tags
-                label: Mots-clés
-                hint: "Séparez les mots-clés par des virgules (ex. : Concours, Kaolack)."
-                widget: list
-                required: false
-                default: []
+    fields:
+      - { name: titre, label: Titre, widget: string }
+      - name: date_debut
+        label: Date (ou date de début)
+        widget: datetime
+        format: "YYYY-MM-DD"
+        date_format: "DD/MM/YYYY"
+        time_format: false
+        picker_utc: true
+      - name: date_fin
+        label: Date de fin
+        hint: "Seulement si l'événement dure plusieurs jours. Sinon, laissez vide."
+        widget: datetime
+        format: "YYYY-MM-DD"
+        date_format: "DD/MM/YYYY"
+        time_format: false
+        picker_utc: true
+        required: false
+      - { name: lieu, label: Lieu, widget: string, required: false }
+      - { name: description, label: Description, widget: text }
+      - { name: image, label: Affiche ou photo, widget: image, required: false, choose_url: false }
+      - name: tags
+        label: Mots-clés
+        hint: "Séparez les mots-clés par des virgules (ex. : Concours, Kaolack)."
+        widget: list
+        required: false
+        default: []
 
   # ---------------------------------------------------------------- Bibliothèque
   - name: livres
     label: Bibliothèque
-    description: "Les livres affichés sur la page Bibliothèque et sur la page d'accueil."
+    label_singular: Livre
+    description: "Chaque carte est un livre de la page Bibliothèque."
+    folder: content/livres
+    format: json
+    extension: json
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    identifier_field: titre
+    summary: "{{titre}}"
+    sortable_fields:
+      - field: titre
+        label: Titre
+      - field: auteur
+        label: Auteur
+      - field: ordre
+        label: Ordre d'affichage
+        default_sort: asc
+    view_groups:
+      - label: Catégorie
+        field: categorie
+    view_filters:
+      - { label: "Sur la page d'accueil", field: accueil, pattern: true }
+      - { label: "Dans le carrousel", field: carrousel, pattern: true }
+      - { label: "À paraître", field: a_paraitre, pattern: true }
     editor:
       preview: false
-    files:
-      - name: liste
-        label: Liste des livres
-        file: data/livres.json
-        fields:
-          - name: livres
-            label: Livres
-            label_singular: livre
-            widget: list
-            add_to_top: true
-            summary: "{{fields.titre}} — {{fields.auteur}}"
-            fields:
-              - { name: titre, label: Titre, widget: string }
-              - { name: auteur, label: Auteur, widget: string, required: false }
-              - name: categorie
-                label: Catégorie
-                widget: select
-                default: contemporains
-                options:
-                  - { label: "Publications Kalamu", value: kalamu }
-                  - { label: "Classiques", value: classiques }
-                  - { label: "Contemporains", value: contemporains }
-                  - { label: "Jeunesse", value: jeunesse }
-              - name: couverture
-                label: Couverture
-                widget: image
-                required: false
-                choose_url: false
-              - name: resume_court
-                label: Résumé court
-                hint: "Une ou deux phrases, affichées directement."
-                widget: text
-              - name: resume
-                label: Suite du résumé
-                hint: "Facultatif : affichée quand le visiteur clique sur « Lire plus »."
-                widget: text
-                required: false
-              - name: genre
-                label: Genre
-                hint: "Un mot affiché en étiquette (ex. : Poésie, Contes, BD)."
-                widget: string
-                required: false
-              - { name: a_paraitre, label: "Livre à paraître", widget: boolean, default: false }
-              - name: accueil
-                label: "Afficher sur la page d'accueil"
-                hint: "Les 4 premiers livres cochés apparaissent sur l'accueil."
-                widget: boolean
-                default: false
-              - name: carrousel
-                label: "Afficher dans le grand carrousel de la bibliothèque"
-                widget: boolean
-                default: false
-              - name: accroche
-                label: Phrase du carrousel
-                hint: "Courte phrase affichée sur l'image du carrousel."
-                widget: string
-                required: false
+    fields:
+      - { name: titre, label: Titre, widget: string }
+      - { name: auteur, label: Auteur, widget: string, required: false }
+      - name: categorie
+        label: Catégorie
+        widget: select
+        default: contemporains
+        options:
+          - { label: "Publications Kalamu", value: kalamu }
+          - { label: "Classiques", value: classiques }
+          - { label: "Contemporains", value: contemporains }
+          - { label: "Jeunesse", value: jeunesse }
+      - { name: cover, label: Couverture, widget: image, required: false, choose_url: false }
+      - name: resume_court
+        label: Résumé court
+        hint: "Une ou deux phrases, affichées directement."
+        widget: text
+      - name: resume
+        label: Suite du résumé
+        hint: "Facultatif : affichée quand le visiteur clique sur « Lire plus »."
+        widget: text
+        required: false
+      - name: genre
+        label: Genre
+        hint: "Un mot affiché en étiquette (ex. : Poésie, Contes, BD)."
+        widget: string
+        required: false
+      - { name: a_paraitre, label: "Livre à paraître", widget: boolean, default: false }
+      - name: accueil
+        label: "Afficher sur la page d'accueil"
+        hint: "Les 4 premiers livres cochés (selon l'ordre d'affichage) apparaissent sur l'accueil."
+        widget: boolean
+        default: false
+      - { name: carrousel, label: "Afficher dans le grand carrousel de la bibliothèque", widget: boolean, default: false }
+      - name: accroche
+        label: Phrase du carrousel
+        hint: "Courte phrase affichée sur l'image du carrousel."
+        widget: string
+        required: false
+      - name: ordre
+        label: Ordre d'affichage
+        hint: "Plus le nombre est petit, plus le livre apparaît tôt (ex. : 10, 20, 30…)."
+        widget: number
+        value_type: int
+        default: 100
 
   # ---------------------------------------------------------------- Membres
   - name: membres
     label: Membres
+    label_singular: Membre
+    description: "Les membres du bureau. Leurs fiches ne s'affichent que si l'option est cochée dans Paramètres › Bureau exécutif."
+    folder: content/membres
+    format: json
+    extension: json
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    identifier_field: nom
+    summary: "{{nom}} — {{role}}"
+    sortable_fields:
+      - field: ordre
+        label: Ordre d'affichage
+        default_sort: asc
+      - field: nom
+        label: Nom
     editor:
       preview: false
-    files:
-      - name: bureau
-        label: Bureau exécutif
-        file: data/membres.json
-        fields:
-          - name: photo_groupe
-            label: Photo de groupe du bureau
-            widget: image
-            required: false
-            choose_url: false
-          - name: afficher_fiches
-            label: "Afficher aussi la fiche de chaque membre"
-            hint: "Si décoché, seule la photo de groupe est affichée."
-            widget: boolean
-            default: false
-          - name: membres
-            label: Membres du bureau
-            label_singular: membre
-            widget: list
-            summary: "{{fields.nom}} — {{fields.role}}"
-            fields:
-              - { name: nom, label: Nom, widget: string }
-              - { name: role, label: Rôle, widget: string }
-              - { name: bio, label: Présentation, widget: text, required: false }
-              - { name: photo, label: Photo, widget: image, required: false, choose_url: false }
+    fields:
+      - { name: nom, label: Nom, widget: string }
+      - { name: role, label: Rôle, widget: string }
+      - { name: photo, label: Photo, widget: image, required: false, choose_url: false }
+      - { name: bio, label: Présentation, widget: text, required: false }
+      - name: ordre
+        label: Ordre d'affichage
+        hint: "Plus le nombre est petit, plus le membre apparaît tôt."
+        widget: number
+        value_type: int
+        default: 100
 
-  # ---------------------------------------------------------------- Coordonnées
-  - name: infos
-    label: Coordonnées
+  # ---------------------------------------------------------------- Paramètres
+  - name: parametres
+    label: Paramètres
+    description: "Coordonnées de l'association et photo du bureau exécutif."
     editor:
       preview: false
     files:
-      - name: contact
-        label: Contact et réseaux sociaux
-        file: data/infos.json
+      - name: infos
+        label: Coordonnées et réseaux sociaux
+        file: content/infos.json
         fields:
           - { name: adresse, label: Adresse, widget: string }
           - name: telephones
@@ -186,3 +210,13 @@ collections:
           - { name: facebook, label: Lien Facebook, widget: string, required: false }
           - { name: instagram, label: Lien Instagram, widget: string, required: false }
           - { name: tiktok, label: Lien TikTok, widget: string, required: false }
+      - name: bureau
+        label: Bureau exécutif
+        file: content/bureau.json
+        fields:
+          - { name: photo_groupe, label: Photo de groupe du bureau, widget: image, required: false, choose_url: false }
+          - name: afficher_fiches
+            label: "Afficher aussi la fiche de chaque membre"
+            hint: "Si décoché, seule la photo de groupe est affichée sur le site."
+            widget: boolean
+            default: false

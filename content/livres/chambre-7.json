@@ -1,0 +1,14 @@
+{
+  "titre": "Chambre 7",
+  "auteur": "Faty Dieng",
+  "categorie": "contemporains",
+  "resume_court": "Chambre 7 parle de toutes ces femmes rejetées, humiliées, violentées, mais qui réussissent à s'imposer face à une société injuste, sans pitié.",
+  "resume": "Faty Dieng dresse un portrait poignant de la résilience féminine et de la lutte contre les violences systémiques dans la société sénégalaise contemporaine.",
+  "genre": "Féminisme",
+  "a_paraitre": false,
+  "accueil": true,
+  "carrousel": true,
+  "accroche": "Un récit poignant sur la condition féminine",
+  "cover": "/images/uploads/Chambre_7.jpg",
+  "ordre": 20
+}

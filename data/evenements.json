@@ -6,8 +6,12 @@
       "date_fin": "2026-05-23",
       "lieu": "Pouponnière Lamine Coulibaly & Centre Culturel Régional de Kaolack",
       "description": "2ème édition du Concours d'Écriture 72H Kalamu : Journée de Dons, Mini Foire du Livre et Journée d'Excellence.",
-      "affiche": "/concours_72h.png",
-      "tags": ["Événement", "Concours", "Kalamu"]
+      "tags": [
+        "Événement",
+        "Concours",
+        "Kalamu"
+      ],
+      "image": "/images/uploads/concours_72h.png"
     },
     {
       "titre": "Journée de Dons",
@@ -15,8 +19,12 @@
       "date_fin": "",
       "lieu": "Pouponnière Lamine Coulibaly, Kaolack",
       "description": "Collecte de couches, laits et eaux minérales au profit de la Pouponnière Lamine Coulibaly de Kaolack. Marraine : Marie Paule NDAO, Entrepreneure et Styliste-Modéliste.",
-      "affiche": "/journee_de_dons.png",
-      "tags": ["Don", "Social", "Kaolack"]
+      "tags": [
+        "Don",
+        "Social",
+        "Kaolack"
+      ],
+      "image": "/images/uploads/journee_de_dons.png"
     },
     {
       "titre": "Mini Foire du Livre",
@@ -24,8 +32,12 @@
       "date_fin": "",
       "lieu": "Centre Culturel de Kaolack",
       "description": "Rencontre des Auteurs à Kaolack — Partie I. Parrain : M. Babacar Korjo NDIAYE, Promoteur littéraire. Stands gratuits, entrée libre.",
-      "affiche": "/mini_foire_du_livre.png",
-      "tags": ["Livre", "Culture", "Kaolack"]
+      "tags": [
+        "Livre",
+        "Culture",
+        "Kaolack"
+      ],
+      "image": "/images/uploads/mini_foire_du_livre.png"
     }
   ]
 }

@@ -1,0 +1,14 @@
+{
+  "titre": "Les Paroles du Cœur",
+  "auteur": "Samba Cor FAYE",
+  "categorie": "kalamu",
+  "resume_court": "Une collection de poèmes qui touchent l'âme.",
+  "resume": "",
+  "genre": "Poésie",
+  "a_paraitre": false,
+  "accueil": true,
+  "carrousel": true,
+  "accroche": "Une collection de poèmes qui touchent l'âme",
+  "cover": "/images/uploads/Paroles_Du_Coeur.jpg",
+  "ordre": 10
+}

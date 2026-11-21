@@ -1,0 +1,14 @@
+{
+  "titre": "L'Aventure Ambiguë",
+  "auteur": "Cheikh Hamidou Kane",
+  "categorie": "classiques",
+  "resume_court": "Œuvre fondatrice de la littérature africaine francophone, ce roman philosophique raconte le parcours de Samba Diallo, jeune élève musulman envoyé en France.",
+  "resume": "Entre tradition et modernité, spiritualité et rationalité, Kane explore les dilemmes identitaires de l'Afrique postcoloniale avec une profondeur remarquable.",
+  "genre": "Philosophie",
+  "a_paraitre": false,
+  "accueil": false,
+  "carrousel": false,
+  "accroche": "",
+  "cover": "/images/uploads/aventure_ambiguë.jpg",
+  "ordre": 80
+}

@@ -1,14 +1,62 @@
 {
-  "photo_groupe": "/bureau_executif.jpg",
+  "photo_groupe": "/images/uploads/bureau_executif.jpg",
   "afficher_fiches": false,
   "membres": [
-    { "nom": "Samba Cor FAYE", "role": "Président", "bio": "", "photo": "/samba_cor_faye.jpg" },
-    { "nom": "Gnima DIANKO", "role": "Relations membres & adhésions", "bio": "Contact privilégié des adhérents. Veille à leur engagement et à leur intégration au sein de l'association.", "photo": "/gnima_dianko.jpg" },
-    { "nom": "Khadijatou DIALLO", "role": "Responsable financière", "bio": "Gère les finances, la trésorerie et le budget. Garantit la bonne santé économique de l'organisation.", "photo": "/khadijatou_diallo.jpg" },
-    { "nom": "Pa Alioune NDIAYE", "role": "Responsable logistique", "bio": "Organise la logistique des événements et projets. Assure la fluidité des opérations sur le terrain.", "photo": "/pa_alioune_ndiaye.jpg" },
-    { "nom": "Ousmane NIASSE", "role": "Responsable pédagogique", "bio": "Conçoit et suit les programmes d'éducation. Veille à la qualité du contenu et à l'impact des initiatives.", "photo": "/ousmane_niass.jpg" },
-    { "nom": "Fatou Kiné THIAM", "role": "Responsable communication", "bio": "Gère l'image et la visibilité de l'association. Diffuse l'information et promeut les activités.", "photo": "/fatou_kiné_thiam.jpg" },
-    { "nom": "Aicha Gamou GUEYE", "role": "Responsable artistique", "bio": "Supervise la dimension créative des projets, la conception visuelle et les expressions artistiques.", "photo": "/aicha_gamou_gueye.jpg" },
-    { "nom": "Oumouratou BANGOURA", "role": "Documentation & bibliothèque", "bio": "Gère la bibliothèque et l'archivage. Assure l'organisation et l'accessibilité des ressources écrites.", "photo": "/oumouratou_bangoura.jpg" }
+    {
+      "nom": "Samba Cor FAYE",
+      "role": "Président",
+      "bio": "",
+      "photo": "/images/uploads/samba_cor_faye.jpg",
+      "ordre": 10
+    },
+    {
+      "nom": "Gnima DIANKO",
+      "role": "Relations membres & adhésions",
+      "bio": "Contact privilégié des adhérents. Veille à leur engagement et à leur intégration au sein de l'association.",
+      "photo": "/images/uploads/gnima_dianko.jpg",
+      "ordre": 20
+    },
+    {
+      "nom": "Khadijatou DIALLO",
+      "role": "Responsable financière",
+      "bio": "Gère les finances, la trésorerie et le budget. Garantit la bonne santé économique de l'organisation.",
+      "photo": "/images/uploads/khadijatou_diallo.jpg",
+      "ordre": 30
+    },
+    {
+      "nom": "Pa Alioune NDIAYE",
+      "role": "Responsable logistique",
+      "bio": "Organise la logistique des événements et projets. Assure la fluidité des opérations sur le terrain.",
+      "photo": "/images/uploads/pa_alioune_ndiaye.jpg",
+      "ordre": 40
+    },
+    {
+      "nom": "Ousmane NIASSE",
+      "role": "Responsable pédagogique",
+      "bio": "Conçoit et suit les programmes d'éducation. Veille à la qualité du contenu et à l'impact des initiatives.",
+      "photo": "/images/uploads/ousmane_niass.jpg",
+      "ordre": 50
+    },
+    {
+      "nom": "Fatou Kiné THIAM",
+      "role": "Responsable communication",
+      "bio": "Gère l'image et la visibilité de l'association. Diffuse l'information et promeut les activités.",
+      "photo": "/images/uploads/fatou_kiné_thiam.jpg",
+      "ordre": 60
+    },
+    {
+      "nom": "Aicha Gamou GUEYE",
+      "role": "Responsable artistique",
+      "bio": "Supervise la dimension créative des projets, la conception visuelle et les expressions artistiques.",
+      "photo": "/images/uploads/aicha_gamou_gueye.jpg",
+      "ordre": 70
+    },
+    {
+      "nom": "Oumouratou BANGOURA",
+      "role": "Documentation & bibliothèque",
+      "bio": "Gère la bibliothèque et l'archivage. Assure l'organisation et l'accessibilité des ressources écrites.",
+      "photo": "/images/uploads/oumouratou_bangoura.jpg",
+      "ordre": 80
+    }
   ]
 }

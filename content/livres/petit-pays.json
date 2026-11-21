@@ -1,0 +1,14 @@
+{
+  "titre": "Petit Pays",
+  "auteur": "Gaël Faye",
+  "categorie": "contemporains",
+  "resume_court": "L'histoire d'un enfant pris dans la guerre civile au Burundi.",
+  "resume": "À travers les yeux innocents de Gabriel, Gaël Faye raconte la perte de l'enfance et l'horreur de la guerre, tout en célébrant la beauté de l'Afrique des Grands Lacs avant le chaos.",
+  "genre": "Guerre",
+  "a_paraitre": false,
+  "accueil": false,
+  "carrousel": false,
+  "accroche": "",
+  "cover": "/images/uploads/petit_pays.jpg",
+  "ordre": 110
+}

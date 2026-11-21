@@ -1,0 +1,14 @@
+{
+  "titre": "Nouveau Livre",
+  "auteur": "",
+  "categorie": "kalamu",
+  "resume_court": "Une nouvelle parution arrive bientôt.",
+  "resume": "",
+  "genre": "",
+  "a_paraitre": true,
+  "accueil": true,
+  "carrousel": true,
+  "accroche": "Découvrez nos prochaines parutions",
+  "cover": "/images/uploads/new-book.jpg",
+  "ordre": 40
+}

@@ -14,37 +14,43 @@ Ce guide explique comment mettre à jour le site **sans toucher au code**.
 
 | Rubrique | Ce qu'elle contient |
 |---|---|
-| **Événements** | Titre, date(s), lieu, description, affiche, mots-clés |
-| **Bibliothèque** | Livres : titre, auteur, catégorie, couverture, résumé |
-| **Membres** | Photo du bureau exécutif et fiches des membres |
-| **Coordonnées** | Adresse, téléphones, e-mail, liens Facebook / Instagram / TikTok |
+| **Événements** | Une carte par événement : titre, date(s), lieu, description, affiche |
+| **Bibliothèque** | Une carte par livre : titre, auteur, catégorie, couverture, résumé |
+| **Membres** | Une carte par membre du bureau : nom, rôle, photo |
+| **Paramètres** | Coordonnées et réseaux sociaux, photo de groupe du bureau |
 
 ## Ajouter un événement
 
-1. Cliquez sur **Événements**, puis sur **Liste des événements**.
-2. Cliquez sur **« Ajouter événement + »** : un formulaire vide apparaît en haut de la liste.
+1. Cliquez sur **Événements** dans le menu de gauche.
+2. Cliquez sur le bouton orange **« + Événement »**.
 3. Remplissez le titre, la date (et la date de fin si l'événement dure plusieurs jours), le lieu et la description.
 4. Pour l'affiche : **« Choisir une image »** → **« Téléverser »** → choisissez l'image sur votre téléphone ou ordinateur.
-5. Cliquez sur **« Publier »**, puis **« Publier maintenant »**.
+5. Cliquez sur **« Publier »** (en haut), puis **« Publier maintenant »**.
 
 Le site est mis à jour en **1 à 2 minutes**.
 
-**Pas besoin de déplacer les anciens événements** : dès que la date est passée, l'événement passe tout seul dans la rubrique « Événements passés ».
+**Pas besoin de déplacer les anciens événements** : dès que la date est passée, l'événement passe tout seul dans « Événements passés » sur le site.
+
+## Modifier ou supprimer
+
+- **Modifier** : cliquez sur la carte, changez ce qu'il faut, puis **Publier** → **Publier maintenant**.
+- **Supprimer** : ouvrez la carte, puis cliquez sur **« Supprimer l'entrée »** en haut.
 
 ## Ajouter ou modifier un livre
 
-1. **Bibliothèque** → **Liste des livres** → **« Ajouter livre + »** (ou cliquez sur un livre existant pour l'ouvrir).
+1. **Bibliothèque** → bouton orange **« + Livre »** (ou cliquez sur un livre existant).
 2. Choisissez la **catégorie** : Publications Kalamu, Classiques, Contemporains ou Jeunesse.
 3. Cases à cocher utiles :
    - **Afficher sur la page d'accueil** : les 4 premiers livres cochés apparaissent sur l'accueil.
    - **Afficher dans le grand carrousel** : le livre défile en grand en haut de la page Bibliothèque.
    - **Livre à paraître** : affiche « À paraître » à la place de l'auteur.
-4. **Publier** → **Publier maintenant**.
+4. **Ordre d'affichage** : plus le nombre est petit, plus le livre apparaît tôt (10, 20, 30…).
+5. **Publier** → **Publier maintenant**.
 
-## Supprimer ou réordonner
+## Astuces
 
-- **Supprimer** : cliquez sur la croix **✕** à droite de l'élément, puis publiez.
-- **Changer l'ordre** : faites glisser l'élément avec la poignée **═** au centre.
+- **Trier / Grouper / Filtrer** (en haut à droite des cartes) : par exemple, grouper les livres par catégorie ou n'afficher que ceux de la page d'accueil.
+- **Affichage en liste** : les deux petits boutons à droite permettent de passer des cartes à une liste simple.
 
 ## En cas d'erreur
 
