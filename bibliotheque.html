@@ -38,6 +38,7 @@
     
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="content.css">
 </head>
 <body>
     <!-- Header -->
@@ -91,44 +92,8 @@
         <section class="library-hero-section">
             <div class="modern-hero-carousel">
                 <div class="carousel-container">
-                    <div class="carousel-track">
-                        <div class="carousel-slide active" style="background-image: url('Afrisiti.jpg')">
-                            <div class="slide-content">
-                                <h3>Afrisiti</h3>
-                                <p>Une œuvre qui célèbre la beauté et la force africaine</p>
-                            </div>
-                        </div>
-                        <div class="carousel-slide" style="background-image: url('akissi.png')">
-                            <div class="slide-content">
-                                <h3>Akissi</h3>
-                                <p>Les aventures d'une petite fille ivoirienne espiègle</p>
-                            </div>
-                        </div>
-                        <div class="carousel-slide" style="background-image: url('Paroles_Du_Coeur.jpg')">
-                            <div class="slide-content">
-                                <h3>Paroles du Cœur</h3>
-                                <p>Une collection de poèmes qui touchent l'âme</p>
-                            </div>
-                        </div>
-                        <div class="carousel-slide" style="background-image: url('deja-paru.jpg')">
-                            <div class="slide-content">
-                                <h3>Déjà Paru</h3>
-                                <p>Les dernières parutions de nos auteurs</p>
-                            </div>
-                        </div>
-                        <div class="carousel-slide" style="background-image: url('new-book.jpg')">
-                            <div class="slide-content">
-                                <h3>Nouveautés</h3>
-                                <p>Découvrez nos dernières acquisitions</p>
-                            </div>
-                        </div>
-                        <div class="carousel-slide" style="background-image: url('Chambre_7.jpg')">
-                            <div class="slide-content">
-                                <h3>Chambre 7</h3>
-                                <p>Un récit poignant sur la condition féminine</p>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Livres « carrousel » gérés depuis l'admin (data/livres.json) -->
+                    <div class="carousel-track" id="carrousel-livres"></div>
                     
                     <!-- Navigation Controls -->
                     <button class="carousel-nav prev-nav" onclick="changeSlide(-1)" aria-label="Image précédente">
@@ -139,14 +104,7 @@
                     </button>
                     
                     <!-- Indicators -->
-                    <div class="carousel-indicators">
-                        <span class="indicator active" onclick="goToSlide(0)"></span>
-                        <span class="indicator" onclick="goToSlide(1)"></span>
-                        <span class="indicator" onclick="goToSlide(2)"></span>
-                        <span class="indicator" onclick="goToSlide(3)"></span>
-                        <span class="indicator" onclick="goToSlide(4)"></span>
-                        <span class="indicator" onclick="goToSlide(5)"></span>
-                    </div>
+                    <div class="carousel-indicators" id="carrousel-indicateurs"></div>
                 </div>
                 <div class="hero-overlay"></div>
             </div>
@@ -236,289 +194,8 @@
                         <p>Découvrez une sélection d'œuvres majeures de la littérature africaine</p>
                     </div>
 
-                    <!-- Books Categories -->
-                    
-                    <!-- Classics Section -->
-                    <div class="books-category">
-                        <div class="category-header">
-                            <div class="category-icon">
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <h3>Classiques</h3>
-                            <p>Les œuvres fondatrices de la littérature africaine</p>
-                        </div>
-                        
-                        <!-- Books Grid -->
-                        <div class="books-grid">
-                            <div class="book-card classic">
-                                <div class="book-cover">
-                                    <img src="enfant_noir.jpg" alt="L'Enfant noir - Camara Laye" class="book-image">
-                                </div>
-                                <div class="book-info">
-                                    <h3>L'Enfant noir</h3>
-                                    <p class="book-author">Camara Laye</p>
-                                    <p class="book-description">
-                                        <span class="description-short">Un récit autobiographique poignant sur l'enfance en Guinée coloniale.</span>
-                                        <span class="description-full" style="display: none;">Un récit autobiographique poignant sur l'enfance en Guinée coloniale. Camara Laye nous plonge dans son univers d'enfant, entre traditions africaines et modernité coloniale, créant un témoignage intemporel sur l'Afrique pré-indépendance.</span>
-                                    </p>
-                                    <button class="read-more-btn" onclick="toggleDescription(this)">Lire plus</button>
-                                    <div class="book-tags">
-                                        <span class="book-tag">Autobiographie</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="book-card classic">
-                                <div class="book-cover">
-                                    <img src="si_longue_lettre.jpg" alt="Une si longue lettre - Mariama Bâ" class="book-image">
-                                </div>
-                                <div class="book-info">
-                                    <h3>Une si longue lettre</h3>
-                                    <p class="book-author">Mariama Bâ</p>
-                                    <p class="book-description">
-                                        <span class="description-short">Une correspondance intime qui explore la condition féminine au Sénégal.</span>
-                                        <span class="description-full" style="display: none;">Une correspondance intime qui explore la condition féminine au Sénégal. À travers la lettre de Ramatoulaye à son amie Aïssatou, Mariama Bâ dénonce la polygamie et les inégalités sociales, tout en célébrant la force et la résilience des femmes africaines.</span>
-                                    </p>
-                                    <button class="read-more-btn" onclick="toggleDescription(this)">Lire plus</button>
-                                    <div class="book-tags">
-                                        <span class="book-tag">Féminisme</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="book-card classic">
-                                <div class="book-cover">
-                                    <img src="devoir_de_violence.jpg" alt="Le Devoir de violence - Yambo Ouologuem" class="book-image">
-                                </div>
-                                <div class="book-info">
-                                    <h3>Le Devoir de violence</h3>
-                                    <p class="book-author">Yambo Ouologuem</p>
-                                    <p class="book-description">
-                                        <span class="description-short">Une critique acerbe de l'histoire africaine et de la colonisation.</span>
-                                        <span class="description-full" style="display: none;">Une critique acerbe de l'histoire africaine et de la colonisation. Yambo Ouologuem remet en question les mythes de l'Afrique précoloniale et dénonce les violences perpétrées par les élites africaines elles-mêmes, créant un roman controversé et révolutionnaire.</span>
-                                    </p>
-                                    <button class="read-more-btn" onclick="toggleDescription(this)">Lire plus</button>
-                                    <div class="book-tags">
-                                        <span class="book-tag">Histoire</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="book-card classic">
-                                <div class="book-cover">
-                                    <img src="aventure_ambiguë.jpg" alt="L'Aventure Ambiguë - Cheikh Hamidou Kane" class="book-image">
-                                </div>
-                                <div class="book-info">
-                                    <h3>L'Aventure Ambiguë</h3>
-                                    <p class="book-author">Cheikh Hamidou Kane</p>
-                                    <p class="book-description">
-                                        <span class="description-short">Œuvre fondatrice de la littérature africaine francophone, ce roman philosophique raconte le parcours de Samba Diallo, jeune élève musulman envoyé en France.</span>
-                                        <span class="description-full" style="display: none;">Œuvre fondatrice de la littérature africaine francophone, ce roman philosophique raconte le parcours de Samba Diallo, jeune élève musulman envoyé en France. Entre tradition et modernité, spiritualité et rationalité, Kane explore les dilemmes identitaires de l'Afrique postcoloniale avec une profondeur remarquable.</span>
-                                    </p>
-                                    <button class="read-more-btn" onclick="toggleDescription(this)">Lire plus</button>
-                                    <div class="book-tags">
-                                        <span class="book-tag">Philosophie</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Voir plus button for Classics -->
-                        <div class="see-more-section">
-                            <button class="see-more-btn" onclick="toggleMoreBooks('classics')">
-                                <span class="see-more-text">Voir plus de classiques</span>
-                                <i class="fas fa-chevron-down see-more-icon"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Contemporary Section -->
-                    <div class="books-category">
-                        <div class="category-header">
-                            <div class="category-icon">
-                                <i class="fas fa-calendar-alt"></i>
-                            </div>
-                            <h3>Contemporains</h3>
-                            <p>Les nouvelles voix de la littérature africaine</p>
-                        </div>
-                        
-                        <!-- Books Grid -->
-                        <div class="books-grid">
-                            <div class="book-card contemporary">
-                                <div class="book-cover">
-                                    <img src="americanah.jpg" alt="Americanah - Chimamanda Ngozi Adichie" class="book-image">
-                                </div>
-                                <div class="book-info">
-                                    <h3>Americanah</h3>
-                                    <p class="book-author">Chimamanda Ngozi Adichie</p>
-                                    <p class="book-description">
-                                        <span class="description-short">Une exploration de l'identité africaine dans le monde contemporain.</span>
-                                        <span class="description-full" style="display: none;">Une exploration de l'identité africaine dans le monde contemporain. À travers le parcours d'Ifemelu, une jeune Nigériane émigrée aux États-Unis, Adichie examine avec finesse les questions de race, d'immigration et d'appartenance culturelle dans notre monde globalisé.</span>
-                                    </p>
-                                    <button class="read-more-btn" onclick="toggleDescription(this)">Lire plus</button>
-                                    <div class="book-tags">
-                                        <span class="book-tag">Identité</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="book-card contemporary">
-                                <div class="book-cover">
-                                    <img src="ventre_de_atlantique.jpg" alt="Le Ventre de l'Atlantique - Fatou Diome" class="book-image">
-                                </div>
-                                <div class="book-info">
-                                    <h3>Le Ventre de l'Atlantique</h3>
-                                    <p class="book-author">Fatou Diome</p>
-                                    <p class="book-description">
-                                        <span class="description-short">Un roman sur l'immigration et les rêves d'Europe.</span>
-                                        <span class="description-full" style="display: none;">Un roman sur l'immigration et les rêves d'Europe. Fatou Diome raconte avec humour et tendresse l'histoire de Salie, une jeune Sénégalaise qui tente de concilier ses racines africaines avec sa vie en France, déconstruisant les clichés sur l'immigration.</span>
-                                    </p>
-                                    <button class="read-more-btn" onclick="toggleDescription(this)">Lire plus</button>
-                                    <div class="book-tags">
-                                        <span class="book-tag">Immigration</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="book-card contemporary">
-                                <div class="book-cover">
-                                    <img src="petit_pays.jpg" alt="Petit Pays - Gaël Faye" class="book-image">
-                                </div>
-                                <div class="book-info">
-                                    <h3>Petit Pays</h3>
-                                    <p class="book-author">Gaël Faye</p>
-                                    <p class="book-description">
-                                        <span class="description-short">L'histoire d'un enfant pris dans la guerre civile au Burundi.</span>
-                                        <span class="description-full" style="display: none;">L'histoire d'un enfant pris dans la guerre civile au Burundi. À travers les yeux innocents de Gabriel, Gaël Faye raconte la perte de l'enfance et l'horreur de la guerre, tout en célébrant la beauté de l'Afrique des Grands Lacs avant le chaos.</span>
-                                    </p>
-                                    <button class="read-more-btn" onclick="toggleDescription(this)">Lire plus</button>
-                                    <div class="book-tags">
-                                        <span class="book-tag">Guerre</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="book-card contemporary">
-                                <div class="book-cover">
-                                    <img src="Chambre_7.jpg" alt="Chambre 7 - Samba Cor Faye" class="book-image">
-                                </div>
-                                <div class="book-info">
-                                    <h3>Chambre 7</h3>
-                                    <p class="book-author">Faty Dieng</p>
-                                    <p class="book-description">
-                                        <span class="description-short">Chambre 7 parle de toutes ces femmes rejetées, humiliées, violentées, mais qui réussissent à s'imposer face à une société injuste, sans pitié.</span>
-                                        <span class="description-full" style="display: none;">Chambre 7 parle de toutes ces femmes rejetées, humiliées, violentées, mais qui réussissent à s'imposer face à une société injuste, sans pitié. Faty Dieng dresse un portrait poignant de la résilience féminine et de la lutte contre les violences systémiques dans la société sénégalaise contemporaine.</span>
-                                    </p>
-                                    <button class="read-more-btn" onclick="toggleDescription(this)">Lire plus</button>
-                                    <div class="book-tags">
-                                        <span class="book-tag">Féminisme</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="book-card contemporary">
-                                <div class="book-cover">
-                                    <img src="parole_aux_négresses.jpg" alt="La Parole aux Négresses - Awa Thiam" class="book-image">
-                                </div>
-                                <div class="book-info">
-                                    <h3>La Parole aux Négresses</h3>
-                                    <p class="book-author">Awa Thiam</p>
-                                    <p class="book-description">
-                                        <span class="description-short">Essai féministe fondateur qui donne la parole aux femmes africaines. Un acte de courage qui dénonce les violences sexistes.</span>
-                                        <span class="description-full" style="display: none;">Essai féministe fondateur qui donne la parole aux femmes africaines. Un acte de courage qui dénonce les violences sexistes. Awa Thiam brise le silence sur les mutilations génitales et les oppressions subies par les femmes, ouvrant la voie au féminisme africain contemporain.</span>
-                                    </p>
-                                    <button class="read-more-btn" onclick="toggleDescription(this)">Lire plus</button>
-                                    <div class="book-tags">
-                                        <span class="book-tag">Féminisme</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="book-card contemporary">
-                                <div class="book-cover">
-                                    <img src="conscience_africaine.jpg" alt="Ousmane Sembène : Une Conscience Africaine - Samba Gadjigo" class="book-image">
-                                </div>
-                                <div class="book-info">
-                                    <h3>Ousmane Sembène : Une Conscience Africaine</h3>
-                                    <p class="book-author">Samba Gadjigo</p>
-                                    <p class="book-description">
-                                        <span class="description-short">Biographie du "père du cinéma africain". Retrace la vie d'un écrivain, cinéaste et militant engagé.</span>
-                                        <span class="description-full" style="display: none;">Biographie du "père du cinéma africain". Retrace la vie d'un écrivain, cinéaste et militant engagé. Samba Gadjigo nous fait découvrir l'homme derrière l'artiste, son combat pour l'indépendance culturelle africaine et son héritage dans le cinéma mondial.</span>
-                                    </p>
-                                    <button class="read-more-btn" onclick="toggleDescription(this)">Lire plus</button>
-                                    <div class="book-tags">
-                                        <span class="book-tag">Biographie</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Voir plus button for Contemporary -->
-                        <div class="see-more-section">
-                            <button class="see-more-btn" onclick="toggleMoreBooks('contemporary')">
-                                <span class="see-more-text">Voir plus de contemporains</span>
-                                <i class="fas fa-chevron-down see-more-icon"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Youth Section -->
-                    <div class="books-category">
-                        <div class="category-header">
-                            <div class="category-icon">
-                                <i class="fas fa-user"></i>
-                            </div>
-                            <h3>Jeunesse</h3>
-                            <p>Des œuvres pour les jeunes lecteurs</p>
-                        </div>
-                        
-                        <!-- Books Grid -->
-                        <div class="books-grid">
-                            <div class="book-card youth">
-                                <div class="book-cover">
-                                    <img src="contes_am_koumba.jpg" alt="Les Contes d'Amadou Koumba - Birago Diop" class="book-image">
-                                </div>
-                                <div class="book-info">
-                                    <h3>Les Contes d'Amadou Koumba</h3>
-                                    <p class="book-author">Birago Diop</p>
-                                    <p class="book-description">
-                                        <span class="description-short">Des contes traditionnels sénégalais pour tous les âges.</span>
-                                        <span class="description-full" style="display: none;">Des contes traditionnels sénégalais pour tous les âges. Birago Diop nous transporte dans l'univers magique de la tradition orale africaine, où les animaux parlent et enseignent la sagesse ancestrale à travers des histoires intemporelles.</span>
-                                    </p>
-                                    <button class="read-more-btn" onclick="toggleDescription(this)">Lire plus</button>
-                                    <div class="book-tags">
-                                        <span class="book-tag">Contes</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="book-card youth">
-                                <div class="book-cover">
-                                    <img src="akissi.png" alt="Akissi - Marguerite Abouet" class="book-image">
-                                </div>
-                                <div class="book-info">
-                                    <h3>Akissi</h3>
-                                    <p class="book-author">Marguerite Abouet</p>
-                                    <p class="book-description">
-                                        <span class="description-short">Les aventures d'une petite fille ivoirienne espiègle.</span>
-                                        <span class="description-full" style="display: none;">Les aventures d'une petite fille ivoirienne espiègle. Marguerite Abouet et Mathieu Sapin créent une héroïne attachante qui découvre le monde avec curiosité et malice, offrant aux jeunes lecteurs une vision joyeuse et authentique de l'enfance africaine.</span>
-                                    </p>
-                                    <button class="read-more-btn" onclick="toggleDescription(this)">Lire plus</button>
-                                    <div class="book-tags">
-                                        <span class="book-tag">BD</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Voir plus button for Youth -->
-                        <div class="see-more-section">
-                            <button class="see-more-btn" onclick="toggleMoreBooks('youth')">
-                                <span class="see-more-text">Voir plus de jeunesse</span>
-                                <i class="fas fa-chevron-down see-more-icon"></i>
-                            </button>
-                        </div>
-                    </div>
+                    <!-- Catégories et livres gérés depuis l'admin (data/livres.json) -->
+                    <div id="bibliotheque-collection"></div>
                 </div>
             </div>
         </section>
@@ -545,7 +222,7 @@
                     <h4>Navigation</h4>
                     <ul>
                         <li><a href="index.html">Accueil</a></li>
-                        <li><a href="index.html#apropos">À propos</a></li>
+                        <li><a href="index.html#a-propos">À propos</a></li>
                         <li><a href="index.html#objectifs">Objectifs</a></li>
                         <li><a href="index.html#activites">Activités</a></li>
                         <li><a href="index.html#membres">Membres</a></li>
@@ -555,14 +232,14 @@
                 
                 <div class="footer-section">
                     <h4>Contact</h4>
-                    <p>Kaolack, Sénégal</p>
-                    <p>784681771 - 784716518</p>
-                    <p>associationkalamu@gmail.com</p>
+                    <p data-info="adresse">Kaolack, Sénégal</p>
+                    <p data-info="telephones-texte">784681771 - 784716518</p>
+                    <p data-info="email">associationkalamu@gmail.com</p>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2025 Association Kalamu. Tous droits réservés.</p>
+                <p>&copy; <span data-annee>2025</span> Association Kalamu. Tous droits réservés.</p>
                 <p>Créé avec <span class="heart">❤️</span> pour la culture africaine</p>
             </div>
         </div>
@@ -570,5 +247,6 @@
 
     <!-- Scripts -->
     <script src="script.js"></script>
+    <script src="content.js"></script>
 </body>
 </html>

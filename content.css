@@ -1,0 +1,71 @@
+/* Styles du contenu géré depuis l'espace admin (affiché par content.js) */
+/* ==========================================================================
+   Contenu géré depuis l'espace admin (content.js)
+   ========================================================================== */
+[hidden] {
+    display: none !important;
+}
+
+button.indicator {
+    padding: 0;
+    appearance: none;
+}
+
+.content-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--text-color);
+    background: rgba(255, 107, 53, 0.06);
+    border-radius: 1rem;
+    padding: 2rem;
+    line-height: 1.6;
+}
+
+.past-events {
+    margin-bottom: 4rem;
+}
+
+.past-events-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.75rem;
+    color: var(--dark-color);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.event-card.past-event::before {
+    background: linear-gradient(90deg, #9aa5b1, #c3cad3);
+}
+
+.event-card.past-event .event-date {
+    color: #6b7785;
+}
+
+.event-card.past-event .event-image {
+    filter: saturate(0.6);
+}
+
+.book-card.kalamu {
+    border-left: 4px solid var(--secondary-color);
+}
+
+.book-image-empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    background: rgba(255, 107, 53, 0.08);
+    color: var(--primary-color);
+    font-size: 3rem;
+}
+
+/* Une carte seule garde une largeur normale au lieu d'occuper toute la ligne */
+#evenements-a-venir,
+#evenements-passes {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+}
+
+/* Le voile décoratif du carrousel bloquait les clics sur les flèches */
+.library-hero-section .hero-overlay {
+    pointer-events: none;
+}
