@@ -40,6 +40,8 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="content.css">
     <link rel="stylesheet" href="design.css">
+    <link rel="stylesheet" href="pages.css">
+    <link rel="stylesheet" href="etageres.css">
 </head>
 <body class="kl-page-library">
     <!-- Header -->
@@ -52,14 +54,14 @@
 
             <nav class="kl-pill kl-nav main-nav" aria-label="Navigation principale">
                 <a href="index.html" class="kl-nav-link"><i class="fas fa-house" aria-hidden="true"></i><span>Accueil</span></a>
-                <a href="index.html#a-propos" class="kl-nav-link"><i class="fas fa-circle-info" aria-hidden="true"></i><span>À propos</span></a>
-                <a href="index.html#objectifs" class="kl-nav-link"><i class="fas fa-bullseye" aria-hidden="true"></i><span>Objectifs</span></a>
-                <a href="index.html#activites" class="kl-nav-link"><i class="fas fa-feather-alt" aria-hidden="true"></i><span>Activités</span></a>
+                <a href="a-propos.html" class="kl-nav-link"><i class="fas fa-circle-info" aria-hidden="true"></i><span>À propos</span></a>
+                <a href="evenements.html" class="kl-nav-link"><i class="fas fa-calendar-alt" aria-hidden="true"></i><span>Événements</span></a>
                 <a href="bibliotheque.html" class="kl-nav-link" aria-current="page"><i class="fas fa-book-open" aria-hidden="true"></i><span>Bibliothèque</span></a>
-                <a href="index.html#contact" class="kl-nav-link"><i class="fas fa-envelope" aria-hidden="true"></i><span>Contact</span></a>
+                <a href="equipe.html" class="kl-nav-link"><i class="fas fa-users" aria-hidden="true"></i><span>Équipe</span></a>
+                <a href="contact.html" class="kl-nav-link"><i class="fas fa-envelope" aria-hidden="true"></i><span>Contact</span></a>
             </nav>
 
-            <a href="index.html#contact" class="kl-pill kl-cta">
+            <a href="contact.html" class="kl-pill kl-cta">
                 Nous rejoindre
                 <span class="kl-arrow"><i class="fas fa-arrow-right" aria-hidden="true"></i></span>
             </a>
@@ -73,11 +75,11 @@
         <div class="mobile-menu kl-mobile-menu" id="menu-mobile">
             <nav class="mobile-nav" aria-label="Navigation mobile">
                 <a href="index.html" class="mobile-nav-link"><i class="fas fa-house" aria-hidden="true"></i><span>Accueil</span></a>
-                <a href="index.html#a-propos" class="mobile-nav-link"><i class="fas fa-circle-info" aria-hidden="true"></i><span>À propos</span></a>
-                <a href="index.html#objectifs" class="mobile-nav-link"><i class="fas fa-bullseye" aria-hidden="true"></i><span>Objectifs</span></a>
-                <a href="index.html#activites" class="mobile-nav-link"><i class="fas fa-feather-alt" aria-hidden="true"></i><span>Activités</span></a>
+                <a href="a-propos.html" class="mobile-nav-link"><i class="fas fa-circle-info" aria-hidden="true"></i><span>À propos</span></a>
+                <a href="evenements.html" class="mobile-nav-link"><i class="fas fa-calendar-alt" aria-hidden="true"></i><span>Événements</span></a>
                 <a href="bibliotheque.html" class="mobile-nav-link" aria-current="page"><i class="fas fa-book-open" aria-hidden="true"></i><span>Bibliothèque</span></a>
-                <a href="index.html#contact" class="mobile-nav-link"><i class="fas fa-envelope" aria-hidden="true"></i><span>Contact</span></a>
+                <a href="equipe.html" class="mobile-nav-link"><i class="fas fa-users" aria-hidden="true"></i><span>Équipe</span></a>
+                <a href="contact.html" class="mobile-nav-link"><i class="fas fa-envelope" aria-hidden="true"></i><span>Contact</span></a>
             </nav>
             <div class="kl-mobile-social">
                 <a href="https://www.facebook.com/share/16idtbQot2/?mibextid=wwXIfr" class="kl-round-btn" data-info-lien="facebook" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
@@ -122,68 +124,6 @@
             </div>
         </section>
 
-        <!-- Recommendations Section -->
-        <section class="library-recommendations-section">
-            <div class="container">
-                <div class="max-w-6xl mx-auto">
-                    <!-- Section Header -->
-                    <div class="library-section-header">
-                        <h2>Nos Recommandations</h2>
-                        <p>Une collection en cours de constitution pour célébrer la richesse de la littérature africaine</p>
-                    </div>
-
-                    <!-- Coming Soon Card -->
-                    <div class="library-coming-soon">
-                        <div class="library-card">
-                            <div class="library-card-content">
-                                <div class="library-card-icon">
-                                    <i class="fas fa-book-open"></i>
-                                </div>
-                                <h3>Collection en Préparation</h3>
-                                <p>
-                                    Nous travaillons actuellement à la constitution d'une bibliothèque exceptionnelle 
-                                    qui mettra en lumière les trésors de la littérature africaine. Romans, poésie, 
-                                    essais, contes traditionnels... notre sélection valorisera la diversité et la 
-                                    richesse de nos auteurs.
-                                </p>
-
-                                <!-- Future Categories Preview -->
-                                <div class="library-categories-preview">
-                                    <div class="library-category-item">
-                                        <i class="fas fa-star"></i>
-                                        <h4>Classiques</h4>
-                                        <p>Œuvres incontournables</p>
-                                    </div>
-                                    <div class="library-category-item">
-                                        <i class="fas fa-calendar-alt"></i>
-                                        <h4>Contemporains</h4>
-                                        <p>Nouvelles voix africaines</p>
-                                    </div>
-                                    <div class="library-category-item">
-                                        <i class="fas fa-user"></i>
-                                        <h4>Jeunesse</h4>
-                                        <p>Pour les jeunes lecteurs</p>
-                                    </div>
-                                </div>
-
-                                <!-- Call to Action -->
-                                <div class="library-cta">
-                                    <h4>Vos Suggestions sont les Bienvenues !</h4>
-                                    <p>
-                                        Vous avez des recommandations d'ouvrages africains qui vous tiennent à cœur ? 
-                                        Partagez-les avec nous pour enrichir notre future collection.
-                                    </p>
-                                    <a href="index.html#contact" class="library-cta-btn">
-                                        Nous Contacter
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Books Collection Section -->
         <section class="books-collection-section">
             <div class="container">
@@ -193,9 +133,37 @@
                         <h2>Notre Collection</h2>
                         <p>Découvrez une sélection d'œuvres majeures de la littérature africaine</p>
                     </div>
+                    <p class="eg-hint"><i class="fas fa-hand-pointer" aria-hidden="true"></i> Touchez un livre pour le sortir de l'étagère</p>
 
                     <!-- Catégories et livres gérés depuis l'admin (data/livres.json) -->
-                    <div id="bibliotheque-collection"></div>
+                    <nav id="rayons-nav" class="rc-nav" aria-label="Rayons de la bibliothèque"></nav>
+                    <div id="etageres"><p class="content-empty">Chargement de la bibliothèque…</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Suggestions (styles : etageres.css) -->
+        <section class="rc-section" id="suggestions">
+            <div class="container">
+                <div class="rc-head">
+                    <span class="rc-eyebrow"><i class="fas fa-seedling" aria-hidden="true"></i> Une bibliothèque qui s'agrandit</span>
+                    <h2>Nos recommandations</h2>
+                    <p>La collection s'enrichit au fil du temps. Explorez les rayons, ou proposez-nous un ouvrage qui vous tient à cœur.</p>
+                </div>
+
+                <ul class="rc-stats">
+                    <li><strong data-eg-stat="livres">–</strong><span>ouvrages</span></li>
+                    <li><strong data-eg-stat="auteurs">–</strong><span>auteurs</span></li>
+                    <li><strong data-eg-stat="editeurs">–</strong><span>maisons d'édition</span></li>
+                </ul>
+
+                <div class="rc-card">
+                    <div class="rc-card-icon"><i class="fas fa-lightbulb" aria-hidden="true"></i></div>
+                    <div class="rc-card-text">
+                        <h3>Un livre à nous recommander ?</h3>
+                        <p>Roman, poésie, essai, conte… Dites-nous quel ouvrage africain vous a marqué : il pourra rejoindre nos étagères.</p>
+                    </div>
+                    <a href="contact.html?sujet=livre#message" class="pg-btn">Proposer un livre <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                 </div>
             </div>
         </section>
@@ -222,11 +190,11 @@
                     <h4>Navigation</h4>
                     <ul>
                         <li><a href="index.html">Accueil</a></li>
-                        <li><a href="index.html#a-propos">À propos</a></li>
-                        <li><a href="index.html#objectifs">Objectifs</a></li>
-                        <li><a href="index.html#activites">Activités</a></li>
-                        <li><a href="index.html#membres">Membres</a></li>
-                        <li><a href="index.html#partenaires">Partenaires</a></li>
+                        <li><a href="a-propos.html">À propos</a></li>
+                        <li><a href="evenements.html">Événements</a></li>
+                        <li><a href="bibliotheque.html">Bibliothèque</a></li>
+                        <li><a href="equipe.html">Équipe</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
                 
@@ -249,5 +217,6 @@
     <script src="script.js"></script>
     <script src="content.js"></script>
     <script src="design.js"></script>
+    <script src="etageres.js"></script>
 </body>
 </html>

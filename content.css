@@ -15,7 +15,7 @@ button.indicator {
     grid-column: 1 / -1;
     text-align: center;
     color: var(--text-color);
-    background: rgba(255, 107, 53, 0.06);
+    background: rgba(196, 102, 60, 0.06);
     border-radius: 1rem;
     padding: 2rem;
     line-height: 1.6;
@@ -54,7 +54,7 @@ button.indicator {
     align-items: center;
     justify-content: center;
     min-height: 200px;
-    background: rgba(255, 107, 53, 0.08);
+    background: rgba(196, 102, 60, 0.08);
     color: var(--primary-color);
     font-size: 3rem;
 }

@@ -31,7 +31,7 @@ collections:
   - name: evenements
     label: Événements
     label_singular: Événement
-    description: "Chaque carte est un événement. Il passe tout seul de « À venir » à « Événements passés » quand sa date est dépassée."
+    description: "Chaque fiche est un événement. Il apparaît « à l'affiche » sur la page Événements et disparaît tout seul quand sa date est dépassée."
     folder: content/evenements
     format: json
     extension: json
@@ -121,12 +121,16 @@ collections:
           - { label: "Publications Kalamu", value: kalamu }
           - { label: "Classiques", value: classiques }
           - { label: "Contemporains", value: contemporains }
+          - { label: "Poésie", value: poesie }
+          - { label: "Essais et société", value: essais }
+          - { label: "Littérature du monde", value: monde }
           - { label: "Jeunesse", value: jeunesse }
       - { name: cover, label: Couverture, widget: image, required: false, choose_url: false }
       - name: resume_court
         label: Résumé court
         hint: "Une ou deux phrases, affichées directement."
         widget: text
+        required: false
       - name: resume
         label: Suite du résumé
         hint: "Facultatif : affichée quand le visiteur clique sur « Lire plus »."
@@ -136,6 +140,16 @@ collections:
         label: Genre
         hint: "Un mot affiché en étiquette (ex. : Poésie, Contes, BD)."
         widget: string
+        required: false
+      - { name: annee, label: "Année de publication", widget: string, required: false }
+      - { name: editeur, label: "Maison d'édition", widget: string, required: false }
+      - name: exemplaires
+        label: "Nombre d'exemplaires"
+        hint: "Combien d'exemplaires l'association possède."
+        widget: number
+        value_type: int
+        min: 1
+        default: 1
         required: false
       - { name: a_paraitre, label: "Livre à paraître", widget: boolean, default: false }
       - name: accueil
@@ -152,6 +166,36 @@ collections:
       - name: ordre
         label: Ordre d'affichage
         hint: "Plus le nombre est petit, plus le livre apparaît tôt (ex. : 10, 20, 30…)."
+        widget: number
+        value_type: int
+        default: 100
+
+  # ---------------------------------------------------------------- Souvenirs
+  - name: souvenirs
+    label: Souvenirs (photos)
+    label_singular: Photo
+    description: "Photos des événements passés, affichées en album sur la page Événements. La rubrique reste masquée tant qu'il n'y a aucune photo."
+    folder: content/souvenirs
+    format: json
+    extension: json
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    identifier_field: legende
+    summary: "{{legende}}"
+    sortable_fields:
+      - field: ordre
+        label: Ordre d'affichage
+        default_sort: asc
+    editor:
+      preview: false
+    fields:
+      - { name: image, label: Photo, widget: image, choose_url: false }
+      - { name: legende, label: Légende, hint: "Quelques mots affichés sous la photo.", widget: string }
+      - { name: evenement, label: Événement, hint: "Facultatif : ex. Mini Foire du Livre, mai 2026.", widget: string, required: false }
+      - name: ordre
+        label: Ordre d'affichage
+        hint: "Plus le nombre est petit, plus la photo apparaît tôt (10, 20, 30…)."
         widget: number
         value_type: int
         default: 100
@@ -180,11 +224,70 @@ collections:
     fields:
       - { name: nom, label: Nom, widget: string }
       - { name: role, label: Rôle, widget: string }
+      - name: pole
+        label: Pôle
+        hint: "Détermine la rubrique où la personne apparaît sur la page Équipe."
+        widget: select
+        default: direction
+        options:
+          - { label: "Direction", value: direction }
+          - { label: "Vie associative", value: vie-associative }
+          - { label: "Pédagogie & documentation", value: pedagogie }
+          - { label: "Communication & médias", value: communication }
+          - { label: "Pôle Social & Enfant", value: social }
+          - { label: "Pôle Inclusion & Leadership", value: inclusion }
+          - { label: "Kalamu Éco-Plume", value: eco-plume }
       - { name: photo, label: Photo, widget: image, required: false, choose_url: false }
       - { name: bio, label: Présentation, widget: text, required: false }
       - name: ordre
         label: Ordre d'affichage
         hint: "Plus le nombre est petit, plus le membre apparaît tôt."
+        widget: number
+        value_type: int
+        default: 100
+
+  # ---------------------------------------------------------------- Partenaires
+  - name: partenaires
+    label: Partenaires
+    label_singular: Partenaire
+    description: "Les partenaires de l'association. Ils apparaissent dans « Ils font équipe avec nous » sur la page Équipe (la rubrique reste masquée tant qu'il n'y en a aucun)."
+    folder: content/partenaires
+    format: json
+    extension: json
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    identifier_field: nom
+    summary: "{{nom}}"
+    sortable_fields:
+      - field: ordre
+        label: Ordre d'affichage
+        default_sort: asc
+      - field: nom
+        label: Nom
+    editor:
+      preview: false
+    fields:
+      - { name: nom, label: Nom du partenaire, widget: string }
+      - name: type
+        label: Type
+        widget: select
+        default: culture
+        options:
+          - { label: "Éducation", value: education }
+          - { label: "Culture", value: culture }
+          - { label: "ONG", value: ong }
+          - { label: "Institutions", value: institutions }
+          - { label: "Médias", value: medias }
+      - { name: logo, label: Logo, widget: image, required: false, choose_url: false }
+      - name: lien
+        label: Site web
+        hint: "Facultatif : adresse complète commençant par https://"
+        widget: string
+        required: false
+      - name: ordre
+        label: Ordre d'affichage
+        hint: "Plus le nombre est petit, plus le partenaire apparaît tôt (10, 20, 30…)."
         widget: number
         value_type: int
         default: 100

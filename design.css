@@ -3,8 +3,8 @@
    Chargé après styles.css : ces règles remplacent l'ancien en-tête et l'ancienne hero.
    ========================================================================== */
 :root {
-    --kl-orange: #ff6b35;
-    --kl-orange-2: #f7931e;
+    --kl-orange: #c4663c;
+    --kl-orange-2: #d08546;
     --kl-ink: #1f2a37;
     --kl-ink-soft: #5b6573;
     --kl-glass: rgba(255, 255, 255, 0.72);
@@ -253,7 +253,7 @@ header.kl-header {
 
 .kl-mobile-menu .mobile-nav-link:hover,
 .kl-mobile-menu .mobile-nav-link[aria-current="page"] {
-    background: rgba(255, 107, 53, 0.1);
+    background: rgba(196, 102, 60, 0.1);
     color: var(--kl-ink);
 }
 
@@ -488,14 +488,14 @@ header.kl-header {
     background: linear-gradient(135deg, var(--kl-orange), var(--kl-orange-2));
     color: #fff;
     font-size: 1.2rem;
-    box-shadow: 0 12px 30px rgba(255, 107, 53, 0.45);
+    box-shadow: 0 12px 30px rgba(196, 102, 60, 0.45);
     transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .kl-scroll-btn:hover {
     color: #fff;
     transform: translateX(-50%) translateY(3px);
-    box-shadow: 0 16px 36px rgba(255, 107, 53, 0.55);
+    box-shadow: 0 16px 36px rgba(196, 102, 60, 0.55);
 }
 
 .kl-scroll-btn i {
@@ -532,8 +532,8 @@ header.kl-header {
     margin-bottom: 0.65rem;
     padding: 0.3rem 0.75rem;
     border-radius: 999px;
-    background: rgba(255, 107, 53, 0.12);
-    color: #d4521f;
+    background: rgba(196, 102, 60, 0.12);
+    color: #b5532b;
     font-size: 0.72rem;
     font-weight: 600;
     letter-spacing: 0.04em;
@@ -853,8 +853,8 @@ header.kl-header {
     gap: 0.5rem;
     padding: 0.45rem 1rem;
     border-radius: 999px;
-    background: rgba(255, 107, 53, 0.1);
-    color: #d4521f;
+    background: rgba(196, 102, 60, 0.1);
+    color: #b5532b;
     font-family: var(--kl-font);
     font-size: 0.8rem;
     font-weight: 600;
@@ -1183,7 +1183,7 @@ header.kl-header {
 
 .kl-obj:hover {
     transform: translateY(-4px);
-    box-shadow: 0 18px 40px rgba(255, 107, 53, 0.15);
+    box-shadow: 0 18px 40px rgba(196, 102, 60, 0.15);
 }
 
 .kl-obj-top {
@@ -1203,7 +1203,7 @@ header.kl-header {
     background: linear-gradient(135deg, var(--kl-orange), var(--kl-orange-2));
     color: #fff;
     font-size: 1.2rem;
-    box-shadow: 0 8px 18px rgba(255, 107, 53, 0.3);
+    box-shadow: 0 8px 18px rgba(196, 102, 60, 0.3);
 }
 
 .kl-obj-num {
@@ -1242,8 +1242,8 @@ header.kl-header {
 .kl-chips li {
     padding: 0.35rem 0.75rem;
     border-radius: 999px;
-    background: rgba(255, 107, 53, 0.08);
-    color: #c2481a;
+    background: rgba(196, 102, 60, 0.08);
+    color: #944526;
     font-size: 0.8rem;
     font-weight: 500;
 }

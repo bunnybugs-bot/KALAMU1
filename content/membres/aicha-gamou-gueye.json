@@ -1,7 +1,8 @@
 {
-  "nom": "Aicha Gamou GUEYE",
-  "role": "Responsable artistique",
+  "nom": "Aïcha Gamou GUEYE",
+  "role": "Responsable Artistique",
+  "pole": "communication",
   "bio": "Supervise la dimension créative des projets, la conception visuelle et les expressions artistiques.",
   "photo": "/images/uploads/aicha_gamou_gueye.jpg",
-  "ordre": 70
+  "ordre": 180
 }

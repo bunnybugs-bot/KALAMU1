@@ -1,62 +1,222 @@
 {
   "photo_groupe": "/images/uploads/bureau_executif.jpg",
-  "afficher_fiches": false,
+  "afficher_fiches": true,
   "membres": [
     {
       "nom": "Samba Cor FAYE",
       "role": "Président",
+      "pole": "direction",
       "bio": "",
       "photo": "/images/uploads/samba_cor_faye.jpg",
       "ordre": 10
     },
     {
-      "nom": "Gnima DIANKO",
-      "role": "Relations membres & adhésions",
-      "bio": "Contact privilégié des adhérents. Veille à leur engagement et à leur intégration au sein de l'association.",
-      "photo": "/images/uploads/gnima_dianko.jpg",
+      "nom": "Hawa BÂ",
+      "role": "Secrétaire Générale",
+      "pole": "direction",
+      "bio": "",
+      "photo": "",
       "ordre": 20
     },
     {
       "nom": "Khadijatou DIALLO",
-      "role": "Responsable financière",
+      "role": "Responsable Finances",
+      "pole": "direction",
       "bio": "Gère les finances, la trésorerie et le budget. Garantit la bonne santé économique de l'organisation.",
       "photo": "/images/uploads/khadijatou_diallo.jpg",
       "ordre": 30
     },
     {
-      "nom": "Pa Alioune NDIAYE",
-      "role": "Responsable logistique",
-      "bio": "Organise la logistique des événements et projets. Assure la fluidité des opérations sur le terrain.",
-      "photo": "/images/uploads/pa_alioune_ndiaye.jpg",
+      "nom": "El Hadji Malick NDIAYE",
+      "role": "Partenariats",
+      "pole": "direction",
+      "bio": "",
+      "photo": "/images/uploads/el_hadj_malick_ndiaye.jpg",
       "ordre": 40
     },
     {
-      "nom": "Ousmane NIASSE",
-      "role": "Responsable pédagogique",
-      "bio": "Conçoit et suit les programmes d'éducation. Veille à la qualité du contenu et à l'impact des initiatives.",
-      "photo": "/images/uploads/ousmane_niass.jpg",
+      "nom": "Gnima DIANKO",
+      "role": "Membres & Adhésions",
+      "pole": "vie-associative",
+      "bio": "Contact privilégié des adhérents. Veille à leur engagement et à leur intégration au sein de l'association.",
+      "photo": "/images/uploads/gnima_dianko.jpg",
       "ordre": 50
     },
     {
-      "nom": "Fatou Kiné THIAM",
-      "role": "Responsable communication",
-      "bio": "Gère l'image et la visibilité de l'association. Diffuse l'information et promeut les activités.",
-      "photo": "/images/uploads/fatou_kine_thiam.jpg",
+      "nom": "Ndeye Ndiétté FALL",
+      "role": "Membres & Adhésions",
+      "pole": "vie-associative",
+      "bio": "",
+      "photo": "",
       "ordre": 60
     },
     {
-      "nom": "Aicha Gamou GUEYE",
-      "role": "Responsable artistique",
-      "bio": "Supervise la dimension créative des projets, la conception visuelle et les expressions artistiques.",
-      "photo": "/images/uploads/aicha_gamou_gueye.jpg",
+      "nom": "Pa Alioune NDIAYE",
+      "role": "Responsable Logistique",
+      "pole": "vie-associative",
+      "bio": "Organise la logistique des événements et projets. Assure la fluidité des opérations sur le terrain.",
+      "photo": "/images/uploads/pa_alioune_ndiaye.jpg",
       "ordre": 70
     },
     {
+      "nom": "Ousmane NIASSE",
+      "role": "Responsable Pédagogie",
+      "pole": "pedagogie",
+      "bio": "Conçoit et suit les programmes d'éducation. Veille à la qualité du contenu et à l'impact des initiatives.",
+      "photo": "/images/uploads/ousmane_niass.jpg",
+      "ordre": 80
+    },
+    {
       "nom": "Oumouratou BANGOURA",
-      "role": "Documentation & bibliothèque",
+      "role": "Responsable Documentation",
+      "pole": "pedagogie",
       "bio": "Gère la bibliothèque et l'archivage. Assure l'organisation et l'accessibilité des ressources écrites.",
       "photo": "/images/uploads/oumouratou_bangoura.jpg",
-      "ordre": 80
+      "ordre": 90
+    },
+    {
+      "nom": "Adja Maimouna BÂ",
+      "role": "Responsable Adjointe Documentation",
+      "pole": "pedagogie",
+      "bio": "",
+      "photo": "",
+      "ordre": 100
+    },
+    {
+      "nom": "Fatou Kiné THIAM",
+      "role": "Directrice de Communication",
+      "pole": "communication",
+      "bio": "Gère l'image et la visibilité de l'association. Diffuse l'information et promeut les activités.",
+      "photo": "/images/uploads/fatou_kine_thiam.jpg",
+      "ordre": 110
+    },
+    {
+      "nom": "Fatoumata Binta DIALLO",
+      "role": "Webmaster",
+      "pole": "communication",
+      "bio": "",
+      "photo": "",
+      "ordre": 120
+    },
+    {
+      "nom": "Ameth DIONE",
+      "role": "Responsable de la Presse",
+      "pole": "communication",
+      "bio": "",
+      "photo": "",
+      "ordre": 130
+    },
+    {
+      "nom": "Maman Nafy NIANG",
+      "role": "Responsable Adjointe de la Presse",
+      "pole": "communication",
+      "bio": "",
+      "photo": "",
+      "ordre": 140
+    },
+    {
+      "nom": "Papa Mor Talla FALL",
+      "role": "Community Manager",
+      "pole": "communication",
+      "bio": "",
+      "photo": "",
+      "ordre": 150
+    },
+    {
+      "nom": "Abdou Semou CISSÉ",
+      "role": "Responsable Photographe",
+      "pole": "communication",
+      "bio": "",
+      "photo": "/images/uploads/abdou_semou_cisse.jpg",
+      "ordre": 160
+    },
+    {
+      "nom": "Ousmane FALL",
+      "role": "Responsable Adjoint Photographe",
+      "pole": "communication",
+      "bio": "",
+      "photo": "",
+      "ordre": 170
+    },
+    {
+      "nom": "Aïcha Gamou GUEYE",
+      "role": "Responsable Artistique",
+      "pole": "communication",
+      "bio": "Supervise la dimension créative des projets, la conception visuelle et les expressions artistiques.",
+      "photo": "/images/uploads/aicha_gamou_gueye.jpg",
+      "ordre": 180
+    },
+    {
+      "nom": "Aminatou DIALLO",
+      "role": "Responsable Pôle Social & Enfant",
+      "pole": "social",
+      "bio": "",
+      "photo": "",
+      "ordre": 190
+    },
+    {
+      "nom": "Souado Djitté THIAM",
+      "role": "Responsable Adjointe 1 Pôle Social & Enfant",
+      "pole": "social",
+      "bio": "",
+      "photo": "",
+      "ordre": 200
+    },
+    {
+      "nom": "Dieynaba BARRO",
+      "role": "Responsable Adjointe 2 Pôle Social & Enfant",
+      "pole": "social",
+      "bio": "",
+      "photo": "",
+      "ordre": 210
+    },
+    {
+      "nom": "Yaya CAMARA",
+      "role": "Responsable Adjoint 3 Pôle Social & Enfant",
+      "pole": "social",
+      "bio": "",
+      "photo": "/images/uploads/yaya_camara.jpg",
+      "ordre": 220
+    },
+    {
+      "nom": "Fallou DIOP",
+      "role": "Responsable Adjoint 4 Pôle Social & Enfant",
+      "pole": "social",
+      "bio": "",
+      "photo": "",
+      "ordre": 230
+    },
+    {
+      "nom": "Ami DIOP",
+      "role": "Responsable Pôle Inclusion & Leadership",
+      "pole": "inclusion",
+      "bio": "",
+      "photo": "",
+      "ordre": 240
+    },
+    {
+      "nom": "Djibril DIALLO",
+      "role": "Responsable Adjoint Pôle Inclusion & Leadership",
+      "pole": "inclusion",
+      "bio": "",
+      "photo": "",
+      "ordre": 250
+    },
+    {
+      "nom": "Adama NDIAYE",
+      "role": "Coordonnatrice Kalamu Éco-Plume",
+      "pole": "eco-plume",
+      "bio": "",
+      "photo": "",
+      "ordre": 260
+    },
+    {
+      "nom": "Mame Demba DIOP",
+      "role": "Vice-Coordonnatrice Kalamu Éco-Plume",
+      "pole": "eco-plume",
+      "bio": "",
+      "photo": "",
+      "ordre": 270
     }
   ]
 }

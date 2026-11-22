@@ -47,6 +47,17 @@ Le site est mis à jour en **1 à 2 minutes**.
 4. **Ordre d'affichage** : plus le nombre est petit, plus le livre apparaît tôt (10, 20, 30…).
 5. **Publier** → **Publier maintenant**.
 
+## Newsletter et messages reçus
+
+Le formulaire « Écrivez-nous » et l'inscription à la newsletter de la page Contact fonctionnent une fois le site publié sur Netlify (pas en local).
+
+1. Connectez-vous à **Netlify** (app.netlify.com) et ouvrez le site Kalamu.
+2. Menu **Forms** : deux formulaires apparaissent, **contact** (messages) et **newsletter** (adresses e-mail des inscrits).
+3. Cliquez sur un formulaire pour lire les envois ; le bouton **Export CSV** télécharge la liste des inscrits.
+4. Pour être prévenu par e-mail à chaque nouvelle inscription ou message : **Forms › Form notifications › Add notification › Email notification**.
+
+Pour envoyer une newsletter, importez le fichier CSV dans un outil d'envoi (Brevo, Mailchimp…) et n'envoyez qu'aux personnes qui se sont inscrites.
+
 ## Astuces
 
 - **Trier / Grouper / Filtrer** (en haut à droite des cartes) : par exemple, grouper les livres par catégorie ou n'afficher que ceux de la page d'accueil.

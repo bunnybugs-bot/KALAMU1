@@ -50,6 +50,8 @@ const evenements = readFolder('evenements')
     .sort((a, b) => String(a.date_debut || '').localeCompare(String(b.date_debut || '')));
 const livres = readFolder('livres').sort(byOrder);
 const membres = readFolder('membres').sort(byOrder);
+const partenaires = readFolder('partenaires').sort(byOrder);
+const souvenirs = readFolder('souvenirs').sort(byOrder);
 const bureau = readFile('bureau.json', {});
 const infos = readFile('infos.json', {});
 const chiffres = readFile('chiffres.json', { chiffres: [] });
@@ -57,6 +59,8 @@ const chiffres = readFile('chiffres.json', { chiffres: [] });
 write('evenements.json', { evenements });
 write('livres.json', { livres });
 write('membres.json', { ...bureau, membres });
+write('partenaires.json', { partenaires });
+write('souvenirs.json', { souvenirs });
 write('infos.json', infos);
 write('chiffres.json', chiffres);
 

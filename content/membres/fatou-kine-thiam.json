@@ -1,7 +1,8 @@
 {
   "nom": "Fatou Kiné THIAM",
-  "role": "Responsable communication",
+  "role": "Directrice de Communication",
+  "pole": "communication",
   "bio": "Gère l'image et la visibilité de l'association. Diffuse l'information et promeut les activités.",
   "photo": "/images/uploads/fatou_kine_thiam.jpg",
-  "ordre": 60
+  "ordre": 110
 }

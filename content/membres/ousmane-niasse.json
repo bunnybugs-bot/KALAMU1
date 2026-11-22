@@ -1,7 +1,8 @@
 {
   "nom": "Ousmane NIASSE",
-  "role": "Responsable pédagogique",
+  "role": "Responsable Pédagogie",
+  "pole": "pedagogie",
   "bio": "Conçoit et suit les programmes d'éducation. Veille à la qualité du contenu et à l'impact des initiatives.",
   "photo": "/images/uploads/ousmane_niass.jpg",
-  "ordre": 50
+  "ordre": 80
 }

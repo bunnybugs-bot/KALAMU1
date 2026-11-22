@@ -1,0 +1,28 @@
+{
+  "souvenirs": [
+    {
+      "image": "/images/uploads/lecture.jpg",
+      "legende": "Café Livre",
+      "evenement": "Clubs de lecture",
+      "ordre": 10
+    },
+    {
+      "image": "/writing-scene.png",
+      "legende": "Camp Kalamu",
+      "evenement": "Atelier d'écriture",
+      "ordre": 20
+    },
+    {
+      "image": "/images/uploads/foire_livre.jpg",
+      "legende": "Bibliothèque Kalamu",
+      "evenement": "Mini Foire du Livre",
+      "ordre": 30
+    },
+    {
+      "image": "/images/uploads/dons.jpeg",
+      "legende": "Don de kits scolaires aux enfants",
+      "evenement": "Journée de Dons",
+      "ordre": 40
+    }
+  ]
+}

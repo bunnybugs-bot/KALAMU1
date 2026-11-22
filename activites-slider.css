@@ -1,0 +1,181 @@
+/* Carrousel « Nos Activités » : une grande diapositive à la fois, défilement automatique */
+.act-slider {
+    position: relative;
+    max-width: 1100px;
+    margin: 0 auto 4rem;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--box-shadow-hover);
+    background: var(--dark-color);
+}
+
+.act-viewport { overflow: hidden; }
+
+.act-track {
+    display: flex;
+    transition: transform 0.6s ease;
+    will-change: transform;
+}
+
+.act-slide {
+    position: relative;
+    flex: 0 0 100%;
+    min-height: 520px;
+    display: flex;
+    align-items: flex-end;
+    padding: 2.5rem 2.5rem 3.5rem;
+    box-sizing: border-box;
+    overflow: hidden;
+    background: linear-gradient(135deg, #c4663c 0%, #d08546 100%);
+}
+
+.act-slide.act-grad-green { background: linear-gradient(135deg, #2e8b57 0%, #1f6b41 100%); }
+.act-slide.act-grad-dark  { background: linear-gradient(135deg, #2c3e50 0%, #46607a 100%); }
+
+.act-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.act-slide::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0) 55%);
+    pointer-events: none;
+}
+
+.act-deco {
+    position: absolute;
+    right: 8%;
+    top: 12%;
+    font-size: 11rem;
+    color: rgba(255, 255, 255, 0.18);
+    pointer-events: none;
+}
+
+.act-poster {
+    position: absolute;
+    right: 6%;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 82%;
+    width: auto;
+    max-width: 34%;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+    background: #fff;
+    z-index: 1;
+}
+
+.act-card {
+    position: relative;
+    z-index: 2;
+    width: min(100%, 560px);
+    background: #fff;
+    border-radius: 14px;
+    padding: 1.75rem 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.act-label {
+    display: block;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--primary-color);
+    margin-bottom: 0.4rem;
+}
+
+.act-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    line-height: 1.2;
+    color: var(--dark-color);
+    margin: 0 0 0.75rem;
+}
+
+.act-card p {
+    color: var(--text-color);
+    line-height: 1.6;
+    margin: 0 0 1rem;
+}
+
+.act-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+.act-tag {
+    background: rgba(196, 102, 60, 0.1);
+    color: var(--primary-color);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+}
+
+.act-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    width: 52px;
+    height: 52px;
+    border: 0;
+    border-radius: 50%;
+    background: var(--primary-color);
+    color: #fff;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.act-btn:hover { background: var(--secondary-color); transform: translateY(-50%) scale(1.08); }
+.act-btn:focus-visible, .act-dot:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+.act-prev { left: 1.25rem; }
+.act-next { right: 1.25rem; }
+
+.act-dots {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 1rem;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+}
+
+.act-dot {
+    width: 12px;
+    height: 12px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.55);
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.act-dot.active { background: #fff; transform: scale(1.25); }
+
+@media (max-width: 900px) {
+    .act-poster { display: none; }
+    .act-deco { font-size: 7rem; }
+}
+
+@media (max-width: 600px) {
+    .act-slider { border-radius: 14px; margin-bottom: 3rem; }
+    .act-slide { min-height: 500px; padding: 1.25rem 1rem 3rem; }
+    .act-card { padding: 1.25rem; }
+    .act-card h3 { font-size: 1.5rem; }
+    .act-btn { width: 40px; height: 40px; top: 28%; font-size: 0.95rem; }
+    .act-prev { left: 0.5rem; }
+    .act-next { right: 0.5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .act-track { transition: none; }
+}

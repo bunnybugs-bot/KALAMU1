@@ -1,7 +1,8 @@
 {
   "nom": "Gnima DIANKO",
-  "role": "Relations membres & adhésions",
+  "role": "Membres & Adhésions",
+  "pole": "vie-associative",
   "bio": "Contact privilégié des adhérents. Veille à leur engagement et à leur intégration au sein de l'association.",
   "photo": "/images/uploads/gnima_dianko.jpg",
-  "ordre": 20
+  "ordre": 50
 }
